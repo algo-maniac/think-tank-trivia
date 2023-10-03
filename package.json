@@ -12,7 +12,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "autoprefixer": "latest",
