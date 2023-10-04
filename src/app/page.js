@@ -4,6 +4,7 @@ import {
   faTwitter,
   faCircleStop
 } from "@fortawesome/free-solid-svg-icons";
+import Link from 'next/link';
 
 export default function App() {
   return<>
@@ -20,7 +21,7 @@ export default function App() {
             </div>
         </div>
         <div className={style.loginBtn}>
-            <button className={style.button9}>Login</button>
+            <Link href={"/login"}><button className={style.button9}>Login</button></Link>
         </div>
     </div>
     <div className={style.content}>
