@@ -409,8 +409,10 @@
     font-size: 1.9rem;
 
 }
-
-.socialMedia i{
+.white{
+    color: white;
+}
+.socialMedia{
     width: 25%;
     color: rgb(216, 212, 212);
 }
