@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useReducer } from 'react'
 
 import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
@@ -22,11 +22,11 @@ const Login = () => {
         initialValues: initialValues,
         validationSchema: loginSchema,
         onSubmit: (value, action) => {
-            console.log(value)
+            console.log(value);
+            // email and password
             action.resetForm();
         }
     })
-
     return (
         <>
             <div className="grid grid-cols-12">
@@ -34,7 +34,7 @@ const Login = () => {
                     <div className="left px-3 py-2 shadow-md shadow-gray-300 w-3/4 mx-3 my-3 bg-[#F0F0F0]">
                         <h1 className="text-2xl font-bold text-center text-black">Login</h1>
                         <hr className="w-24 h-1 my-2 mx-auto bg-purple-700 text-center" />
-                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Doesn't have an account yet ? </span><span class="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900">Sign Up</span></p>
+                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Doesn't have an account yet ? </span><span className="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900">Sign Up</span></p>
                         <form action="#" className='flex flex-col justify-center ' onSubmit={handleSubmit}>
                             <div className='flex flex-col'>
                                 <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 mt-3">Email Address</label>
@@ -79,7 +79,7 @@ const Login = () => {
                                 <div className="flex items-start mb-6">
                                     <div className="flex items-center h-5">
                                         <input id="remember" type="checkbox" value=""
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:bg-cyan-950"
+                                            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:bg-cyan-950"
                                             required />
                                     </div>
                                     <label htmlFor="remember" className="ml-2 text-sm font-medium text-slate-600">Remember
@@ -100,7 +100,7 @@ const Login = () => {
                         </form>
                     </div>
                     {/* <div class="border-2 w-2 h-3/4  bg-purple-700 my-auto"></div> */}
-                    <div class="right flex justify-center items-center px-1 py-1">
+                    <div className="right flex justify-center items-center px-1 py-1">
                         <div>
                             {/* <Lottie className='w-72' animationData={LoginAnimation} /> */}
                             <img src="./login2.svg" alt="" />
