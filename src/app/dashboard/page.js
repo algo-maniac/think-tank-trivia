@@ -1,8 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import QuizCard from "@/components/QuizCard";
-
+import "./style.css"
 export default function Dashboard() {
   return (
     <div className="flex flex-row">

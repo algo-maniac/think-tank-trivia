@@ -150,6 +150,7 @@
     /* border: 1px solid black; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     width: 65%;
+    border-radius: 15px;
     margin: auto;
     font-family: Georgia, serif;
     margin-top: 80px;
@@ -160,6 +161,7 @@
    font-size: 1.24rem;
    background-color:  rgb(97, 78, 220);
    color: #F3F4F6;
+   border-radius: 8px;
 }
 .sharecontent{
    padding: 10px;
