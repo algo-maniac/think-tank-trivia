@@ -1,4 +1,7 @@
 import style from './style.module.css'
+import FormHeader from '../../../components/FormHeader'
+import MCQ from '../../../components/MCQ'
+import Question from '@/components/Question';
 export default function Page({params}){
     const formId=params.form;
     console.log(formId);
@@ -18,8 +21,14 @@ export default function Page({params}){
                 <button className={style.button31}>Dark</button>
             </div>
         </div>
-        <div>
-
+        <div className={style.contentheader}>
+            <img src="/form-header1.png" height={"100%"} width={"100%"}></img>
         </div>
+        {/* Pass the data by props */}
+        <FormHeader></FormHeader>
+        <MCQ></MCQ>
+        <Question></Question>
+        <Question></Question>
+        <MCQ></MCQ>
     </>
 }
