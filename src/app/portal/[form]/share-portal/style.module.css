@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
+.header{
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.logo{
+    width: 15%;
+}
+.nav div:hover{
+    background-color: rgb(203, 227, 245);
+    border-radius: 10px;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    justify-content: space-around;
+}
+.nav div{
+    text-align: center;
+    width: 20%;
+    height: 70%;
+    margin: auto;
+    align-items: center;
+}
+.nav div a{
+    text-decoration: none;
+    color: gray;
+    display: block;
+    margin-top: 8px;
+}
+.nav div a:active{
+    color: rgb(18, 18, 183);
+}
+.nav div a:hover{
+    color: blue;
+}
+.mode{
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.mode button{
+    height: 65%;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+
+}
+.button4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button4:focus {
+  outline: 1px transparent;
+}
+
+.button4:before {
+  display: none;
+}
+
+.button4:-webkit-details-marker {
+  display: none;
+}
+.button31 {
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 40px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button31:hover,
+.button31:focus {
+  opacity: .75;
+}
+.shareportal{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 65%;
+    margin: auto;
+    font-family: Georgia, serif;
+    margin-top: 80px;
+    border-radius: 9px;
+}
+.shareheader{
+   padding: 10px;
+   font-size: 1.24rem;
+   background-color:  rgb(97, 78, 220);
+   color: #F3F4F6;
+}
+.sharecontent{
+   padding: 10px;
+}
+.dialog{
+   border: 1px solid rgb(4, 189, 41);
+   color: green;
+   width: 80%;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   border-radius: 10px;
+   padding: 10px;
+   background-color: #e1fbdc;
+}
+.inputcard{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.inputcard input{
+  height: 40px;
+  width: 70%;
+  font-size: 1.02rem;
+}
+.dialog h3{
+  margin: 0px;
+  color: rgb(11, 92, 11);
+}
+.button3 {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button3:hover {
+  background-color: #2c974b;
+}
+
+.button3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+.inputcard button{
+  width: 12%;
+}
+.socialMedia{
+  color: black;
+  font-size: 1.2rem;
+}
