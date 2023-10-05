@@ -13,7 +13,7 @@ export default function Page({params}){
             <div className={style.nav}>
                 <div><a href>Preview</a></div>
                 <div><a href={formId+"/share-portal"}>Share</a></div>
-                <div><a href="/response">Response</a></div>
+                <div><a href={formId+"/response"}>Response</a></div>
                 <div><a href="/setting">Setting</a></div>
             </div>
             <div className={style.mode}>
