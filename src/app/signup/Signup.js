@@ -8,10 +8,14 @@ import Image from 'next/image'
 import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
 import { useFormik } from 'formik'
+import Link from 'next/link'
+
 
 import SignUp from "./SignUp.json"
 import Lottie from 'lottie-react'
-import { signupSchema } from '@/schemas/singupSchema'
+import { signupSchema } from '@/models/singupSchema'
+import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 
 const initialValues = {
@@ -23,12 +27,27 @@ const initialValues = {
 }
 
 const Signup = () => {
+    const {status}=useSession();
+    const router=useRouter();
+
+    if(status==='authenticated'){
+        router.replace("/");
+    }
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: initialValues,
         validationSchema: signupSchema,
-        onSubmit: (value,action) => {
-            console.log(value);
+        onSubmit: async(value,action) => {
+            // console.log(value);
+            const result=await fetch("/api/signup",{
+                method:"POST",
+                header:{
+                    "Content-Type":"applications/json"
+                },
+                body:JSON.stringify(value)
+            })
+            const data=await result.json();
+            alert(data.message);
             action.resetForm();
         }
     })
@@ -49,7 +68,7 @@ const Signup = () => {
                     <div className="right px-4 py-2 shadow-md shadow-gray-300 w-3/4 mx-1 my-1 bg-[#F0F0F0]">
                         <h1 className="text-2xl font-bold text-center text-black">Signup</h1>
                         <hr className="w-24 h-1 my-2 mx-auto bg-purple-700 text-center" />
-                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Already have an account ? </span><span className="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900">Login</span></p>
+                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Already have an account ? </span><span className="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900"><Link href='/login'> Login</Link></span></p>
                         <form action="#" className='flex flex-col justify-center' onSubmit={handleSubmit}>
                             {/* <label htmlFor="name" className="block mb-2 text-sm font-medium text-purple-900 "></label> */}
                             <div className='flex flex-col my-1'>

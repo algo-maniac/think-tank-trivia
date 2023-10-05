@@ -7,11 +7,13 @@ import { MdEmail } from "react-icons/md"
 import { RiLockPasswordFill } from "react-icons/ri"
 import LoginAnimation from "./LoginAnimation.json"
 import Lottie from 'lottie-react'
+import Link from 'next/link'
+
 
 import { useFormik } from 'formik'
-import { loginSchema } from '@/schemas/loginSchema'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { loginSchema } from '@/models/loginSchema'
 
 const initialValues = {
     email: "",
@@ -20,20 +22,19 @@ const initialValues = {
 
 const Login = () => {
 
-    // const router=useRouter();
+    const router=useRouter();
     const {data,status}=useSession();
-    // console.log(data);
-    // if(status==="authenticated"){
-    //     // console.log("the data",data);
-    //     router.replace("/");
-    // }
+    if(status==="authenticated"){
+        // console.log("the data",data);
+        router.replace("/");
+    }
 
     const { errors, values, handleBlur, handleChange, handleSubmit, touched } = useFormik({
         initialValues: initialValues,
         validationSchema: loginSchema,
         onSubmit: async (value, action) => {
             //changed by Tonmoy for LOGIN..................
-            console.log(value);
+            // console.log(value);
             // value={email , password}
             const result=await signIn('credentials',{redirect:false,email:value.email,password:value.password});
             console.log(result);
@@ -50,7 +51,7 @@ const Login = () => {
                     <div className="left px-3 py-2 shadow-md shadow-gray-300 w-3/4 mx-3 my-3 bg-[#F0F0F0]">
                         <h1 className="text-2xl font-bold text-center text-black">Login</h1>
                         <hr className="w-24 h-1 my-2 mx-auto bg-purple-700 text-center" />
-                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Doesn't have an account yet ? </span><span className="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900">Sign Up</span></p>
+                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Doesn't have an account yet ? </span><span className="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900"><Link href="/signup"> Sign Up</Link></span></p>
                         <form action="#" className='flex flex-col justify-center ' onSubmit={handleSubmit}>
                             <div className='flex flex-col'>
                                 <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 mt-3">Email Address</label>
