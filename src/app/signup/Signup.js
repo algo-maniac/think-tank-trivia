@@ -33,23 +33,23 @@ const Signup = () => {
         }
     })
 
-    console.log(errors);
+    // console.log(errors);
 
     return (
         <>
             <div className="grid grid-cols-12">
                 <div className="col-span-8 col-start-3 shadow-md shadow-gray-300 flex justify-around my-2 mx-auto bg-[#F8F0E5] px-3 py-2 rounded-lg space-x-3">
-                    <div class="left flex justify-center items-center px-3 py-3 my-3">
+                    <div className="left flex justify-center items-center px-3 py-3 my-3">
                         <div className='w-3/4'>
                             {/* <Lottie animationData={SignUp} /> */}
                             <img src="./signup2.svg" alt="" />
                         </div>
                     </div>
-                    {/* <div class="border-2 w-2 h-3/4  bg-purple-500 my-auto"></div> */}
+                    {/* <div className="border-2 w-2 h-3/4  bg-purple-500 my-auto"></div> */}
                     <div className="right px-4 py-2 shadow-md shadow-gray-300 w-3/4 mx-1 my-1 bg-[#F0F0F0]">
                         <h1 className="text-2xl font-bold text-center text-black">Signup</h1>
                         <hr className="w-24 h-1 my-2 mx-auto bg-purple-700 text-center" />
-                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Already have an account ? </span><span class="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900">Login</span></p>
+                        <p className="text-center first-letter:text-2xl"><span className='text-black'>Already have an account ? </span><span className="cursor-pointer font-bold underline text-purple-700 hover:text-purple-900">Login</span></p>
                         <form action="#" className='flex flex-col justify-center' onSubmit={handleSubmit}>
                             {/* <label htmlFor="name" className="block mb-2 text-sm font-medium text-purple-900 "></label> */}
                             <div className='flex flex-col my-1'>

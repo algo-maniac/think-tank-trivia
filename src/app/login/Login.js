@@ -10,6 +10,8 @@ import Lottie from 'lottie-react'
 
 import { useFormik } from 'formik'
 import { loginSchema } from '@/schemas/loginSchema'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const initialValues = {
     email: "",
@@ -18,12 +20,26 @@ const initialValues = {
 
 const Login = () => {
 
+    // const router=useRouter();
+    const {data,status}=useSession();
+    // console.log(data);
+    // if(status==="authenticated"){
+    //     // console.log("the data",data);
+    //     router.replace("/");
+    // }
+
     const { errors, values, handleBlur, handleChange, handleSubmit, touched } = useFormik({
         initialValues: initialValues,
         validationSchema: loginSchema,
-        onSubmit: (value, action) => {
+        onSubmit: async (value, action) => {
+            //changed by Tonmoy for LOGIN..................
             console.log(value);
-            // email and password
+            // value={email , password}
+            const result=await signIn('credentials',{redirect:false,email:value.email,password:value.password});
+            console.log(result);
+            if(!result.ok){//means authentication failed or invalid credentials
+                alert("Wrong credentials");
+            }
             action.resetForm();
         }
     })
