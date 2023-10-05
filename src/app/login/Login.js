@@ -37,7 +37,7 @@ const Login = () => {
             // console.log(value);
             // value={email , password}
             const result=await signIn('credentials',{redirect:false,email:value.email,password:value.password});
-            console.log(result);
+            // console.log(result);
             if(!result.ok){//means authentication failed or invalid credentials
                 alert("Wrong credentials");
             }
@@ -111,7 +111,7 @@ const Login = () => {
                                 <hr className="w-20 h-px my-4 ml-3 bg-purple-500" />
                             </div>
                             <div className="flex justify-around space-x-14">
-                                <button className='text-3xl'><FcGoogle /></button>
+                                <button className='text-3xl' onClick={()=>{signIn("google")}}><FcGoogle /></button>
                                 <button className='text-3xl bg-white rounded-full '><FaFacebook /></button>
                             </div>
                         </form>

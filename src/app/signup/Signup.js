@@ -16,6 +16,7 @@ import Lottie from 'lottie-react'
 import { signupSchema } from '@/models/singupSchema'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 
 
 const initialValues = {
@@ -164,7 +165,7 @@ const Signup = () => {
                                 <hr className="w-20 h-px my-4 ml-3 bg-purple-500" />
                             </div>
                             <div className="flex justify-around space-x-8">
-                                <button className='text-3xl'><FcGoogle /></button>
+                                <button className='text-3xl' onClick={()=>{signIn("google")}} ><FcGoogle /></button>
                                 <button className='text-3xl bg-white rounded-full '><FaFacebook /></button>
                             </div>
                         </form>
