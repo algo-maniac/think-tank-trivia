@@ -58,12 +58,12 @@
 }
 .button4 {
   appearance: none;
-  background-color: #FAFBFC;
+  background-color: #2c8d09;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292E;
+  color: #fafafa;
   cursor: pointer;
   display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -84,6 +84,7 @@
 
 .button4:hover {
   background-color: #F3F4F6;
+  color: black;
   text-decoration: none;
   transition-duration: 0.1s;
 }
@@ -147,7 +148,7 @@
 
 .header1{
   width: 55%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: auto;
   height: 150px;
   padding: 0px;
@@ -170,10 +171,11 @@
   box-sizing: border-box;
   margin: auto;
   margin-top: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
   min-height: 200px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 30px;
   border-radius: 10px;
 }
 .selector{
@@ -251,7 +253,10 @@
   touch-action: manipulation;
   width: 100%;
 }
-
+.button9:hover{
+  background-color: white;
+  color: black;
+}
 .button9:disabled {
   cursor: default;
 }
@@ -274,6 +279,9 @@
   display: block;
   height: 100%;
   margin: 0px;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
   background-color: rgb(124, 124, 242);
   border-radius: 5px;
 }
@@ -281,8 +289,16 @@
   background-color: rgb(238, 239, 236);
   cursor: pointer;
 }
+.options input{
+  background-color: #e9e3e3;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
 .questionSelector{
   border-radius: 5px;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
   display: block;
   height: 100%;
   margin: 0px;

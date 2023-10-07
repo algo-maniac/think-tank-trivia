@@ -95,7 +95,7 @@ export default function Page(){
                 </div>
             </div>}
             {!flag && <div className={style.mcq}>
-                <p>Write the question:</p>
+                <p>Write the question?</p>
                 <textarea placeholder='Write your question here' className={style.question} onChange={questionHandler1}></textarea>
             </div>}
             <div className={style.submit}>
