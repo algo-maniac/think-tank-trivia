@@ -81,7 +81,7 @@ export default function Page(){
             </div>
             {flag && <div className={style.mcq}>
                 <p>Write the question?</p>
-                <textarea className={style.question} onChange={questionHandler1}></textarea>
+                <textarea placeholder='Write your question here' className={style.question} onChange={questionHandler1}></textarea>
                 <p>Select Options</p>
                 <div className={style.options}>
                     <div className={style.first}>

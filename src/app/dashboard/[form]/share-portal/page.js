@@ -1,8 +1,13 @@
+"use client"
 import style from './style.module.css'
 import { FaGithub } from 'react-icons/fa';
+import copy from 'copy-to-clipboard'
 export default function Page({params}){
     const formId=params.form;
     console.log(formId);
+    const copyLinkHandler=()=>{
+        copy(document.getElementById('input').value);
+    }
     return <>
         <div className={style.header}>
             <div className={style.logo}>
@@ -30,8 +35,8 @@ export default function Page({params}){
                 </div>
                 <h4>Form Link</h4>
                 <div className={style.inputcard}>
-                    <input value={"links/asjdbajsbdas/adbasjbdaksd/ajbsdjasd"}></input>
-                    <button className={style.button4}>Copy</button>
+                    <input value={"links/asjdbajsbdas/adbasjbdaksd/ajbsdjasd"} id='input'></input>
+                    <button className={style.button4} onClick={copyLinkHandler}>Copy</button>
                     <button className={style.button3}>Live</button>
                 </div>
             </div>

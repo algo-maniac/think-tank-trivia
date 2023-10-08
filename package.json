@@ -23,8 +23,10 @@
     "next": "latest",
     "next-auth": "^4.23.2",
     "react": "latest",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "latest",
     "react-icons": "^4.11.0",
+    "styled-components": "^6.0.8",
     "yup": "^1.3.2"
   },
   "devDependencies": {
