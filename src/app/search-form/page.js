@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react'
 import style from './style.module.css'
+import ResponseCard from '@/components/ResponseCard'
 export default function Page(){
     const [flag,setFlag]=useState(false);
     const [link,setLink]=useState(true);
@@ -57,5 +58,11 @@ export default function Page(){
                 </div>
             </div>
         </div>}
+        <div className={style.individual}>
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+        </div>
     </>
 }

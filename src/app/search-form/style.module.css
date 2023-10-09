@@ -219,6 +219,23 @@
   justify-content: space-around;
   text-align: center;
 }
+.link:hover{
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  background-color: rgb(227, 227, 227);
+  cursor: pointer;
+
+}
+.user:hover{
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(227, 227, 227);
+  cursor: pointer;
+}
 /* .link{
   border-bottom: 2px solid black;
 } */
@@ -230,4 +247,22 @@
   font-family: 'Cutive', serif;
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
+  background-color: rgb(227, 227, 227);
+}
+.individual{
+  width: 70%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* border: 1px solid black; */
+}
+
+.individual,.question{
+  display: flex;
+  align-items: center;
+  text-align: center;
 }

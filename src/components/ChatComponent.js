@@ -10,7 +10,6 @@ const ChatComponent = () => {
     console.log("message : ", messages);
     return (
         <>
-
             {messages.map((message) => {
                 return (
                     <div key={message.id}>

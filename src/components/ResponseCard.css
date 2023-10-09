@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
+.card1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+    width: 21%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.header1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5px;
+}
+.header1 span{
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    justify-content: space-around;
+}
+.msg span{
+    font-size: 0.8rem;
+    color: rgb(17, 177, 35);
+}
+
+.image{
+    height: 35px;
+    width: 35px;
+}
+.response{
+    border: 1px solid rgb(5, 5, 254);
+    margin: auto;
+    width: 70%;
+    border-radius: 12px;
+    background-color: rgb(177, 236, 239);
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.response span{
+    font-size: 0.8rem;
+    color: rgb(4, 4, 254);
+}
