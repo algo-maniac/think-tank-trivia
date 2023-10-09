@@ -2,7 +2,7 @@
 import React, { useReducer } from 'react'
 
 import { FcGoogle } from "react-icons/fc"
-import { FaFacebook } from "react-icons/fa"
+import { FaFacebook, FaGithub } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 import { RiLockPasswordFill } from "react-icons/ri"
 import Link from 'next/link'
@@ -22,9 +22,12 @@ const Login = () => {
 
     const router=useRouter();
     const {data,status}=useSession();
+    if(status==='loading'){
+        return <p className='text-center p-4 bg-slate-400'>Loading...</p>
+    }
     if(status==="authenticated"){
         // console.log("the data",data);
-        router.replace("/");
+        return router.push("/");
     }
 
     const { errors, values, handleBlur, handleChange, handleSubmit, touched } = useFormik({
@@ -110,7 +113,7 @@ const Login = () => {
                             </div>
                             <div className="flex justify-around space-x-14">
                                 <button className='text-3xl' onClick={()=>{signIn("google")}}><FcGoogle /></button>
-                                <button className='text-3xl bg-white rounded-full '><FaFacebook /></button>
+                                <button className='text-3xl bg-white rounded-full ' onClick={()=>{signIn("github")}}><FaGithub /></button>
                             </div>
                         </form>
                     </div>

@@ -6,7 +6,7 @@ import { RiLockPasswordFill } from "react-icons/ri"
 import { BiSolidUser } from "react-icons/bi"
 import Image from 'next/image'
 import { FcGoogle } from "react-icons/fc"
-import { FaFacebook } from "react-icons/fa"
+import { FaFacebook, FaGithub } from "react-icons/fa"
 import { useFormik } from 'formik'
 import Link from 'next/link'
 
@@ -29,8 +29,12 @@ const Signup = () => {
     const {status}=useSession();
     const router=useRouter();
 
+    if(status==='loading'){
+        return <p className='text-center p-4 bg-slate-400'>Loading...</p>
+    }
+
     if(status==='authenticated'){
-        router.replace("/");
+        return router.push("/");
     }
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -164,7 +168,7 @@ const Signup = () => {
                             </div>
                             <div className="flex justify-around space-x-8">
                                 <button className='text-3xl' onClick={()=>{signIn("google")}} ><FcGoogle /></button>
-                                <button className='text-3xl bg-white rounded-full '><FaFacebook /></button>
+                                <button className='text-3xl bg-white rounded-full ' onClick={()=>{signIn("github")}} ><FaGithub /></button>
                             </div>
                         </form>
                     </div>

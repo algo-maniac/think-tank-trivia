@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcrypt"
 import mongoose from "mongoose";
 import Users from "@/models/user/userSchema";
@@ -10,6 +11,10 @@ export const authOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
+        GitHubProvider({
+            clientId: process.env.GITHUB_ID,
+            clientSecret: process.env.GITHUB_SECRET
         }),
         CredentialsProvider({
             async authorize(credentials, req) {
@@ -39,21 +44,22 @@ export const authOptions = {
     ],
     callbacks: {
         async jwt({ token, account, user }) {
-            if(account){//signing in
-                if(account.provider=="google"){
+            if (account) {//signing in
+                if (account.provider == "google" && account.provider == "github") {
                     //user={id,name,email,image}
                     await mongoose.connect(process.env.MONGO_URL);
-                    const email=user.email;
+                    const email = user.email;
                     const doc = await Users.findOne({ email: email });
-                    if(!doc){
-                        const salt=await bcrypt.genSalt(10);
-                        const hashedPassword=await bcrypt.hash(process.env.DUMMY_PASSWORD,salt);
-                        const newUser=new Users({name:user.name,email:user.email,username:user.name,password:hashedPassword})
+                    if (!doc) {
+                        const salt = await bcrypt.genSalt(10);
+                        const hashedPassword = await bcrypt.hash(process.env.DUMMY_PASSWORD, salt);
+                        const newUser = new Users({ name: user.name, email: user.email, username: user.name, password: hashedPassword })
                         await newUser.save();
                     }
                     mongoose.disconnect();
                 }
             }
+            // console.log(context);
             return token;
         }
     }
