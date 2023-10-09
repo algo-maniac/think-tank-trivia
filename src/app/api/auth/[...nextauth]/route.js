@@ -45,7 +45,7 @@ export const authOptions = {
     callbacks: {
         async jwt({ token, account, user }) {
             if (account) {//signing in
-                if (account.provider == "google" && account.provider == "github") {
+                if (account.provider == "google" || account.provider == "github") {
                     //user={id,name,email,image}
                     await mongoose.connect(process.env.MONGO_URL);
                     const email = user.email;
