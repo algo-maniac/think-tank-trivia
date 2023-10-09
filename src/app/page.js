@@ -4,6 +4,7 @@ import style from "./style.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faCircleStop } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import ChatIcon from "@/components/ChatIcon";
 
 export default function App() {
   return (
@@ -244,6 +245,7 @@ export default function App() {
           <p>Copyright reserved by ThinkTankTrivia</p>
         </div>
       </footer>
+      <ChatIcon />
     </>
   );
 }
