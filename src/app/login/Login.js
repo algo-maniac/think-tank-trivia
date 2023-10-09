@@ -5,8 +5,6 @@ import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 import { RiLockPasswordFill } from "react-icons/ri"
-import LoginAnimation from "./LoginAnimation.json"
-import Lottie from 'lottie-react'
 import Link from 'next/link'
 
 

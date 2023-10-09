@@ -11,8 +11,6 @@ import { useFormik } from 'formik'
 import Link from 'next/link'
 
 
-import SignUp from "./SignUp.json"
-import Lottie from 'lottie-react'
 import { signupSchema } from '@/models/singupSchema'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
