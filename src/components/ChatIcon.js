@@ -30,7 +30,7 @@ const ChatIcon = () => {
                    
                 </div>
             </div>
-            <button onClick={handleClick} className='bg-purple-700 p-2 mx-2 fixed right-2 bottom-4 hover:bg-purple-900 text-white rounded-lg'>chatbot</button>
+            <button onClick={handleClick} className='bg-purple-700 p-2 mx-2 fixed right-2 bottom-4 hover:bg-purple-900 text-white rounded-lg'>Chat-Bot</button>
         </>
     )
 }

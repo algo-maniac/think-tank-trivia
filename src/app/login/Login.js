@@ -105,7 +105,7 @@ const Login = () => {
                                 </div>
                                 <p className="text-xs cursor-pointer underline text-purple-900 hover:text-purple-700">Forgot Passowrd?</p>
                             </div>
-                            <button type="submit" className="text-white bg-purple-700 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm w-full px-5 py-2.5 text-center ">LOGIN</button>
+                            <button type="submit" className="text-white bg-purple-700 hover:bg-purple-600 focus:ring-2 focus:outline-none focus:ring-purple-900 font-bold rounded-lg text-sm w-full px-5 py-2.5 text-center ">LOGIN</button>
                             <div className="flex justify-center my-2">
                                 <hr className="w-20 h-px my-4 mr-3 bg-purple-500" />
                                 <span className="font-bold text-purple-950">or login with</span>
