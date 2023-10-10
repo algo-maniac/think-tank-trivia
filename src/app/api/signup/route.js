@@ -16,6 +16,7 @@ export async function POST(request){
     }
     const salt=await bcrypt.genSalt(10);
     const hashedPassword=await bcrypt.hash(payload.password,salt);
+    //creating new user account
     user=new Users({name:payload.name,email:payload.email,username:payload.username,password:hashedPassword});
     await user.save();
     mongoose.disconnect();
