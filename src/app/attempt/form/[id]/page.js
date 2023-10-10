@@ -1,11 +1,22 @@
+"use client"
 import { useParams } from 'next/navigation'
 import style from './style.module.css'
+import { useState } from 'react';
 
 export default function Page({params}){
     const formId=params.id;
     console.log(formId);
     // dummy data need to connect backend
+    const [response,setResponse]=useState([]);
     const questions=[{type:false,question:"Who is Honey Singh"},{type:true,question:"Capital of India",option1:"New Delhi",option2:"Mumbai",option3:"Bengalore",option4:"Kolkata"}]
+    const answerHandler=(env)=>{
+        const val=env.target.value;
+        const id=parseInt(env.target.id);
+        setResponse(
+            response[id]=val
+        )
+        console.log(response);
+    }
     return<>
         <div className={style.header}>
             <div className={style.logo}>
@@ -22,38 +33,38 @@ export default function Page({params}){
             </div>
         </div>
         {
-            questions.map(function(data){
+            questions.map(function(data,id){
                 if(data.type==false){
                     return <>
-                        <div className={style.questionHeader}>
+                        <div className={style.questionHeader} key={2}>
                             <div className={style.question}>
                                 <p>{data.question}</p>
                             </div>
                             <hr></hr>
                             <div className={style.answer}>
-                                <textarea className={style.textfield} cols={100} rows={3} placeholder='Write your answer'></textarea>
+                                <textarea className={style.textfield} cols={100} rows={3} id={id} placeholder='Write your answer' onChange={answerHandler}></textarea>
                             </div>
                         </div>
                     </>
                 }
                 else{
                     return<>
-                        <div className={style.mcqHeader}>
+                        <div className={style.mcqHeader} key={1}>
                             <div className={style.question}>
                                 <p>{data.question}</p>
                             </div>
                             <hr></hr>
                             <div className={style.answer}>
-                                <input type='radio' value={true}></input><p>{data.option1}</p>
+                                <input type='radio' value={true} name='option'></input><p>{data.option1}</p>
                             </div>
                             <div className={style.answer}>
-                                <input type='radio' value={true}></input><p>{data.option2}</p>
+                                <input type='radio' value={true} name='option'></input><p>{data.option2}</p>
                             </div>
                             <div className={style.answer}>
-                                <input type='radio' value={true}></input><p>{data.option3}</p>
+                                <input type='radio' value={true} name='option'></input><p>{data.option3}</p>
                             </div>
                             <div className={style.answer}>
-                                <input type='radio' value={true}></input><p>{data.option4}</p>
+                                <input type='radio' value={true} name='option'></input><p>{data.option4}</p>
                             </div>
                         </div>
                     </>
