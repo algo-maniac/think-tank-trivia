@@ -44,7 +44,7 @@ export default function App() {
           <div className={style.websiteDesc}>
             <p>
               Create custom forms and interactive quizzes effortlessly. Engage
-              your audience and gather insights with ease on ThinkTankTrivia
+              your audience and gather insights with ease on ThinkTankTrivia!
             </p>
           </div>
           <div className={style.btn}>
