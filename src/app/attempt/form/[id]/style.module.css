@@ -18,10 +18,6 @@
     background-color: rgb(203, 227, 245);
     border-radius: 10px;
 }
-.green{
-  color: white;
-  background-color: rgb(12, 103, 13);
-}
 .nav{
     display: flex;
     flex-direction: row;
@@ -148,121 +144,89 @@
 .button31:focus {
   opacity: .75;
 }
-.searchpanel{
-  width: 70%;
-  margin: auto;
-  /* border: 1px solid black; */
-  margin-top: 45px;
-  min-height: 50px;
-}
-.searchbox{
-  display: grid;
-  margin: 10px;
-  /* border: 1px solid black; */
-  width: 70%;
-  height: 50px;
-  grid-template-columns: 65% 15% 15%;
-  grid-gap: 10px;
-}
-.searchinput{
-  display: grid;
-  grid-template-columns: 7% 93%;
-}
-.second,.first{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.first{
-  font-size: 1.6rem;
-}
-.searchinput input{
-  height: 80%;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 1.02rem;
-  border: 2px solid black;
-  /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
-  border-radius: 5px;
-}
-.filterbtn{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.searchbtn{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.filteroption{
-  width: 70%;
-  margin: auto;
-  /* border: 1px solid black; */
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 3px 0px;
-  margin-top: 0px;
-  min-height: 30px;
-}
-.filteroption .container{
-  display: grid;
-  box-sizing: border-box;
-  /* border: 1px solid black; */
-  display: grid;
-  height: 45px;
-  grid-template-columns: 20% 20%;
-}
-.link,.user{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
-}
-.link:hover{
-  font-family: 'Bungee Shade', cursive;
-  font-family: 'Cutive', serif;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  background-color: rgb(227, 227, 227);
-  cursor: pointer;
 
+.header1{
+    width: 55%;
+    /* border: 1px solid black; */
+    margin: auto;
+    height: 150px;
+    padding: 0px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: rgb(124, 124, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .header1 div{
+    font-size: 1.1rem;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(255, 253, 253);
+  }
+  .questionHeader{
+    /* border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; */
+    box-shadow: rgba(71, 70, 70, 0.2) 0px 2px 8px 0px;
+    margin: auto;
+    margin-top: 12px;
+    box-sizing: border-box;
+    width: 55%;
+    border-radius: 11px;
+    padding: 10px;
+    border-left: 6px solid rgb(8, 11, 195);
+    border-right: 6px solid rgb(8, 11, 195);
 }
-.user:hover{
-  font-family: 'Bungee Shade', cursive;
-  font-family: 'Cutive', serif;
-  font-weight: 800;
-  font-family: 'Poppins', sans-serif;
-  background-color: rgb(227, 227, 227);
-  cursor: pointer;
+.questionHeader .question p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 800;
+    font-size: 1.1rem;
 }
-/* .link{
-  border-bottom: 2px solid black;
-} */
-/* apply logic */
+.questionHeader .answer{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+}
 
-.borderBottom{
-  border-bottom: 3px solid black;
-  font-family: 'Bungee Shade', cursive;
-  font-family: 'Cutive', serif;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  background-color: rgb(227, 227, 227);
+.questionHeader .answer p{
+    margin: 4px;
+    margin-left: 7px;
+    font-size: 0.9rem;
+    color: rgb(114, 113, 113);
 }
-.individual{
-  width: 70%;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+.textfield{
+    border: 0.2px solid black;
+    background-color: rgb(233, 227, 227);
+}
+.mcqHeader{
   margin: auto;
-  margin-top: 30px;
+  box-shadow: rgba(65, 63, 63, 0.2) 0px 2px 8px 0px;
+  margin-top: 12px;
+  box-sizing: border-box;
+  width: 55%;
+  border-radius: 11px;
+  padding: 10px;
+  border-left: 6px solid rgb(6,150,6);
+  border-right: 6px solid rgb(6, 150, 6);
+}
+.mcqHeader .question p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.mcqHeader .answer{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  /* border: 1px solid black; */
+  margin: 0px;
 }
 
-.individual,.question{
-  display: flex;
-  align-items: center;
-  text-align: center;
+.mcqHeader .answer p{
+  margin: 4px;
+  margin-left: 7px;
+  font-size: 0.9rem;
+  color: rgb(114, 113, 113);
 }
