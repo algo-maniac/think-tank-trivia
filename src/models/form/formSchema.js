@@ -16,14 +16,14 @@ const formSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    questions:{
-        type:Array,
-        require:true
-    },
-    responses:{
-        type:Array,
-        require:true
-    }
+    questions:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'questions'
+    }],
+    responses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'responses'
+    }]
 });
 
 const Forms = mongoose.models.forms || mongoose.model("forms", formSchema);
