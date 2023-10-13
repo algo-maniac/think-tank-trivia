@@ -1,10 +1,20 @@
+"use client"
 import style from './style.module.css'
 import FormHeader from '../../../components/FormHeader'
 import MCQ from '../../../components/MCQ'
 import Question from '@/components/Question';
+import { useDebugValue, useEffect, useState } from 'react';
 export default function Page({params}){
     const formId=params.form;
-    console.log(formId);
+    const [question,setQuestion]=useState([]);
+    useEffect(()=>{
+        async function fetchForm(){
+            let data=await fetch("http://localhost:3000/api/dashboard/236528e88fef5d4b45b38259644");
+            data=await data.json();
+            setQuestion(data)
+        }
+        fetchForm();
+    },[])
     return <>
         <div className={style.header}>
             <div className={style.logo}>

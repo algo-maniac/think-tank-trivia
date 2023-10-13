@@ -12,6 +12,7 @@ export default function Page({params}){
     const answerHandler=(env)=>{
         const val=env.target.value;
         const id=parseInt(env.target.id);
+        console.log(typeof(id));
         setResponse(
             response[id]=val
         )
@@ -34,6 +35,7 @@ export default function Page({params}){
         </div>
         {
             questions.map(function(data,id){
+                console.log(data,id);
                 if(data.type==false){
                     return <>
                         <div className={style.questionHeader} key={2}>

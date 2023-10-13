@@ -1,6 +1,5 @@
 import './Question.css'
 const Question=(props)=>{    
-    console.log(props)
     return<>
         <div className={"questionHeader"}>
             <div className="question">
