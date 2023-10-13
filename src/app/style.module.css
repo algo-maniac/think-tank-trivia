@@ -7,10 +7,14 @@
     margin-left: 0px;
     height: 70px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
+    background-color: #fff;
 }
 
 .outer{
     padding: 8px;
+    position: sticky;
+    z-index: 1;
+    top:1px;
 }
 
 .header .logo{
@@ -44,6 +48,7 @@
 }
 .links a{
     color: rgb(124, 50, 173);
+    cursor: pointer;
 }
 .links a:hover{
     color: rgb(56, 8, 88);
@@ -537,4 +542,12 @@
 .account h2{
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+.user_image img{
+    border-radius: 50%;
+}
+.user_image{
+    margin-top: auto;
+    margin-bottom: auto;
 }

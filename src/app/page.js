@@ -5,8 +5,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faCircleStop } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import ChatIcon from "@/components/ChatIcon";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function App() {
+
+  const router = useRouter();
+  const { data, status } = useSession();
+  const middlewire = () => {
+    if (status == "unauthenticated") {
+      return router.push("/login")
+    } else {
+      return router.push("/dashboard")
+    }
+  }
+
   return (
     <>
       <div className={style.outer}>
@@ -16,7 +29,7 @@ export default function App() {
           </div>
           <div className={style.links}>
             <div>
-              <a href="/dashboard" className={style.linkTitle}>
+              <a onClick={middlewire} className={style.linkTitle}>
                 Form-Portal
               </a>
             </div>
@@ -26,11 +39,17 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className={style.loginBtn}>
-            <Link href={"/login"}>
-              <button className={style.button9}>Login</button>
-            </Link>
-          </div>
+          {
+            status == "authenticated" ?
+              <div className={style.user_image}>
+                <img src={data.user.image} alt={data.user.name} srcset="" height={50} width={50} />
+              </div> :
+              <div className={style.loginBtn}>
+                <Link href={"/login"}>
+                  <button className={style.button9}>Login</button>
+                </Link>
+              </div>
+          }
         </div>
       </div>
       <div className={style.content}>
