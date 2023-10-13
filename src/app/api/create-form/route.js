@@ -8,6 +8,7 @@ export async function POST(request){
     let name="Form";
     let date=new Date();
     // console.log(payload.data[0].value);
+    console.log("payload",payload);
     let question=[];
     for(let i=0;i<payload.data.length;i++){
         question.push(payload.data[i].value)

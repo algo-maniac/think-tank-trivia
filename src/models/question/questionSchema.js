@@ -37,7 +37,8 @@ const questionSchema = new mongoose.Schema({
         default: 1
     },
     topic: {
-        type: String
+        type: String,
+        default: "General"
     },
     diagram: {
         type: String
