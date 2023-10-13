@@ -2,9 +2,11 @@ import mongoose from "mongoose";
 
 const formSchema = new mongoose.Schema({
     owner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',
-        require: true
+        //temporary change
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'users',
+        // require: true
+        type:String
     },
     name: {
         type: String,
