@@ -2,11 +2,9 @@ import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema({
     owner: {
-        //temporary change
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref: 'users'
-        // require:true,
-        type:String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        require: true
     },
     ques_type: {
         type: String,
