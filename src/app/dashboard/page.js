@@ -33,7 +33,7 @@ export default function Dashboard() {
           <Avatar className="img"></Avatar>
         </div>
         <div className="info"> 
-          <span className="name">Soumyajit Naskar</span>
+          <span className="name">Tuhin Saha</span>
           <span className="logout">Logout</span>
         </div>
       </div>
