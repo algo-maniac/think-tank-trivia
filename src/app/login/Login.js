@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useReducer } from 'react'
 
 import { FcGoogle } from "react-icons/fc"
@@ -7,10 +7,12 @@ import { MdEmail } from "react-icons/md"
 import { RiLockPasswordFill } from "react-icons/ri"
 import Link from 'next/link'
 
-
 import { useFormik } from 'formik'
 import { signIn } from 'next-auth/react'
 import { loginSchema } from '@/models/loginSchema'
+import { useRouter } from 'next/navigation'
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
 
 const initialValues = {
     email: "",
@@ -18,7 +20,11 @@ const initialValues = {
 }
 
 const Login = () => {
-
+    const router = useRouter();
+    const {auth_status} = useContext(UserContext);
+    if(auth_status == "authenticated"){
+        router.push("/");
+    }
     const { errors, values, handleBlur, handleChange, handleSubmit, touched } = useFormik({
         initialValues: initialValues,
         validationSchema: loginSchema,
@@ -31,7 +37,6 @@ const Login = () => {
             if(!result.ok){//means authentication failed or invalid credentials
                 alert("Wrong credentials");
             }
-            router.push("/");
             action.resetForm();
         }
     })

@@ -7,11 +7,14 @@ import Link from "next/link";
 import ChatIcon from "@/components/ChatIcon";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import UserContext from "@/context/userContext/userContext";
 
 export default function App() {
 
   const router = useRouter();
-  const { data, status } = useSession();
+  // const { data, status } = useSession();
+  const {auth_session: data , auth_status: status} = useContext(UserContext);
   const middlewire = () => {
     if (status == "unauthenticated") {
       return router.push("/login")
@@ -19,7 +22,7 @@ export default function App() {
       return router.push("/dashboard")
     }
   }
-  
+
   return (
     <>
       <div className={style.outer}>
