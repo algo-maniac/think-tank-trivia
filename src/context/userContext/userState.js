@@ -7,8 +7,8 @@ export default function UserState(props) {
 
     const {data:auth_session,status:auth_status}=useSession();
 
-    console.log("auth_status",auth_status);
-    console.log("session",auth_session);
+    // console.log("auth_status",auth_status);
+    // console.log("session",auth_session);
 
     if(auth_status==='loading'){
         return <h1>Loading...</h1>
