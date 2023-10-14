@@ -51,6 +51,7 @@ const Signup = () => {
             })
             const data=await result.json();
             alert(data.message);
+            router.push("/");
             action.resetForm();
         }
     })

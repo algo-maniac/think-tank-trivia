@@ -42,6 +42,7 @@ const Login = () => {
             if(!result.ok){//means authentication failed or invalid credentials
                 alert("Wrong credentials");
             }
+            router.push("/");
             action.resetForm();
         }
     })
