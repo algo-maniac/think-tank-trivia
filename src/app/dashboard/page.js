@@ -1,10 +1,33 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import QuizCard from "@/components/QuizCard";
 import "./style.css"
 import { Avatar } from "@mui/material";
 import ResponseCard from "@/components/ResponseCard";
+import { useEffect, useState } from "react";
 export default function Dashboard() {
+  const email="tuhin727066@gmail.com";
+  let [data,setData]=useState([]);
+  const [val,setVal]=useState(1);
+  useEffect(()=>{
+    const fetchDetails=()=>{
+      fetch("http://localhost:3000/api/dashboard",{
+        method:'POST',
+        body:JSON.stringify({email:email}),
+        headers:{
+          'Content-Type':'application/json'
+        }
+      }).then((data)=>{
+        return data.json();
+      }).then((data)=>{
+        setData(data.data);
+      }).catch((er)=>{
+        console.log('Error')
+      })
+    }
+    fetchDetails();
+  },[val])
   return <>
   <div className="main">
     <div className="left-part">
@@ -51,7 +74,6 @@ export default function Dashboard() {
             All Forms
           </div>
           <div className="container">
-            <ResponseCard></ResponseCard>
             <ResponseCard></ResponseCard>
             <ResponseCard></ResponseCard>
             <ResponseCard></ResponseCard>

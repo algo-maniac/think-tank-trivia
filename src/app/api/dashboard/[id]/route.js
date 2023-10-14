@@ -12,5 +12,5 @@ export async function GET(req,res){
     catch(er){
         console.log(er);
     }
-    return NextResponse.json({msg:"success"});
+    return NextResponse.json({msg:"succdsdess"});
 }

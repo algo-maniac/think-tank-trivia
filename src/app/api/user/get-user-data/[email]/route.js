@@ -22,7 +22,6 @@ export async function GET(request, { params }) {
         return NextResponse.json({ok:true,user:user,message:"User retrieved successfully"},{status:200});
     }
     catch(err){
-        console.log(err);
         return NextResponse.json({ok:false,message:err.message,user:null},{status:500});
     }
     finally{

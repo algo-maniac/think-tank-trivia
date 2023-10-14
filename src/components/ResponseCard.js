@@ -1,6 +1,7 @@
 import { Avatar } from "@mui/material";
 import './ResponseCard.css'
-const Page=()=>{
+const Page=(props)=>{
+    console.log(props)
     return <>
         <div className="card1">
             <div className="header1">

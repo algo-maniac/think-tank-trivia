@@ -7,10 +7,10 @@ export default function Page(){
     const [data,setData]=useState([]);
     const [flag,setFlag]=useState(false);
     const [question,setQuestion]=useState("");
-    const [option1,setOption1]=useState("");
-    const [option2,setOption2]=useState("");
-    const [option3,setOption3]=useState("");
-    const [option4,setOption4]=useState("");
+    const [a,seta]=useState("");
+    const [b,setb]=useState("");
+    const [c,setc]=useState("");
+    const [d,setd]=useState("");
     const mcqHandler=()=>{
         setFlag(true);
     }
@@ -21,32 +21,32 @@ export default function Page(){
         setQuestion(env.target.value)
     }
     const optionHandler1=(env)=>{
-        setOption1(env.target.value);
+        seta(env.target.value);
     }
     const optionHandler2=(env)=>{
-        setOption2(env.target.value);
+        setb(env.target.value);
     }
     const optionHandler3=(env)=>{
-        setOption3(env.target.value);
+        setc(env.target.value);
     }
     const optionHandler4=(env)=>{
-        setOption4(env.target.value);
+        setd(env.target.value);
     } 
     const addMCQ=()=>{
         setData([...data,{
             id:data.length,
-            value:{type:true,question:question,option1:option1,option2:option2,option3:option3,option4:option4}
+            value:{type:"MCQ",question:question,a:a,b:b,c:c,d:d}
         }])
 
     }
     const addQuestion=()=>{
         setData([...data,{
             id:data.length,
-            value:{type:false,question:question}
+            value:{type:"TEXT",question:question}
         }])
     }
     const submitHandler=()=>{
-        // console.log(question,option1,option2,option3,option4);
+        // console.log(question,a,b,c,d);
         if(flag){
             addMCQ();
         }
@@ -122,7 +122,7 @@ export default function Page(){
         </div>
         {
             data.map(function(val){
-                if(val.value.type===true){
+                if(val.value.type==="MCQ"){
                     return <CreateMcq content={val.value}/>
                 }
                 else{
