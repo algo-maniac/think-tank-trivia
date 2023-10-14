@@ -15,7 +15,7 @@ export async function GET(request, { params }) {
             return NextResponse.json({ok:false,message:"User not authorize",user:null},{status:400});
         }
         await mongoose.connect(process.env.MONGO_URL);
-        const user=await Users.findOne({email:email});
+        const user=await Users.findOne({email:email},{password:0});
         if(!user){
             return NextResponse.json({user:null,ok:false,message:"User not found"},{status:400});
         }
