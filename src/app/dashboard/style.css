@@ -271,8 +271,6 @@ html,body{
 }
 .container{
   display: flex;
-  margin: 10px;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
