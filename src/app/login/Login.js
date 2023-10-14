@@ -11,6 +11,9 @@ import Link from 'next/link'
 import { useFormik } from 'formik'
 import { signIn } from 'next-auth/react'
 import { loginSchema } from '@/models/loginSchema'
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 
 const initialValues = {
     email: "",
@@ -19,6 +22,12 @@ const initialValues = {
 
 const Login = () => {
 
+    const router = useRouter();
+    const { auth_status } = useContext(UserContext);
+    if (auth_status === 'authenticated') {
+        return router.push("/");
+    }
+
     const { errors, values, handleBlur, handleChange, handleSubmit, touched } = useFormik({
         initialValues: initialValues,
         validationSchema: loginSchema,
@@ -26,9 +35,9 @@ const Login = () => {
             //changed by Tonmoy for LOGIN..................
             // console.log(value);
             // value={email , password}
-            const result=await signIn('credentials',{redirect:false,email:value.email,password:value.password});
+            const result = await signIn('credentials', { redirect: false, email: value.email, password: value.password });
             // console.log(result);
-            if(!result.ok){//means authentication failed or invalid credentials
+            if (!result.ok) {//means authentication failed or invalid credentials
                 alert("Wrong credentials");
             }
             action.resetForm();
@@ -59,7 +68,7 @@ const Login = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.email && touched.email ? <p className='text-red-600 text-xs'>{errors.email}</p> : null}
+                                {errors.email && touched.email ? <p className='text-red-600 text-xs'>{errors.email}</p> : null}
                             </div>
 
                             <div className='flex flex-col'>
@@ -79,7 +88,7 @@ const Login = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.password && touched.password ? <p className='text-red-600 text-xs '>{errors.password}</p> : null}
+                                {errors.password && touched.password ? <p className='text-red-600 text-xs '>{errors.password}</p> : null}
                             </div>
 
                             <div className='flex space-x-3'>
@@ -101,8 +110,8 @@ const Login = () => {
                                 <hr className="w-20 h-px my-4 ml-3 bg-purple-500" />
                             </div>
                             <div className="flex justify-around space-x-14">
-                                <button className='text-3xl' onClick={()=>{signIn("google")}}><FcGoogle /></button>
-                                <button className='text-3xl bg-white rounded-full ' onClick={()=>{signIn("github")}}><FaGithub /></button>
+                                <button className='text-3xl' onClick={() => { signIn("google") }}><FcGoogle /></button>
+                                <button className='text-3xl bg-white rounded-full ' onClick={() => { signIn("github") }}><FaGithub /></button>
                             </div>
                         </form>
                     </div>

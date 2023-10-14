@@ -36,7 +36,8 @@ export const authOptions = {
                     id: user._id,
                     email: user.email,
                     name: user.name,
-                    username: user.username
+                    username: user.username,
+                    image:user.avatar
                 };//this will be found in session as user
             }
         }),
@@ -53,7 +54,7 @@ export const authOptions = {
                     if (!doc) {
                         const salt = await bcrypt.genSalt(10);
                         const hashedPassword = await bcrypt.hash(process.env.DUMMY_PASSWORD, salt);
-                        const newUser = new Users({ name: user.name, email: user.email, username: user.name, password: hashedPassword })
+                        const newUser = new Users({ name: user.name, email: user.email, username: user.name, password: hashedPassword, avatar:user.image })
                         await newUser.save();
                     }
                     mongoose.disconnect();

@@ -38,7 +38,8 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.Decimal128,
     },
     avatar: {
-        type: String
+        type: String,
+        default:"https://avatars.githubusercontent.com/u/100798042?v=4"
     }
 });
 
