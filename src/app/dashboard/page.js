@@ -3,6 +3,7 @@ import Link from "next/link";
 import QuizCard from "@/components/QuizCard";
 import "./style.css"
 import { Avatar } from "@mui/material";
+import ResponseCard from "@/components/ResponseCard";
 export default function Dashboard() {
   return <>
   <div className="main">
@@ -40,13 +41,22 @@ export default function Dashboard() {
     <div className="right-part">
       <div className="header">
         <div className="content">Home</div>
-        <div className="s">
-        <button class="button-27" role="button">+Create Form</button>
-        <button class="button-26" role="button">+Create Quiz</button>
+        <div className="buttons">
+        <button className="button-27" role="button"><Link href={'dashboard/create-form'}>+Create Form</Link></button>
+        <button className="button-26" role="button">+Create Quiz</button>
         </div>
       </div>
       <div className="forms-container">
-
+          <div className="sorting">
+            All Forms
+          </div>
+          <div className="container">
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard>
+          </div>
       </div>
     </div>
   </div>

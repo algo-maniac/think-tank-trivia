@@ -106,6 +106,7 @@ html,body{
 .logout:hover{
   font-weight: 800;
   cursor: pointer;
+  color: yellow;
 }
 .name{
   font-family: 'Bungee Shade', cursive;
@@ -121,22 +122,11 @@ html,body{
   font-family: 'Cutive', serif;
   font-family: 'Kanit', sans-serif;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: white;
   font-family: 'Poppins', sans-serif;
 }
-.right-part{
-  width: 82%;
-}
-.header{
-  height: 100px;
-  border: 1px solid black;
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 
 /* CSS */
 .button-26 {
@@ -171,8 +161,8 @@ html,body{
 }
 
 .button-26:hover {
-  background-color: #0A46E4;
-  border-color: #0A46E4;
+  background-color: #0c2669;
+  border-color: #0c2669;
 }
 
 .button-26:active {
@@ -221,4 +211,68 @@ html,body{
 .button-27:active {
   background-color: #03aa38;
   border-color: #03aa38;
+}
+.right-part{
+  width: 82%;
+  /* border: 1px solid black; */
+  height: 100%;
+}
+.header{
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;;
+  height: 75px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.content{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 30px;
+  font-size: 1.5rem;
+  color: gray;
+  font-weight: 650;
+}
+.buttons{
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.button-26,.button-27{
+  height: 60%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.sorting{
+  display: block;
+  width: 8%;
+  margin: 20px;
+  color: #0039D7;
+  text-align: center;
+  border-radius: 15px;
+  border: 1px solid blue;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Kanit', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(199, 231, 244);
+}
+.sorting:hover{
+  cursor: pointer;
+  color: darkblue;
+  border: 1px solid darkblue;
+}
+.forms-container{
+  height: var(100%-75px);
+}
+.container{
+  display: flex;
+  margin: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
