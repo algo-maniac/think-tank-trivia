@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const questionSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'users',
+        require: true
     },
-    qes_type: {
+    ques_type: {
         type: String,
         require: true
     },
@@ -30,10 +31,12 @@ const questionSchema = new mongoose.Schema({
     },
     marks: {
         type: Number,
-        require: true
+        require: true,
+        default: 1
     },
     topic: {
-        type: String
+        type: String,
+        default: "General"
     },
     diagram: {
         type: String

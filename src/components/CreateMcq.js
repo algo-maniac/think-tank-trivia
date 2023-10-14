@@ -1,6 +1,5 @@
 import './MCQ.css'
 const MCQ=(props)=>{
-    console.log(props.content);
     return <>
     <div className={"mcqHeader"}>
         <div className="question">

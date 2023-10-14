@@ -9,8 +9,7 @@ import Link from 'next/link'
 
 
 import { useFormik } from 'formik'
-import { signIn, useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import { loginSchema } from '@/models/loginSchema'
 
 const initialValues = {
@@ -19,16 +18,6 @@ const initialValues = {
 }
 
 const Login = () => {
-
-    const router=useRouter();
-    const {data,status}=useSession();
-    if(status==='loading'){
-        return <p className='text-center p-4 bg-slate-400'>Loading...</p>
-    }
-    if(status==="authenticated"){
-        // console.log("the data",data);
-        return router.push("/");
-    }
 
     const { errors, values, handleBlur, handleChange, handleSubmit, touched } = useFormik({
         initialValues: initialValues,

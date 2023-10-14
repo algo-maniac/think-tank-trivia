@@ -10,16 +10,12 @@ const formSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    username: {
-        type: String,
-        require: true
-    },
     date: {
         type: Date,
         default: Date.now
     },
-    questions: [{
-        type: mongoose.Schema.Types.ObjectId,
+    questions:[{
+        type:mongoose.Schema.Types.ObjectId,
         ref: 'questions'
     }],
     responses: [{

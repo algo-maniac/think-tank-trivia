@@ -1,5 +1,5 @@
 "use client"
-import { use, useState } from 'react';
+import { use, useDebugValue, useEffect, useState } from 'react';
 import style from './style.module.css'
 import CreateQuestion from '@/components/CreateQuestion';
 import CreateMcq from '@/components/CreateMcq';
@@ -54,13 +54,31 @@ export default function Page(){
             addQuestion();
         }
     }
+    const formsubmitHandler=()=>{
+        console.log(data);
+        fetch("http://localhost:3000/api/create-form",{
+            method:'POST',
+            body:JSON.stringify({
+                data:data,
+            }),
+            header:{
+                'Content-Type':'application/json'
+            }
+        }).then((data)=>{
+            return data.json();
+        }).then((data)=>{
+            console.log(data);
+        }).catch((er)=>{
+            console.log(er)
+        })
+    }
     return <>
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>
             </div>
             <div className={style.mode}>
-                <button className={style.button4}>On-Air</button>
+                <button className={style.button4} onClick={formsubmitHandler}>Publish</button>
             </div>
         </div>
         <div className={style.main}>
