@@ -5,13 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faCircleStop } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import ChatIcon from "@/components/ChatIcon";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import UserContext from "@/context/userContext/userContext";
 
 export default function App() {
 
   const router = useRouter();
-  const { data, status } = useSession();
+  // const { data, status } = useSession();
+  const {auth_session: data , auth_status: status} = useContext(UserContext);
   const middlewire = () => {
     if (status == "unauthenticated") {
       return router.push("/login")
@@ -41,9 +44,28 @@ export default function App() {
           </div>
           {
             status == "authenticated" ?
-              <div className={style.user_image}>
-                <img src={data.user.image} alt={data.user.name} srcset="" height={50} width={50} />
-              </div> :
+              <>
+                {/* <div className={style.user_image}>
+                    <img src={data.user.image} alt={data.user.name} height={50} width={50} />
+                    <ul className={style.user_tags}>
+                      <li>view profile</li>
+                      <li>logout</li>
+                    </ul>
+                  </div> */}
+                <ul className={style.user_profile}>
+                  <li>
+                    <div className={style.user_profile_header}>
+                      <img src={data.user.image} alt={data.user.name} height={50} width={50} />
+                      <h3>{data.user.name}</h3>
+                    </div>
+                    <ul className={style.drop_down}>
+                      <li>view profile</li>
+                      <li><button onClick={() => { signOut() }}>Logout</button></li>
+                    </ul>
+                  </li>
+                </ul>
+              </>
+              :
               <div className={style.loginBtn}>
                 <Link href={"/login"}>
                   <button className={style.button9}>Login</button>

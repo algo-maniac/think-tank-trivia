@@ -546,8 +546,101 @@
 
 .user_image img{
     border-radius: 50%;
+    cursor: pointer;
 }
 .user_image{
-    margin-top: auto;
-    margin-bottom: auto;
+    border: 2px solid red;
+}
+
+/* .user_image{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border : 1px solid green;
+    align-items: center;
+    width: 50%;
+    cursor: pointer;
+}
+.user_tags{
+    border : 1px solid red;
+    position: absolute;
+    transform: translateY(80%);
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.user_image:hover .user_tags{
+    visibility: visible;
+    opacity: 1;
+} 
+
+.user_tags li{
+    text-align: center;
+    border: 1px solid blue;
+    background-color: #828f9b;
+} */
+
+/* ........................... */
+
+.user_profile{
+    /* border:1px solid red; */
+    
+}
+
+.user_profile img{
+    border-radius: 100%;
+    cursor: pointer;
+    margin-top: 0.9rem;
+}
+.user_profile li{
+    cursor: pointer;
+}
+.user_profile {
+    position: relative;
+}
+
+.drop_down{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(70, 70, 191);
+    position: absolute;
+    /* left: 50%; */
+    /* transform: translateX(50%); */
+    transform: translateY(7%);
+    width: 13rem;
+    align-items: center;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+
+.user_profile li:hover > .drop_down{
+    visibility: visible;
+    opacity: 1;
+}
+
+.drop_down li{
+    padding: 0.5rem;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+.user_profile_header{
+    display: flex;
+    justify-content: start;
+}
+.user_profile_header h3{
+    margin-top: 1.8rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+}
+.drop_down li:hover{
+    background-color:#fff;
+    color: black;
+}
+.drop_down button{
+    width: 100%;
 }

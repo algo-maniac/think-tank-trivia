@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useReducer } from 'react'
 
 import { FcGoogle } from "react-icons/fc"
@@ -6,7 +6,6 @@ import { FaFacebook, FaGithub } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 import { RiLockPasswordFill } from "react-icons/ri"
 import Link from 'next/link'
-
 
 import { useFormik } from 'formik'
 import { signIn } from 'next-auth/react'

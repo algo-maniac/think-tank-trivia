@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 import "./signupStyle.css"
 import { MdEmail } from "react-icons/md"
 import { RiLockPasswordFill } from "react-icons/ri"
@@ -15,6 +15,7 @@ import { signupSchema } from '@/models/singupSchema'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
+import UserContext from '@/context/userContext/userContext'
 
 
 const initialValues = {
@@ -26,31 +27,28 @@ const initialValues = {
 }
 
 const Signup = () => {
-    const {status}=useSession();
-    const router=useRouter();
+    const { auth_status: status } = useContext(UserContext);
+    const router = useRouter();
 
-    if(status==='loading'){
-        return <p className='text-center p-4 bg-slate-400'>Loading...</p>
-    }
-
-    if(status==='authenticated'){
+    if (status === 'authenticated') {
         return router.push("/");
     }
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: initialValues,
         validationSchema: signupSchema,
-        onSubmit: async(value,action) => {
+        onSubmit: async (value, action) => {
             // console.log(value);
-            const result=await fetch("/api/signup",{
-                method:"POST",
-                header:{
-                    "Content-Type":"applications/json"
+            const result = await fetch("/api/signup", {
+                method: "POST",
+                header: {
+                    "Content-Type": "applications/json"
                 },
-                body:JSON.stringify(value)
+                body: JSON.stringify(value)
             })
-            const data=await result.json();
+            const data = await result.json();
             alert(data.message);
+            router.push("/");
             action.resetForm();
         }
     })
@@ -89,7 +87,7 @@ const Signup = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.name && touched.name ? <p className='text-red-600 text-xs'>{errors.name}</p> : null}
+                                {errors.name && touched.name ? <p className='text-red-600 text-xs'>{errors.name}</p> : null}
                             </div>
                             <div className='flex flex-col my-1'>
                                 <div className="flex">
@@ -106,7 +104,7 @@ const Signup = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.username && touched.username ? <p className='text-red-600 text-xs'>{errors.username}</p> : null}
+                                {errors.username && touched.username ? <p className='text-red-600 text-xs'>{errors.username}</p> : null}
                             </div>
                             <div className='flex flex-col my-1'>
                                 <div className="flex">
@@ -123,7 +121,7 @@ const Signup = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.email && touched.email ? <p className='text-red-600 text-xs'>{errors.email}</p> : null}
+                                {errors.email && touched.email ? <p className='text-red-600 text-xs'>{errors.email}</p> : null}
                             </div>
                             <div className='flex flex-col my-1'>
                                 <div className="flex">
@@ -140,7 +138,7 @@ const Signup = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.password && touched.password ? <p className='text-red-600 text-xs'>{errors.password}</p> : null}
+                                {errors.password && touched.password ? <p className='text-red-600 text-xs'>{errors.password}</p> : null}
                             </div>
 
                             <div className='flex flex-col my-1'>
@@ -158,7 +156,7 @@ const Signup = () => {
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                { errors.confirm_password && touched.confirm_password ? <p className='text-red-600 text-xs '>{errors.confirm_password}</p> : null}
+                                {errors.confirm_password && touched.confirm_password ? <p className='text-red-600 text-xs '>{errors.confirm_password}</p> : null}
                             </div>
                             <button type="submit" className="mx-auto text-white bg-purple-700 hover:bg-purple-600 focus:ring-2 focus:outline-none focus:ring-purple-900 font-bold rounded-lg text-sm w-1/4 px-3 py-2 text-center">Signup</button>
                             <div className="flex justify-center my-2">
@@ -167,8 +165,8 @@ const Signup = () => {
                                 <hr className="w-20 h-px my-4 ml-3 bg-purple-500" />
                             </div>
                             <div className="flex justify-around space-x-8">
-                                <button className='text-3xl' onClick={()=>{signIn("google")}} ><FcGoogle /></button>
-                                <button className='text-3xl bg-white rounded-full ' onClick={()=>{signIn("github")}} ><FaGithub /></button>
+                                <button className='text-3xl' onClick={() => { signIn("google") }} ><FcGoogle /></button>
+                                <button className='text-3xl bg-white rounded-full ' onClick={() => { signIn("github") }} ><FaGithub /></button>
                             </div>
                         </form>
                     </div>
