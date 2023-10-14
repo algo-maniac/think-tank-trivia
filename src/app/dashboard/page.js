@@ -1,58 +1,54 @@
-"use client";
 import Image from "next/image";
+import Link from "next/link";
 import QuizCard from "@/components/QuizCard";
 import "./style.css"
+import { Avatar } from "@mui/material";
 export default function Dashboard() {
-  return (
-    <div className="flex flex-row">
-      <div
-        id="Left Container"
-        className=" h-[100vh] w-[20%] bg-violet-700 flex flex-col justify-between fixed"
-      >
-        <div id="top-section" className="p-5">
-          <div className="border-4 my-4 py-3 text-center rounded-xl cursor-pointer text-white hover:bg-violet-600">
-            Quiz Portal
-          </div>
-          <div className="border-4 my-4 py-3 text-center rounded-xl cursor-pointer text-white hover:bg-violet-600">
-            Search Quiz
-          </div>
-          <div className="border-4 my-4 py-3 text-center rounded-xl cursor-pointer text-white hover:bg-violet-600">
-            Dashboard
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="border-4 my-4 py-3 mx-3 text-center rounded-xl cursor-pointer text-white hover:bg-violet-600">
-            Report a bug
-          </div>
-          <div id="bottom-section" className="p-5 flex flex-row justify-center">
-            <div id="image" className="mr-4 rounded-xl">
-              <Image
-                src="/images/image.jpg"
-                alt="Description of the image"
-                width={30}
-                height={30}
-              />
+  return <>
+  <div className="main">
+    <div className="left-part">
+      <div className="logo">
+        <h1 className="heading">ThinkTankTrivia</h1>
+        <div className="links">
+          <Link href={'/dashboard'}>
+            <div>
+              Dashboard
             </div>
-            <div id="username" className="text-white pt-2">
-              Soumyajit Naskar
-            </div>
+          </Link>
+          <Link href={'/search-form'}>
+          <div>
+            Search-Form
           </div>
+          </Link>
+          <Link href={'/analytics'}>
+          <div>
+            Analytics
+          </div>
+          </Link>
         </div>
       </div>
-
-      <div
-        id="Right Container"
-        className=" flex flex-row flex-wrap justify-start tracking-wide sticky ml-[20%] items-center pl-8"
-      >
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
+      <div className="user">
+        <div className="avatar">
+          <Avatar className="img"></Avatar>
+        </div>
+        <div className="info"> 
+          <span className="name">Soumyajit Naskar</span>
+          <span className="logout">Logout</span>
+        </div>
       </div>
     </div>
-  );
+    <div className="right-part">
+      <div className="header">
+        <div className="content">Home</div>
+        <div className="s">
+        <button class="button-27" role="button">+Create Form</button>
+        <button class="button-26" role="button">+Create Quiz</button>
+        </div>
+      </div>
+      <div className="forms-container">
+
+      </div>
+    </div>
+  </div>
+  </>
 }
