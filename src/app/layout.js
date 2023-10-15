@@ -18,9 +18,11 @@ export default async function RootLayout({ children }) {
   let user = null;
   if (session) {
     // console.log("session", session);
-    const response = await fetch(`http://localhost:3000/api/user/get-user-data/${session.user.email}`);
-    const data=await response.json();
-    user=data.user;
+    // const response = await fetch(`http://localhost:3000/api/user/get-user-data/${session.user.email}`);
+    // const data=await response.json();
+    await mongoose.connect(process.env.MONGO_URL);
+    const userDoc=await Users.findOne({email:session.user.email},{password:0,responses:0,forms:0});
+    user=userDoc;
   }
   else{
     user="unauthenticated";
