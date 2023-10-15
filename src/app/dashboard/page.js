@@ -8,8 +8,10 @@ import ResponseCard from "@/components/ResponseCard";
 import { useEffect, useState } from "react";
 import UserContext from "@/context/userContext/userContext";
 import { useContext } from "react";
+import Loader from "@/components/Loader";
 export default function Dashboard() {
   const email="tuhin727066@gmail.com";
+  const [loaderFlag,setLoader]=useState(true);
   let [data,setData]=useState([]);
   const {user}=useContext(UserContext);
   useEffect(()=>{
@@ -25,6 +27,7 @@ export default function Dashboard() {
       }).then((data)=>{
         console.log(data)
         setData(data.formsList);
+        setLoader(false)
       }).catch((er)=>{
         console.log('Error');
       })
@@ -39,17 +42,17 @@ export default function Dashboard() {
         <h1 className="heading">ThinkTankTrivia</h1>
         <div className="links">
           <Link href={'/dashboard'}>
-            <div>
+            <div className="sidelinks">
               Dashboard
             </div>
           </Link>
           <Link href={'/search-form'}>
-          <div>
+          <div className="sidelinks">
             Search-Form
           </div>
           </Link>
           <Link href={'/analytics'}>
-          <div>
+          <div className="sidelinks">
             Analytics
           </div>
           </Link>
@@ -57,7 +60,7 @@ export default function Dashboard() {
       </div>
       <div className="user">
         <div className="avatar">
-          <Avatar className="img"></Avatar>
+        <img src={user.avatar} alt={user.name} height={30} width={50} />
         </div>
         <div className="info"> 
           <span className="name">Tuhin Saha</span>
@@ -70,20 +73,23 @@ export default function Dashboard() {
         <div className="content">Home</div>
         <div className="buttons">
         <button className="button-27" role="button"><Link href={'dashboard/create-form'}>+Create Form</Link></button>
-        <button className="button-26" role="button">+Create Quiz</button>
+        <button className="button-26" role="button"><Link href={'dashboard/create-quiz'}>+Create Quiz</Link></button>
         </div>
       </div>
       <div className="forms-container">
           <div className="sorting">
             All Forms
           </div>
-          <div className="container">
+          {!loaderFlag && <div className="container">
             {
               data.map(function(val){
                 return <ResponseCard data={val} key={val._id}></ResponseCard>
               })
             }
-          </div>
+          </div>}
+          {loaderFlag && <div>
+            <Loader></Loader>
+          </div>}
       </div>
     </div>
   </div>

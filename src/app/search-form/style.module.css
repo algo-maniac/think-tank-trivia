@@ -266,3 +266,27 @@
   align-items: center;
   text-align: center;
 }
+.searchingContent{
+  margin: auto;
+  width: 30%;
+  /* border: 1px solid black; */
+  margin-top: 50px;
+  text-align: center;
+}
+.searchingLogo{
+  margin: auto;
+  /* border: 1px solid black; */
+  width: 10%;
+  font-size: 2.9rem;
+}
+.searchingContent h1{
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.formCard{
+  width: 70%;
+  /* border: 1px solid black; */
+  margin: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}

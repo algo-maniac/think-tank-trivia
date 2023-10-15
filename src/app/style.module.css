@@ -498,14 +498,12 @@
 }
 .headerlinks .general{
     height: 80%;
-    color: rgb(255, 192, 46);
     font-family: 'Bungee Shade', cursive;
     font-family: 'Cutive', serif;
     font-family: 'Poppins', sans-serif;
 }
 .headerlinks .account{
     height: 80%;
-    color: rgb(255, 192, 46);
     font-family: 'Bungee Shade', cursive;
     font-family: 'Cutive', serif;
     font-family: 'Poppins', sans-serif;
@@ -538,6 +536,9 @@
 .title h1{
     font-weight: bold;
     font-size: 2.5rem;
+    background: linear-gradient(90deg,gold,orange,rgb(250, 58, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .account h2{
     font-weight: bold;
@@ -587,7 +588,16 @@
     /* border:1px solid red; */
     
 }
-
+.account h2{
+    background: linear-gradient(90deg,gold,orange,rgb(250, 58, 5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.general h2{
+    background: linear-gradient(90deg,gold,orange,rgb(250, 58, 5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .user_profile img{
     border-radius: 100%;
     cursor: pointer;

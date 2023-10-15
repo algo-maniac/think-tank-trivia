@@ -2,9 +2,15 @@
 import { useState } from 'react'
 import style from './style.module.css'
 import ResponseCard from '@/components/ResponseCard'
+import FormCard from '@/components/FormCard'
+import Loader from '@/components/Loader'
 export default function Page(){
-    const [flag,setFlag]=useState(false);
+    const [flag,setFlag]=useState(true);
+    const [loader,setLoader]=useState(false);
     const [link,setLink]=useState(true);
+    const [search,setSearch]=useState(true);
+    const [forms,setForms]=useState(false);
+    const [input,setInput]=useState('');
     const filterHandler=()=>{
         setFlag(!flag);
     }
@@ -13,6 +19,32 @@ export default function Page(){
     }
     const linkFalse=()=>{
         setLink(false);
+    }
+    const inputHandler=(env)=>{
+        setInput(env.target.value)
+    }
+    const submitHandler=()=>{
+        setLoader(true);
+        setSearch(false);
+        fetch("http://localhost:3000/api/search-form",{
+            method:'POST',
+            body:JSON.stringify({
+                mode:link?"URL":"UserID",
+                input:input
+            })
+            ,
+            header:{
+                'Content-Type':'application/json'
+            }
+        }).then((data)=>{
+            return data.json();
+        }).then((data)=>{
+            console.log(data);
+            setLoader(false);
+            setForms(true)
+        }).catch((er)=>{
+            console.log('Error');
+        })
     }
     return <>
        <div className={style.header}>
@@ -37,14 +69,14 @@ export default function Page(){
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
                     </div>
                     <div className={style.second}>
-                        <input type='text' placeholder='search by userID'></input>
+                        <input type='text' placeholder='search by userID' onChange={inputHandler}></input>
                     </div>
                 </div>
                 <div className={style.filterbtn}>
                     <button className={style.button31} onClick={filterHandler}>Filter</button>
                 </div>
                 <div className={`${style.searchbtn}`}>
-                    <button className={style.button31}>Search</button>
+                    <button className={style.button31} onClick={submitHandler}>Search</button>
                 </div>
             </div>
         </div>
@@ -59,10 +91,21 @@ export default function Page(){
             </div>
         </div>}
         <div className={style.individual}>
+            {/* <ResponseCard></ResponseCard>
             <ResponseCard></ResponseCard>
             <ResponseCard></ResponseCard>
-            <ResponseCard></ResponseCard>
-            <ResponseCard></ResponseCard>
+            <ResponseCard></ResponseCard> */}
         </div>
+        {search && <div className={style.searchingContent}>
+            <div className={style.searchingLogo}><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></div>
+            <div><h1>Search By user-name/Form-ID</h1></div>
+        </div>}
+        {
+            loader && <div><Loader></Loader></div>
+        }
+        {/* dummy data */}
+        {forms && <div className={style.formCard}>
+            <FormCard></FormCard>
+        </div>}
     </>
 }

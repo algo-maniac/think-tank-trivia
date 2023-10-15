@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import Forms from "./../../../../models/form/formSchema"
 import Questions from "@/models/question/questionSchema";
 export async function GET(req,{params}){
-    
     try{
         const {id:formId}=params;
         await mongoose.connect(process.env.MONGO_URL);
