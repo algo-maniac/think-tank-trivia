@@ -19,7 +19,11 @@ export async function GET(req,{params}){
         if(!formDoc){
             return NextResponse.json({ok:false,message:"form not found"},{status:400});
         }
+<<<<<<< HEAD
         return NextResponse.json({ok:true,message:"form found",form:formDoc},{status:200});
+=======
+        return NextResponse.json({ok:false,message:"form found",form:formDoc},{status:200});
+>>>>>>> 3c66c8c50ab79c2e87a0f878273299dfa2d76cb5
     }
     catch(er){
         console.log(er);
