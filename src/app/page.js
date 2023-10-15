@@ -1,5 +1,4 @@
 "use client";
-
 import style from "./style.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faCircleStop } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +14,8 @@ export default function App() {
   const router = useRouter();
   // const { data, status } = useSession();
   const {auth_session: data , auth_status: status} = useContext(UserContext);
+  const user=useContext(UserContext);
+  console.log(user)
   const middlewire = () => {
     if (status == "unauthenticated") {
       return router.push("/login")

@@ -13,6 +13,7 @@ export default function Dashboard() {
   let [data,setData]=useState([]);
   const [val,setVal]=useState(1);
   const {user}=useContext(UserContext);
+  console.log(user);
   useEffect(()=>{
     const fetchDetails=()=>{
       fetch("/api/dashboard",{//automatically make a call on current domain

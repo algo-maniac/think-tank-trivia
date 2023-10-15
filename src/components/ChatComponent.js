@@ -6,8 +6,8 @@ import { useChat } from 'ai/react';
 const ChatComponent = () => {
 
     const { input, messages, handleInputChange, handleSubmit, isLoading } = useChat()
-    console.log("input : ", input);
-    console.log("message : ", messages);
+    // console.log("input : ", input);
+    // console.log("message : ", messages);
     return (
         <>
             {messages.map((message) => {

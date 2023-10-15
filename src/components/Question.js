@@ -1,9 +1,10 @@
 import './Question.css'
-const Question=()=>{    
+import Link from 'next/link'
+const Question=(props)=>{    
     return<>
-        <div className={"questionHeader"}>
+    <div className={"questionHeader"}>
         <div className="question">
-            <p>Explain Dandi March?</p>
+            <p>{props.data.question}</p>
         </div>
         <hr></hr>
         <div className="answer">

@@ -12,7 +12,7 @@ export default function Page({params}){
             let data=await fetch(`/api/dashboard/${formId}`);
             data=await data.json();
             // console.log("data received at client",data);
-            setQuestion(data)
+            setQuestion(data.form.questions)
         }
         fetchForm();
     },[])
@@ -37,9 +37,15 @@ export default function Page({params}){
         </div>
         {/* Pass the data by props */}
         <FormHeader></FormHeader>
-        <MCQ></MCQ>
-        <Question></Question>
-        <Question></Question>
-        <MCQ></MCQ>
+        {
+            question.map(function(data){
+                if(data.ques_type=="TEXT"){
+                    return <Question data={data}></Question>
+                }
+                else{
+                    return <MCQ data={data}></MCQ>
+                }
+            })
+        }
     </>
 }
