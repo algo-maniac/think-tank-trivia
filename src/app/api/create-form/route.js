@@ -22,7 +22,6 @@ export async function POST(request){
     let newForm={owner:owner,name:name,questions:question};
     let doc=new Forms(newForm);
     await doc.save();
-    mongoose.disconnect();
     let responses=[];
     console.log(owner,name,date,question,responses);
     return NextResponse.json({msg:"form added"});

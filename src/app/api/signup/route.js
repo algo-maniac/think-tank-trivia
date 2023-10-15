@@ -19,6 +19,5 @@ export async function POST(request){
     //creating new user account
     user=new Users({name:payload.name,email:payload.email,username:payload.username,password:hashedPassword});
     await user.save();
-    mongoose.disconnect();
     return NextResponse.json({ok:true,message:"Sign up successful"},{status:200});
 }

@@ -21,7 +21,6 @@ export const authOptions = {
                 await mongoose.connect(process.env.MONGO_URL);
                 const { email, password } = credentials;
                 const user = await Users.findOne({ email: email });
-                mongoose.disconnect();
                 if (!user) {
                     // mongoose.disconnect();
                     return null;//indicates not found
@@ -57,7 +56,6 @@ export const authOptions = {
                         const newUser = new Users({ name: user.name, email: user.email, username: user.name, password: hashedPassword, avatar: user.image })
                         await newUser.save();
                     }
-                    await mongoose.disconnect();
                 }
             }
             return token;

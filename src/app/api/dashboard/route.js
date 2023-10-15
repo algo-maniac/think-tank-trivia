@@ -12,6 +12,5 @@ export async function POST(req,res){
     }
     catch(er){
     }
-    await mongoose.disconnect();
     return NextResponse.json({ok:false,msg:'Error from server side'})
 }
