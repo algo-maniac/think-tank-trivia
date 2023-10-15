@@ -80,7 +80,7 @@ export default function Dashboard() {
           <div className="container">
             {
               data.map(function(val){
-                return <ResponseCard data={val}></ResponseCard>
+                return <ResponseCard data={val} key={val._id}></ResponseCard>
               })
             }
           </div>

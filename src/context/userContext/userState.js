@@ -16,7 +16,8 @@ export default function UserState(props) {
 
     const [user,setUser]=useState(()=>{
         if(auth_status=='authenticated'){
-            return null;
+            console.log("props.user",props.user);
+            return props.user;
         }
         return "unauthenticated";
     });
@@ -41,9 +42,9 @@ export default function UserState(props) {
     }
 
 
-    useEffect(()=>{
-        fetchUserDetails();
-    },[]);
+    // useEffect(()=>{
+    //     fetchUserDetails();
+    // },[]);
 
     // console.log("user state",user);
 
