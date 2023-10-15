@@ -9,8 +9,9 @@ export default function Page({params}){
     const [question,setQuestion]=useState([]);
     useEffect(()=>{
         async function fetchForm(){
-            let data=await fetch(`http://localhost:3000/api/dashboard/${formId}`);
+            let data=await fetch(`/api/dashboard/${formId}`);
             data=await data.json();
+            // console.log("data received at client",data);
             setQuestion(data)
         }
         fetchForm();
