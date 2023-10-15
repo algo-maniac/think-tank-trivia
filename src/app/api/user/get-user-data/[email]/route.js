@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
     try{
         const session=await getServerSession();
         // console.log("session from servere",session);
-        console.log(process.env.MONGO_URL);
+        // console.log(process.env.MONGO_URL);
         if(!session){
             return NextResponse.json({ok:false,message:"User not authenticated",user:"unauthenticated"},{status:400});
         }

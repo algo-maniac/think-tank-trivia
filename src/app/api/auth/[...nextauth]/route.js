@@ -44,10 +44,10 @@ export const authOptions = {
     ],
     callbacks: {
         async jwt({ token, account, user }) {
+            await mongoose.connect(process.env.MONGO_URL);
             if (account) {//signing in
                 if (account.provider == "google" || account.provider == "github") {
                     //user={id,name,email,image}
-                    await mongoose.connect(process.env.MONGO_URL);
                     const email = user.email;
                     const doc = await Users.findOne({ email: email });
                     if (!doc) {
@@ -55,11 +55,28 @@ export const authOptions = {
                         const hashedPassword = await bcrypt.hash(process.env.DUMMY_PASSWORD, salt);
                         const newUser = new Users({ name: user.name, email: user.email, username: user.name, password: hashedPassword, avatar: user.image })
                         await newUser.save();
+                        token.id=newUser._id;
+                    }
+                    else{
+                        token.id=doc._id;
                     }
                 }
+                else if(account.provider == "credentials"){
+                    // const email = user.email;
+                    // const doc = await Users.findOne({ email: email });
+                    token.id=user.id;
+                }
             }
+            // console.log("session form jwt",session);
             return token;
-        }
+        },
+        async session({ session, token, user }) {
+            // Send properties to the client, like an access_token and user id from a provider.
+            // session.accessToken = token.accessToken
+            session.user.id = token.id;
+            // console.log("session form session",session);
+            return session;
+          }
     }
 }
 
