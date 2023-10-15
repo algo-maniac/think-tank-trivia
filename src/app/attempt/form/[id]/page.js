@@ -38,7 +38,7 @@ export default function Page({params}){
                 console.log(data,id);
                 if(data.type==false){
                     return <>
-                        <div className={style.questionHeader} key={2}>
+                        <div className={style.questionHeader} key={id}>
                             <div className={style.question}>
                                 <p>{data.question}</p>
                             </div>
@@ -51,7 +51,7 @@ export default function Page({params}){
                 }
                 else{
                     return<>
-                        <div className={style.mcqHeader} key={1}>
+                        <div className={style.mcqHeader} key={id}>
                             <div className={style.question}>
                                 <p>{data.question}</p>
                             </div>

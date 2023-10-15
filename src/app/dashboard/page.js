@@ -11,9 +11,7 @@ import { useContext } from "react";
 export default function Dashboard() {
   const email="tuhin727066@gmail.com";
   let [data,setData]=useState([]);
-  const [val,setVal]=useState(1);
   const {user}=useContext(UserContext);
-  console.log(user);
   useEffect(()=>{
     const fetchDetails=()=>{
       fetch("/api/dashboard",{//automatically make a call on current domain
@@ -25,7 +23,8 @@ export default function Dashboard() {
       }).then((data)=>{
         return data.json();
       }).then((data)=>{
-        setData(data.data);
+        console.log(data)
+        setData(data.formsList);
       }).catch((er)=>{
         console.log('Error');
       })
@@ -79,10 +78,11 @@ export default function Dashboard() {
             All Forms
           </div>
           <div className="container">
-            <ResponseCard></ResponseCard>
-            <ResponseCard></ResponseCard>
-            <ResponseCard></ResponseCard>
-            <ResponseCard></ResponseCard>
+            {
+              data.map(function(val){
+                return <ResponseCard data={val}></ResponseCard>
+              })
+            }
           </div>
       </div>
     </div>
