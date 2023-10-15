@@ -3,6 +3,8 @@ import { use, useDebugValue, useEffect, useState } from 'react';
 import style from './style.module.css'
 import CreateQuestion from '@/components/CreateQuestion';
 import CreateMcq from '@/components/CreateMcq';
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
 export default function Page(){
     const [data,setData]=useState([]);
     const [flag,setFlag]=useState(false);
@@ -11,6 +13,7 @@ export default function Page(){
     const [b,setb]=useState("");
     const [c,setc]=useState("");
     const [d,setd]=useState("");
+    const {user}=useContext(UserContext);
     const mcqHandler=()=>{
         setFlag(true);
     }
@@ -60,6 +63,7 @@ export default function Page(){
             method:'POST',
             body:JSON.stringify({
                 data:data,
+                user_id:user._id
             }),
             header:{
                 'Content-Type':'application/json'

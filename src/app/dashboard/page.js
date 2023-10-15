@@ -13,12 +13,11 @@ export default function Dashboard() {
   let [data,setData]=useState([]);
   const [val,setVal]=useState(1);
   const {user}=useContext(UserContext);
-  console.log(user);
   useEffect(()=>{
     const fetchDetails=()=>{
       fetch("http://localhost:3000/api/dashboard",{
         method:'POST',
-        body:JSON.stringify({email:email}),
+        body:JSON.stringify({user_id:user._id}),
         headers:{
           'Content-Type':'application/json'
         }
@@ -27,9 +26,10 @@ export default function Dashboard() {
       }).then((data)=>{
         setData(data.data);
       }).catch((er)=>{
-        console.log('Error')
+        console.log('Error');
       })
     }
+    // name,date,responses.length,formid
     fetchDetails();
   },[])
   return <>
