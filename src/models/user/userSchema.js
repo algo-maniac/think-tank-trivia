@@ -29,13 +29,16 @@ const userSchema = new mongoose.Schema({
         ref: 'forms'
     }],
     forms_no: {
-        type: Number
+        type: Number,
+        default:0
     },
     responses_no: {
-        type: Number
+        type: Number,
+        default:0
     },
     avg_score: {
         type: mongoose.Schema.Types.Decimal128,
+        default:0
     },
     avatar: {
         type: String,
@@ -44,18 +47,18 @@ const userSchema = new mongoose.Schema({
 });
 
 //to set the responses no automatically
-userSchema.path('forms').set(function (val) {
-    let len = val.length;
-    this.forms_no = len;
-    return val;
-})
+// userSchema.path('forms').set(function (val) {
+//     let len = val.length;
+//     this.forms_no = len;
+//     return val;
+// })
 
-//to set the responses no automatically
-userSchema.path('responses').set(function (val) {
-    let len = val.length;
-    this.responses_no = len;
-    return val;
-})
+// //to set the responses no automatically
+// userSchema.path('responses').set(function (val) {
+//     let len = val.length;
+//     this.responses_no = len;
+//     return val;
+// })
 
 // console.log("user Schema", mongoose.models.users)
 const Users = mongoose.models.users || mongoose.model('users', userSchema);

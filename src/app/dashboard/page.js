@@ -15,7 +15,7 @@ export default function Dashboard() {
   const {user}=useContext(UserContext);
   useEffect(()=>{
     const fetchDetails=()=>{
-      fetch("http://localhost:3000/api/dashboard",{
+      fetch("/api/dashboard",{//automatically make a call on current domain
         method:'POST',
         body:JSON.stringify({user_id:user._id}),
         headers:{

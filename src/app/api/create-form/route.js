@@ -8,6 +8,7 @@ export async function POST(request) {
     try {
         mongoose.connect(process.env.MONGO_URL);
         const { data, user_id, form_name } = await request.json();
+        // console.log("form name",form_name);
         let userDoc = await Users.findById(user_id);
         if(!userDoc){
             return NextResponse.json({ ok: false, message: "user not found" },{status:400});   
@@ -25,9 +26,10 @@ export async function POST(request) {
             await questDoc.save();
             questions.push(questDoc._id);
         }
-        let formDoc = new Forms({ owner: user_id, form_name: form_name, questions: questions });
+        let formDoc = new Forms({ owner: user_id, form_name: form_name||"form-name", questions: questions, questions_no:questions.length });
         await formDoc.save();
         userDoc.forms.push(formDoc._id);
+        userDoc.forms_no=userDoc.forms.length;
         await userDoc.save();
         // console.log("payload form server : ", payload);
         return NextResponse.json({ ok: true, message: "form added" },{status:200});
@@ -35,5 +37,4 @@ export async function POST(request) {
     catch(err){
         return NextResponse.json({ ok: false, message: err.message },{status:500});   
     }
-
 }

@@ -58,12 +58,13 @@ export default function Page(){
         }
     }
     const formsubmitHandler=()=>{
-        console.log("data form client : ",data);
-        fetch("http://localhost:3000/api/create-form",{
+        // console.log("data form client : ",data);
+        fetch("/api/create-form",{//automatically make a call on current domain
             method:'POST',
             body:JSON.stringify({
                 data:data,
-                user_id:user._id
+                user_id:user._id,
+                form_name:"form-name",//tuhin add the form name here
             }),
             header:{
                 'Content-Type':'application/json'
