@@ -6,7 +6,7 @@ const formSchema = new mongoose.Schema({
         ref: 'users',
         require: true
     },
-    name: {
+    form_name: {
         type: String,
         require: true
     },

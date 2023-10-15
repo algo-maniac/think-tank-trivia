@@ -58,7 +58,7 @@ export default function Page(){
         }
     }
     const formsubmitHandler=()=>{
-        console.log(data);
+        console.log("data form client : ",data);
         fetch("http://localhost:3000/api/create-form",{
             method:'POST',
             body:JSON.stringify({

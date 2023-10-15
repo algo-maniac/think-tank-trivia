@@ -31,7 +31,7 @@ export default function UserState(props) {
             return res.json();
         })
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             setUser(data.user);
         })
         .catch((er)=>{
