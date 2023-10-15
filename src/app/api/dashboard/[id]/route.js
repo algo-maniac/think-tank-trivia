@@ -1,16 +1,28 @@
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
-import Form from "./../../../../models/form/formSchema"
-export async function GET(req,res){
-    // console.log(res.params.id);
-    let data=[];
+import Forms from "./../../../../models/form/formSchema"
+import Questions from "@/models/question/questionSchema";
+export async function GET(req,{params}){
+    
     try{
-        // await mongoose.connect("mongodb+srv://root:root@atlascluster.2a2wt0x.mongodb.net/test/Project3/form");
-        // data=await Form.findById("6528e88fef5d4b45b3825964");
-        // console.log(data);
+        const {id:formId}=params;
+        await mongoose.connect(process.env.MONGO_URL);
+        const formDoc=await Forms.findById(formId,{responses:0})
+        .populate({
+            path:'owner',
+            select:"name username email"
+        })
+        .populate({
+            path:'questions',
+            select:"-owner"
+        });
+        if(!formDoc){
+            return NextResponse.json({ok:false,message:"form not found"},{status:400});
+        }
+        return NextResponse.json({ok:false,message:"form found",form:formDoc},{status:200});
     }
     catch(er){
         console.log(er);
+        return NextResponse.json({ok:false,message:er.message},{status:500});
     }
-    return NextResponse.json({msg:"succdsdess"});
 }
