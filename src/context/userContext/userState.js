@@ -31,9 +31,13 @@ export default function UserState(props) {
             return res.json();
         })
         .then(data=>{
+            console.log(data);
             setUser(data.user);
         })
-        .catch(err=>console.log(err));
+        .catch((er)=>{
+            console.log('Error from server side')
+            console.log(er);
+        })
     }
 
 

@@ -6,10 +6,14 @@ import "./style.css"
 import { Avatar } from "@mui/material";
 import ResponseCard from "@/components/ResponseCard";
 import { useEffect, useState } from "react";
+import UserContext from "@/context/userContext/userContext";
+import { useContext } from "react";
 export default function Dashboard() {
   const email="tuhin727066@gmail.com";
   let [data,setData]=useState([]);
   const [val,setVal]=useState(1);
+  const {user}=useContext(UserContext);
+  console.log(user);
   useEffect(()=>{
     const fetchDetails=()=>{
       fetch("http://localhost:3000/api/dashboard",{
@@ -27,7 +31,7 @@ export default function Dashboard() {
       })
     }
     fetchDetails();
-  },[val])
+  },[])
   return <>
   <div className="main">
     <div className="left-part">
