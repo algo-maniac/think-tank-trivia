@@ -11,6 +11,7 @@ export default function Page(){
     const [search,setSearch]=useState(true);
     const [forms,setForms]=useState(false);
     const [input,setInput]=useState('');
+    const [formData,setData]=useState([]);
     const filterHandler=()=>{
         setFlag(!flag);
     }
@@ -39,7 +40,7 @@ export default function Page(){
         }).then((data)=>{
             return data.json();
         }).then((data)=>{
-            console.log(data);
+            setData(data.formsList);
             setLoader(false);
             setForms(true)
         }).catch((er)=>{
@@ -105,7 +106,11 @@ export default function Page(){
         }
         {/* dummy data */}
         {forms && <div className={style.formCard}>
-            <FormCard></FormCard>
+            {
+                formData.map(function(val){
+                    return <FormCard data={val}></FormCard>
+                })
+            }
         </div>}
     </>
 }
