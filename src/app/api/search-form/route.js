@@ -10,6 +10,7 @@ export async function POST(req) {
         // There are two modes url, and username
         const { mode, input } = payload;
         if (mode == "URL") {
+            console.log('here');
             const formId = input;
             const formDoc = await Forms.findById(formId, { form_name:1, date:1, responses_no:1, questions_no:1 })
                 .populate({

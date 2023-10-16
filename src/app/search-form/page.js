@@ -42,7 +42,12 @@ export default function Page(){
         }).then((data)=>{
             setData(data.formsList);
             setLoader(false);
-            setForms(true)
+            if(mode==="URL"){
+                
+            }
+            else{
+                setForms(true);
+            }
         }).catch((er)=>{
             console.log('Error');
         })
