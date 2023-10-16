@@ -13,8 +13,8 @@ export default function App() {
 
   const router = useRouter();
   // const { data, status } = useSession();
-  const {auth_session: data , auth_status: status} = useContext(UserContext);
-  const user=useContext(UserContext);
+  const { auth_session: data, auth_status: status } = useContext(UserContext);
+  const user = useContext(UserContext);
   console.log(user)
   const middlewire = () => {
     if (status == "unauthenticated") {
@@ -60,7 +60,7 @@ export default function App() {
                       <h3>{data.user.name}</h3>
                     </div>
                     <ul className={style.drop_down}>
-                      <li>view profile</li>
+                        <li> <Link href={"/analytics"} onClick={middlewire}> view profile </Link> </li>
                       <li><button onClick={() => { signOut() }}>Logout</button></li>
                     </ul>
                   </li>
