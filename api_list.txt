@@ -1,0 +1,26 @@
+api/auth/
+-for authentication and used by next auth
+
+api/chat/
+-for chat boat
+
+api/create-form/
+-to create a new form 
+it takes a list of questions(data), userId of the creator, the name of the form(by default "form-name")
+
+api/dashboard/
+-to fetch all forms created by a user
+it takes the _id of the user(user_id)
+
+api/dashboard/[id]/
+-to fetch a form with it's questions by id extracted from the url
+
+api/search-form/
+-to fetch form(s) by userId(username) or url(form._Id)
+
+api/signup/
+-to create a new user
+
+api/user/get-user-data/[email]
+-to fetch the user details of a user using the email.
+it also make a authentication check for the request
