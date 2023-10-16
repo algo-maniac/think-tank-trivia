@@ -76,17 +76,22 @@ html,body{
   width: 100%;
   border: 1px solid black;
   flex-direction: row;
-  padding-top: 5px;
+  padding-top: 3px;
+  padding-left: 6px;
   box-sizing: border-box;
   border-top: 1px solid white;
+  gap: 1rem;
 }
 .avatar{
-  width: 30%;
+  width: 15%;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  margin: 5px;
+  margin: 8px;
   justify-content: space-around;
+}
+.avatar img{
+  border-radius: 50%;
 }
 .info{
   display: flex;

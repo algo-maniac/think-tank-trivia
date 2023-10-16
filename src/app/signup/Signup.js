@@ -48,7 +48,7 @@ const Signup = () => {
             })
             const data = await result.json();
             alert(data.message);
-            router.push("/");
+            router.push("/login");
             action.resetForm();
         }
     })

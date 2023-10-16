@@ -14,7 +14,7 @@ export default function Dashboard() {
   const email = "tuhin727066@gmail.com";
   const [loaderFlag, setLoader] = useState(true);
   let [data, setData] = useState([]);
-  const { user } = useContext(UserContext);
+  const { user,auth_session } = useContext(UserContext);
   useEffect(() => {
     const fetchDetails = () => {
       fetch("/api/dashboard", {//automatically make a call on current domain
@@ -61,7 +61,7 @@ export default function Dashboard() {
         </div>
         <div className="user">
           <div className="avatar">
-            <img src={user.avatar} alt={user.name} height={30} width={50} />
+            <img src={auth_session.user.image} alt={user.name} height={30} width={50} />
           </div>
           <div className="info">
             <span className="name">{user.username}</span>
