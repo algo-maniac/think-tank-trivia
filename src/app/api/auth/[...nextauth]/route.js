@@ -53,7 +53,12 @@ export const authOptions = {
                     if (!doc) {
                         const salt = await bcrypt.genSalt(10);
                         const hashedPassword = await bcrypt.hash(process.env.DUMMY_PASSWORD, salt);
-                        const newUser = new Users({ name: user.name, email: user.email, username: user.name, password: hashedPassword, avatar: user.image })
+                        str=user.email;
+                        list = str.split('@');
+                        domain = list[1].split('.');
+                        username = list[0] + '_' + domain[0];
+                        // console.log(username);
+                        const newUser = new Users({ name: user.name, email: user.email, username: username, password: hashedPassword, avatar: user.image })
                         await newUser.save();
                     }
                 }
