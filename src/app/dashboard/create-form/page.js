@@ -5,10 +5,13 @@ import CreateQuestion from '@/components/CreateQuestion';
 import CreateMcq from '@/components/CreateMcq';
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
+import Modal from '@/components/Modal';
 export default function Page(){
     const [data,setData]=useState([]);
     const [flag,setFlag]=useState(false);
     const [question,setQuestion]=useState("");
+    const [modal,setModal]=useState(false);
+    const [error,setError]=useState(false);
     const [a,seta]=useState("");
     const [b,setb]=useState("");
     const [c,setc]=useState("");
@@ -73,11 +76,15 @@ export default function Page(){
             return data.json();
         }).then((data)=>{
             console.log(data);
+            setModal(true);
         }).catch((er)=>{
             console.log(er)
+            setError(true);
         })
     }
     return <>
+        {modal && <Modal val={{type:"success",msg:"Forms created successfully"}}></Modal>}
+        {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>

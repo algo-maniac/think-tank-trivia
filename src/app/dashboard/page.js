@@ -10,9 +10,11 @@ import UserContext from "@/context/userContext/userContext";
 import { useContext } from "react";
 import Loader from "@/components/Loader";
 import { signOut } from "next-auth/react";
+import Modal from '@/components/Modal'
 export default function Dashboard() {
-  const email = "tuhin727066@gmail.com";
   const [loaderFlag, setLoader] = useState(true);
+  const [modal,setModal]=useState(false);
+  const [error,setError]=useState(false);
   let [data, setData] = useState([]);
   const { user,auth_session } = useContext(UserContext);
   useEffect(() => {
@@ -29,14 +31,18 @@ export default function Dashboard() {
         console.log(data)
         setData(data.formsList);
         setLoader(false)
+        setModal(true);
       }).catch((er) => {
         console.log('Error');
+        setError(true);
       })
     }
     // name,date,responses.length,formid
     fetchDetails();
   }, [])
   return <>
+    {modal && <Modal val={{type:"success",msg:"Forms fetched successfully"}}></Modal>}
+    {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
     <div className="main">
       <div className="left-part">
         <div className="logo">

@@ -8,7 +8,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import UserContext from "@/context/userContext/userContext";
-
+import Modal from "@/components/Modal";
 export default function App() {
 
   const router = useRouter();
@@ -26,6 +26,9 @@ export default function App() {
 
   return (
     <>
+    {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
+    {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
+
       <div className={style.outer}>
         <div className={style.header}>
           <div className={style.logo}>
