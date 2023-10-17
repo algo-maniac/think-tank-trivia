@@ -41,7 +41,7 @@ export default function Dashboard() {
     fetchDetails();
   }, [])
   return <>
-    {modal && <Modal val={{type:"success",msg:"Forms fetched successfully"}}></Modal>}
+    {modal && <Modal val={{type:"success",msg:"All the Forms fetched successfully"}}></Modal>}
     {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
     <div className="main">
       <div className="left-part">

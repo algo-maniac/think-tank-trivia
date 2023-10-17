@@ -41,15 +41,17 @@ export default function Page(){
             return data.json();
         }).then((data)=>{
             setData(data.formsList);
+            console.log(data)
             setLoader(false);
-            if(mode==="URL"){
+            // if(mode==="URL"){
                 
-            }
-            else{
+            // }
+            // else{
                 setForms(true);
-            }
+            // }
         }).catch((er)=>{
             console.log('Error');
+            console.log(er)
         })
     }
     return <>

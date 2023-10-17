@@ -39,17 +39,26 @@ export default function Page(){
         setd(env.target.value);
     } 
     const addMCQ=()=>{
-        setData([...data,{
-            id:data.length,
-            value:{type:"MCQ",question:question,a:a,b:b,c:c,d:d}
-        }])
-
+        if(question==='' || a==='' || b==='' || c==='' || d===''){
+            setError(true);
+        }
+        else{
+            setData([...data,{
+                id:data.length,
+                value:{type:"MCQ",question:question,a:a,b:b,c:c,d:d}
+            }])
+        }
     }
     const addQuestion=()=>{
-        setData([...data,{
-            id:data.length,
-            value:{type:"TEXT",question:question}
-        }])
+        if(question===''){
+            setError(true);
+        }
+        else{
+            setData([...data,{
+                id:data.length,
+                value:{type:"TEXT",question:question}
+            }])
+        }
     }
     const submitHandler=()=>{
         // console.log(question,a,b,c,d);
@@ -84,7 +93,7 @@ export default function Page(){
     }
     return <>
         {modal && <Modal val={{type:"success",msg:"Forms created successfully"}}></Modal>}
-        {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
+        {error && <Modal val={{type:"error",msg:"Validation Error, Do need leave any input as blank"}}></Modal>}
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>
