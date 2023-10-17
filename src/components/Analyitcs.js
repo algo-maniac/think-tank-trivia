@@ -1,8 +1,15 @@
 "use client";
-import React from 'react'
+import React, { useContext } from 'react'
 import "./analytics.css"
 import AnalyticsSidebar from './AnalyticsSidebar';
+import UserContext from '@/context/userContext/userContext';
+import { useRouter } from 'next/navigation';
 const Analyitcs = () => {
+  const router = useRouter();
+  const { user, auth_session, auth_status } = useContext(UserContext);
+  if(auth_status=='unauthenticated'){
+    return router.push('/login');
+  }
   return (
     <>
       <div className='flex flex-row justify-start h-screen'>

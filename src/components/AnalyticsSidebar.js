@@ -20,14 +20,13 @@ const AnalyticsSidebar = () => {
             ['w-25']: !toggleExpand,
         }
     )
-
-    const { auth_session, user } = useContext(UserContext);
-
+    
+    const { auth_session, user, auth_status } = useContext(UserContext);
     return (
         <>
             <div className={sidebarClass}>
                 <div className='flex'>
-                    <div className={classNames('flex relative justify-around space-x-7 shadow shadow-sky-900 p-2',{"shadow-none":!toggleExpand})}>
+                    <div className={classNames('flex relative justify-around space-x-7 shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
                         <IoLogoDropbox className='text-green-600 text-5xl' />
                         <div className={classNames('mt-2 font-bold text-lg', { 'hidden': !toggleExpand })}>
                             Think-Tank-Trivia
@@ -42,7 +41,7 @@ const AnalyticsSidebar = () => {
                     </div>
                 </div>
                 <div className='flex flex-col gap-8 ml-4'>
-                    <div className={classNames('flex  shadow shadow-sky-900 p-2',{"shadow-none":!toggleExpand})}>
+                    <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
                         <Link href={"/dashboard"}><AiTwotoneHome className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
                         <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
                             "hidden": !toggleExpand,
@@ -50,7 +49,7 @@ const AnalyticsSidebar = () => {
                             <Link href={"/"}>Home</Link>
                         </div>
                     </div>
-                    <div className={classNames('flex  shadow shadow-sky-900 p-2',{"shadow-none":!toggleExpand})}>
+                    <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
                         <Link href={"/dashboard"}><MdDashboardCustomize className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
                         <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
                             "hidden": !toggleExpand,
@@ -58,7 +57,7 @@ const AnalyticsSidebar = () => {
                             <Link href={"/dashboard"}>Form-Portal</Link>
                         </div>
                     </div>
-                    <div className={classNames('flex  shadow shadow-sky-900 p-2',{"shadow-none":!toggleExpand})}>
+                    <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
                         <Link href={"/#"}><IoMdSettings className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
                         <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
                             "hidden": !toggleExpand,
@@ -67,7 +66,7 @@ const AnalyticsSidebar = () => {
                         </div>
                     </div>
                 </div>
-                <div className={classNames('flex space-x-10 ml-4  shadow shadow-sky-900 p-2',{"shadow-none":!toggleExpand})}>
+                <div className={classNames('flex space-x-10 ml-4  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
                     <div className='w-10 rounded-full mt-3 '>
                         <img src={auth_session.user.image} alt={user.image} className='rounded-full' />
                     </div>
