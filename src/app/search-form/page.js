@@ -4,6 +4,7 @@ import style from './style.module.css'
 import ResponseCard from '@/components/ResponseCard'
 import FormCard from '@/components/FormCard'
 import Loader from '@/components/Loader'
+import Notfound from '@/components/Notfound'
 export default function Page(){
     const [flag,setFlag]=useState(true);
     const [loader,setLoader]=useState(false);
@@ -12,6 +13,7 @@ export default function Page(){
     const [forms,setForms]=useState(false);
     const [input,setInput]=useState('');
     const [formData,setData]=useState([]);
+    const [notFound,setNotfound]=useState(false);
     const filterHandler=()=>{
         setFlag(!flag);
     }
@@ -47,7 +49,12 @@ export default function Page(){
                 
             // }
             // else{
+            if(!data){
                 setForms(true);
+            }
+            else{
+                setNotfound(true);
+            }
             // }
         }).catch((er)=>{
             console.log('Error');
@@ -119,5 +126,7 @@ export default function Page(){
                 })
             }
         </div>}
+        {notFound && <Notfound></Notfound>
+        }
     </>
 }

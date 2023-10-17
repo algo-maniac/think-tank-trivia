@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
+.notfound-container{
+    width: 60%;
+    /* border: 1px solid black; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+}
+.notfound-container .header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: 'Poppins';
+}
