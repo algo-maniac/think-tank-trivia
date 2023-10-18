@@ -24,3 +24,10 @@ api/signup/
 api/user/get-user-data/[email]
 -to fetch the user details of a user using the email.
 it also make a authentication check for the request
+
+api/attempt/fetch-form/[formId]
+-to fetch a form to attempt
+it also check whether a response already have been submitted against the form form the logged in user
+
+api/attempt/response-submit/[formId]
+-to sumbit a response

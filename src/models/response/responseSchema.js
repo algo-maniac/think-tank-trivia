@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const ansSchema=new mongoose.Schema({
     ques_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'questions'
     },
     ans_given:{
         type:String

@@ -6,79 +6,93 @@ import Loader from '@/components/Loader';
 import Modal from '@/components/Modal';
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
-export default function Page({params}){
-    const formId=params.id;
+export default function Page({ params }) {
+    const formId = params.id;
     // dummy data need to connect backend
-    const [questions,setQuestion]=useState([]);
-    const [response,setResponse]=useState([]);
-    const [modal,setModal]=useState(false)
-    const [loader,setLoader]=useState(true);
-    const [answer,setAnswer]=useState(new Map);
-    const [error,setError]=useState(false);
-    const {user}=useContext(UserContext)
-    console.log(user)
-    useEffect(()=>{
-        fetch(`/api/dashboard/${formId}`,{
-            method:'POST',
-            // body:
-        }).then((data)=>{
+    const [questions, setQuestion] = useState([]);
+    const [response, setResponse] = useState([]);
+    const [modal, setModal] = useState(false)
+    const [loader, setLoader] = useState(true);
+    const [answer, setAnswer] = useState(new Map);
+    const [error, setError] = useState(false);
+    const { user } = useContext(UserContext)
+    // console.log(user);
+    useEffect(() => {
+        fetch(`/api/attempt/fetch-form/${formId}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                // answer:answer,
+                user_id: user._id
+            }),
+            header: {
+                'Content-Type': 'application/json'
+            }
+        }).then((data) => {
             return data.json();
-        }).then((data)=>{
+        }).then((data) => {
+            console.log(data);
             console.log(data.form.questions)
             setQuestion(data.form.questions)
             setLoader(false);
-        }).catch((er)=>{
+        }).catch((er) => {
             console.log("Error");
         })
-    },[])
-    const answerHandler=(env)=>{
-        const val=env.target.value;
-        const id=env.target.id;
-        answer.set(id,val);
-        if(val===''){
-            answer.delete(id,val);
+    }, [])
+    const answerHandler = (env) => {
+        const val = env.target.value;
+        const id = env.target.id;
+        answer.set(id, val);
+        if (val === '') {
+            answer.delete(id, val);
         }
     }
-    const mcqHandler=(env)=>{
-        const val=env.target.value;
-        const id=env.target.id
-        answer.set(id,val)
-        if(val===''){
-            answer.delete(id,val);
+    const mcqHandler = (env) => {
+        const val = env.target.value;
+        const id = env.target.id
+        answer.set(id, val)
+        if (val === '') {
+            answer.delete(id, val);
         }
     }
-    const submitHandler=()=>{
+    const submitHandler = () => {
         console.log(answer)
         // validation
-        console.log(answer.size)
-        if(answer.size!==questions.length){
+        // console.log(answer.size)
+        // for(let it of answer){
+        //     console.log("it",it);
+        // }
+        if (answer.size !== questions.length) {
             setError(true);
         }
-        else{
+        else {
             //anwser is map with id as question id and value as value written in input
-            fetch(`/api/attempt/${formId}`,{
-                method:'POST',
-                body:JSON.stringify({
-                    answer:answer,
-                    user_id:user._id
+            let responses = [];
+            for (let it of answer) {
+                responses.push({ ques_id: it[0], ans_given: it[1] });
+            }
+            fetch(`/api/attempt/response-submit/${formId}`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    answer: responses,
+                    user_id: user._id
                 }),
-                header:{
-                    'Content-Type':'application/json'
+                header: {
+                    'Content-Type': 'application/json'
                 }
-            }).then((data)=>{
+            }).then((data) => {
                 return data.json();
-            }).then((data)=>{
+            }).then((data) => {
                 console.log(data);
                 setModal(true);
-            }).catch((er)=>{
+            }).catch((er) => {
                 console.log('Error');
             })
         }
     }
-    return<>
+    return <>
         {loader && <Loader></Loader>}
-        {modal && <Modal val={{type:"success",msg:"Response Submitted successfully"}}></Modal>}
-        {error && <Modal val={{type:"Error",msg:"Validation error, Do not leave any input blank"}}></Modal>}
+        {modal && <Modal val={{ type: "success", msg: "Response Submitted successfully" }}></Modal>}
+        {error && <Modal val={{ type: "Error", msg: "Validation error, Do not leave any input blank" }}></Modal>}
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>
@@ -93,8 +107,8 @@ export default function Page({params}){
             </div>
         </div>
         {
-            questions.map(function(data,id){
-                if(data.ques_type==="TEXT"){
+            questions.map(function (data, id) {
+                if (data.ques_type === "TEXT") {
                     return <>
                         <div className={style.questionHeader} key={data._id}>
                             <div className={style.question}>
@@ -107,8 +121,8 @@ export default function Page({params}){
                         </div>
                     </>
                 }
-                else{
-                    return<>
+                else {
+                    return <>
                         <div className={style.mcqHeader} key={data._id}>
                             <div className={style.question}>
                                 <p>{data.question}</p>
@@ -130,7 +144,7 @@ export default function Page({params}){
                     </>
                 }
             })
-            
+
         }
     </>
 }

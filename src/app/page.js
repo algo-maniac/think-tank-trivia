@@ -15,7 +15,7 @@ export default function App() {
   // const { data, status } = useSession();
   const { auth_session: data, auth_status: status } = useContext(UserContext);
   const user = useContext(UserContext);
-  console.log(user)
+  // console.log(user)
   const middlewire = () => {
     if (status == "unauthenticated") {
       return router.push("/login")
