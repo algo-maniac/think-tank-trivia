@@ -144,10 +144,10 @@ export default function Page(){
         {
             data.map(function(val){
                 if(val.value.type==="MCQ"){
-                    return <CreateMcq content={val.value}/>
+                    return <CreateMcq key={val.id} content={val.value}/>
                 }
                 else{
-                    return <CreateQuestion content={val.value.question}/>
+                    return <CreateQuestion key={val.id} content={val.value.question}/>
                 }
             })
         }

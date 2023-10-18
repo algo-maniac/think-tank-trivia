@@ -11,6 +11,7 @@ export default function Page({params}){
         async function fetchForm(){
             let data=await fetch(`/api/dashboard/${formId}`);
             data=await data.json();
+            console.log(data)
             // console.log("data received at client",data);
             setQuestion(data.form.questions)
         }
