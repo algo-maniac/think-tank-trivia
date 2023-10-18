@@ -21,7 +21,7 @@ export async function GET(req,{params}){
         return NextResponse.json({ok:true,message:"form found",form:formDoc},{status:200});
     }
     catch(er){
-        console.log(er);
+        // console.log(er);
         return NextResponse.json({ok:false,message:er.message},{status:500});
     }
 }
