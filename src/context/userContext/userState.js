@@ -2,10 +2,13 @@
 import React,{Fragment, useEffect, useState} from 'react'
 import UserContext from './userContext'
 import { useSession } from 'next-auth/react'
+import Loader from '@/components/Loader'
 
 export default function UserState(props) {
 
     const {data:auth_session,status:auth_status}=useSession();
+
+    const [loaderFlag,setLoaderFlag]=useState(false);
 
     // console.log("auth_status",auth_status);
     // console.log("session",auth_session);
@@ -52,7 +55,9 @@ export default function UserState(props) {
         auth_session,
         auth_status,
         user,
-        fetchUserDetails
+        fetchUserDetails,
+        loaderFlag,
+        setLoaderFlag
     };
 
     return (
@@ -60,6 +65,7 @@ export default function UserState(props) {
             <UserContext.Provider value={value}>
                 {props.children}
             </UserContext.Provider>
+            {loaderFlag&&<Loader/>}
         </Fragment>
     )
 }
