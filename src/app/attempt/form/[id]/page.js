@@ -15,7 +15,8 @@ export default function Page({ params }) {
     const [loader, setLoader] = useState(true);
     const [answer, setAnswer] = useState(new Map);
     const [error, setError] = useState(false);
-    const { user } = useContext(UserContext)
+    const { user } = useContext(UserContext);
+    const [responded,setResponded]=useState(false);
     // console.log(user);
     useEffect(() => {
         fetch(`/api/attempt/fetch-form/${formId}`, {
@@ -30,7 +31,10 @@ export default function Page({ params }) {
         }).then((data) => {
             return data.json();
         }).then((data) => {
-            console.log(data);
+            const msg=data.message;
+            if(msg==="The reponse was submitted"){
+                setResponded(true);
+            }
             console.log(data.form.questions)
             setQuestion(data.form.questions)
             setLoader(false);
@@ -55,7 +59,6 @@ export default function Page({ params }) {
         }
     }
     const submitHandler = () => {
-        console.log(answer)
         // validation
         // console.log(answer.size)
         // for(let it of answer){
@@ -82,7 +85,6 @@ export default function Page({ params }) {
             }).then((data) => {
                 return data.json();
             }).then((data) => {
-                console.log(data);
                 setModal(true);
             }).catch((er) => {
                 console.log('Error');
@@ -106,7 +108,8 @@ export default function Page({ params }) {
                 <h1>Fill out the Form </h1>
             </div>
         </div>
-        {
+        {responded && <h1 className={style.center}>Already Responded</h1>}
+        {!responded && 
             questions.map(function (data, id) {
                 if (data.ques_type === "TEXT") {
                     return <>

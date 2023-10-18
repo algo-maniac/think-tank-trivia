@@ -199,6 +199,8 @@
 
 .textfield{
     border: 0.2px solid black;
+    width: 100%;
+    border-radius: 5px;
     background-color: rgb(233, 227, 227);
 }
 .mcqHeader{
@@ -262,4 +264,8 @@
   .button37 {
     padding: 10px 30px;
   }
+}
+.center{
+  margin-top: 40px;
+  text-align: center;
 }
