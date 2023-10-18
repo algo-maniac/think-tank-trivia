@@ -49,8 +49,9 @@ export default function Page(){
                 
             // }
             // else{
-            if(!data){
+            if(data!=undefined){
                 setForms(true);
+                setNotfound(false);
             }
             else{
                 setNotfound(true);
