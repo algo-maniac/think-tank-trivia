@@ -4,6 +4,8 @@ import style from './style.module.css'
 import { useEffect, useState } from 'react';
 import Loader from '@/components/Loader';
 import Modal from '@/components/Modal';
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
 export default function Page({params}){
     const formId=params.id;
     // dummy data need to connect backend
@@ -13,9 +15,12 @@ export default function Page({params}){
     const [loader,setLoader]=useState(true);
     const [answer,setAnswer]=useState(new Map);
     const [error,setError]=useState(false);
+    const {user}=useContext(UserContext)
+    console.log(user)
     useEffect(()=>{
         fetch(`/api/dashboard/${formId}`,{
-            method:'GET'
+            method:'POST',
+            // body:
         }).then((data)=>{
             return data.json();
         }).then((data)=>{
@@ -54,7 +59,8 @@ export default function Page({params}){
             fetch(`/api/attempt/${formId}`,{
                 method:'POST',
                 body:JSON.stringify({
-                    answer:answer
+                    answer:answer,
+                    user_id:user._id
                 }),
                 header:{
                     'Content-Type':'application/json'
