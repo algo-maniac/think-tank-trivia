@@ -24,3 +24,7 @@ api/signup/
 api/user/get-user-data/[email]
 -to fetch the user details of a user using the email.
 it also make a authentication check for the request
+
+api/analytics/user/[user_id]/[days]/
+-to fetch all the forms(only date) created in last 'days' days
+used for analytics
