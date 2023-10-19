@@ -10,6 +10,7 @@ import { useContext } from 'react';
 export default function Page(){
     const [data,setData]=useState([]);
     const [flag,setFlag]=useState(true);
+    const [modal,setModal]=useState(false);
     const [question,setQuestion]=useState("");
     const [a,seta]=useState("");
     const [b,setb]=useState("");
@@ -63,11 +64,12 @@ export default function Page(){
             })
         })
         .then(res=>res.json())
-        .then(data=>{console.log(data)})
+        .then(data=>{setModal(true)})
         .catch(err=>console.log(err.message));
     }
     return <>
         {error && <Modal val={{type:"error",msg:"Validation Error, Do need leave any input as blank"}}></Modal>}
+        {modal && <Modal val={{type:"success",msg:"Forms created successfully"}}></Modal>}
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>
