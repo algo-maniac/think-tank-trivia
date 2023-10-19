@@ -3,16 +3,19 @@ import { useParams } from "next/navigation"
 import style from "./style.module.css"
 import Card from "@/components/Card"
 import { useEffect, useState } from "react"
-const [response,setResponse]=useState([]);
 import Loader from "@/components/Loader"
 export default function Page({params}){
     const [flag,setFlag]=useState(true);
-    const [response,setResponse]=useState([]);
+    const [responseModal,setResponse]=useState(true);
     const url=window.location.href.split('/');
     const formId=url[4];
     const flagHandler=()=>{
         setFlag(!flag);
     }
+    const closeHandler=()=>{
+        setResponse(false);
+    }
+    // api call for response cards
     useEffect(()=>{
         fetch(`/api/dashboard/${formId}`,{
             method:'GET'
