@@ -31,3 +31,8 @@ it also check whether a response already have been submitted against the form fo
 
 api/attempt/response-submit/[formId]
 -to sumbit a response
+
+
+api/create-quiz/
+-to create a new quiz form
+it takes a list of questions(data), userId of the creator, the name of the quiz form(by default "form-name")

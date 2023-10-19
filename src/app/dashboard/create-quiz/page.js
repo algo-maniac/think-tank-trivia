@@ -53,7 +53,7 @@ export default function Page(){
         addMCQ();
     }
     const publishHandler=()=>{
-        console.log(data,user._id)
+        console.log(data,user._id);
         fetch('/api/create-quiz',{
             method:'POST',
             body:JSON.stringify({
@@ -62,6 +62,9 @@ export default function Page(){
                 quiz_name:"Quiz",
             })
         })
+        .then(res=>res.json())
+        .then(data=>{console.log(data)})
+        .catch(err=>console.log(err.message));
     }
     return <>
         {error && <Modal val={{type:"error",msg:"Validation Error, Do need leave any input as blank"}}></Modal>}
