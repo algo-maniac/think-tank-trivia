@@ -30,9 +30,7 @@ const BarChart = () => {
             }).then((data) => {
                 return data.json();
             }).then((data) => {
-                console.log(data.data.forms);
                 setChart(data.data);
-                // console.log(data.data.forms[0].date);
             }).catch((e) => {
                 console.log(e);
             })
@@ -53,40 +51,11 @@ const BarChart = () => {
     // dp.push(i);
     }
 
-    dp.push(5);
-    dp.push(10);
-    dp.push(13);
-    dp.push(7);
-    // dp.push(0);
-    // dp.push(0);
-    // dp.push(0);
-    dp.push(0);
-    dp.push(0);
-    dp.push(0);
-    // const month = date.toLocaleString('default',{month:'short'});
-    // console.log(date);
-    // console.log(dp);
-
-
-    // const newDates = chart?.forms?.map((x)=>x.date);
-    // const store = [];
-    // newDates?.forEach(myFunction);
-    // function myFunction(date){
-    //     store.push(date);
-    // }
-
-    // console.log(store);
-
-    // let start = new Date();
-    // let end = new Date();
-    // start.setDate(start.getDate() - 7);
-    // start.setHours(0, 0, 0, 0);
-
     const newData = chart?.forms?.map((x)=>x.form_list.length);
-    console.log(newData);
+    // console.log(newData);
     const newDate = chart?.forms?.map((x)=>x.date_str);
-    console.log(newDate);
-    console.log(date);
+    // console.log(newDate);
+    // console.log(date);
 
     const data = {
         labels: [dates[0], dates[1], dates[2], dates[3], dates[4], dates[5], dates[6]],
@@ -165,7 +134,7 @@ const BarChart = () => {
             },
             title: {
                 display: true,
-                text: "🙍‍♂️ No. of Forms Created"
+                text: "🙍‍♂️ Day-by-day analytics"
             }
         }
     }
