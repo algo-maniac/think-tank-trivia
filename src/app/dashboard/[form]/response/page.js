@@ -17,7 +17,7 @@ export default function Page({params}){
     }
     // api call for response cards
     useEffect(()=>{
-        fetch(`/api/dashboard/${formId}`,{
+        fetch(`/api/fetch-responses-list/${formId}`,{
             method:'GET'
         }).then((data)=>{
             return data.json();

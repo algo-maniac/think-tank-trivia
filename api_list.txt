@@ -36,3 +36,11 @@ api/attempt/response-submit/[formId]
 api/create-quiz/
 -to create a new quiz form
 it takes a list of questions(data), userId of the creator, the name of the quiz form(by default "form-name")
+
+api/fetch-responses-list/[formId]
+-GET request
+-to fetch all response (username,date,_id(response id)) of a form(formId)
+
+api/fetch-responses-list/[resId]
+-GET request
+-to fetch all details of a response (including questions and ans_given) with 'resId'
