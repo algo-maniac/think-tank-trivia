@@ -211,3 +211,107 @@ font-family: 'Poppins', sans-serif;
     justify-content: space-around;
     /* border: 1px solid black; */
 }
+.responsemodal{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.3;
+  z-index: 0;
+}
+.infocard{
+  width: 50%;
+  margin: auto;
+  position: absolute;
+  top: 15%;
+  opacity: 1;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
+  left: 25%;
+  z-index: 2;
+  background-color: white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  min-height: 20%;
+}
+.infocard .header{
+  background-color: black;
+  color: white;
+  padding: 9px;
+  border-radius: 6px;
+}
+.infocard .header svg{
+  font-size: 2.2rem;
+  margin: 10px;
+  color: white;
+  box-sizing: border-box;
+}
+.infocard .card{
+  color: white;
+}
+.infocard label{
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 5px;
+}
+.infocard .questionContainer{
+  margin: 5px;
+  box-sizing: border-box;
+}
+.infocard .question{
+  font-size: 1.04rem;
+  font-weight: 800;
+}
+.infocard .answer{
+  color: darkgreen;
+}
+.questionBox{
+  padding: 3px;
+  box-sizing: border-box;
+}
+.questionBox:nth-child(odd){
+  background-color: rgb(224, 222, 222);
+
+}
+
+
+
+/* CSS */
+.button1 {
+  background-color: #ea4d4d;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button1:hover,
+.button1:focus {
+  background-color: rgb(247, 3, 3);
+}
+.infocard .closeBtn{
+  margin: 5px;
+}
+.questionFeature{
+  text-align: center;
+}

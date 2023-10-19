@@ -3,6 +3,7 @@ import { useParams } from "next/navigation"
 import style from "./style.module.css"
 import Card from "@/components/Card"
 import { useEffect, useState } from "react"
+const [response,setResponse]=useState([]);
 import Loader from "@/components/Loader"
 export default function Page({params}){
     const [flag,setFlag]=useState(true);
@@ -24,6 +25,35 @@ export default function Page({params}){
         })
     })
     return <>
+        {responseModal &&
+            <>
+            <div className={style.responsemodal}>
+            </div>
+            <div className={style.infocard}>
+                <div className={style.header}>
+                    <h1>Filled-Form</h1>
+                </div>
+                <label>Responded answer</label>
+                <div className={style.questionContainer}>
+                    <div className={style.questionBox}>
+                        <div className={style.question}>Who is Honey Singh</div>
+                        <div className={style.answer}>He is a singer</div>
+                    </div>
+                    <div className={style.questionBox}>
+                        <div className={style.question}>Who is Honey Singh</div>
+                        <div className={style.answer}>He is a singer</div>
+                    </div>
+                    <div className={style.questionBox}>
+                        <div className={style.question}>Who is Honey Singh</div>
+                        <div className={style.answer}>He is a singer</div>
+                    </div>
+                </div>
+                <div className={style.closeBtn}>   
+                    <button class={style.button1} role="button" onClick={closeHandler}>Close</button>
+                </div>
+            </div>
+                </>
+        }
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>
