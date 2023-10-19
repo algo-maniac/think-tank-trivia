@@ -122,7 +122,7 @@ export default function Page(){
         {/* dummy data */}
         {forms && <div className={style.formCard}>
             {
-                formData.map(function(val){
+                formData?.map(function(val){
                     return <FormCard data={val}></FormCard>
                 })
             }

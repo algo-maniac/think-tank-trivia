@@ -15,8 +15,8 @@ export default function Page(){
     const [b,setb]=useState("");
     const [c,setc]=useState("");
     const [d,setd]=useState("");
+    const [answer,setAnswer]=useState("");
     const [error,setError]=useState(false);
-    const [correctOption,setcorrectOption]=useState("");
     const {user}=useContext(UserContext);
     const questionHandler1=(env)=>{
         setQuestion(env.target.value)
@@ -34,18 +34,19 @@ export default function Page(){
         setd(env.target.value);
     } 
     const addMCQ=()=>{
-        if(question==='' || a==='' || b==='' || c==='' || d===''){
+        if(question==='' || a==='' || b==='' || c==='' || d==='' || answer===''){
             setError(true);
         }
         else{
             setData([...data,{
                 id:data.length,
-                value:{type:"MCQ",question:question,a:a,b:b,c:c,d:d,answer:correctOption}
+                value:{type:"MCQ",question:question,a:a,b:b,c:c,d:d,answer:answer}
             }])
         }
     }
-    const optionanswerHandler=(env)=>{
-        setcorrectOption(env.target.value);
+    const answerHandler=(env)=>{
+        const val=env.target.value;
+        setAnswer(val)
     }
     const submitHandler=()=>{
         // console.log(question,a,b,c,d);
@@ -53,7 +54,7 @@ export default function Page(){
     }
     const publishHandler=()=>{
         console.log(data,user._id)
-        fetch('/api/create-form',{
+        fetch('/api/create-quiz',{
             method:'POST',
             body:JSON.stringify({
                 data:data,
@@ -96,7 +97,12 @@ export default function Page(){
                 <p>Choose the correct option</p>
                 <div className={style.options}>
                     <div className={style.first}>
-                        <input onClick={optionanswerHandler}></input><br></br>
+                        <select onChange={answerHandler}>
+                            <option value={'A'} onChange={answerHandler}>A</option>
+                            <option value={'B'} onChange={answerHandler}>B</option>
+                            <option value={'C'} onChange={answerHandler}>C</option>
+                            <option value={'D'} onChange={answerHandler}>D</option>
+                        </select>
                     </div>
                 </div>
             </div>
