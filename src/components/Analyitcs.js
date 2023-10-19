@@ -5,6 +5,8 @@ import AnalyticsSidebar from './AnalyticsSidebar';
 import UserContext from '@/context/userContext/userContext';
 import { useRouter } from 'next/navigation';
 import BarChart from './BarChart';
+import DoughnutChart from './DoughnutChart';
+import PieChart from './PieChart';
 
 const Analyitcs = () => {
   const router = useRouter();
@@ -16,17 +18,28 @@ const Analyitcs = () => {
     <>
       <div className='flex flex-row justify-start h-screen'>
         <AnalyticsSidebar />
-        <div className='right-side flex-1 px-5 text-black py-5 border border-red-900'>
-          <div className='flex space-x-4'>
-            <div className='bar-chart border border-green-800 w-2/4 p-5'>
-              <BarChart />
+        <div className='right-side flex-1 px-5 text-black py-1 border border-red-900 '>
+          <div className='analytics-container flex flex-col '>
+            <div className='flex space-x-10 p-5'>
+              <div className='bar-chart w-[45%] p-5 shadow-md shadow-gray-600'>
+                <BarChart />
+              </div>
+              <div className='badge w-[45%]'>
+                {/* <BarChart /> */}
+              </div>
             </div>
-            <div className='badge'>
-              {/* badge */}
+            <div className='user-chart border border-red-600 my-3 flex p-5 gap-4'>
+              <div className='w-2/4 shadow-md shadow-gray-600'>
+                <div className='border border-green-600 w-56 m-auto'>
+                  <DoughnutChart />
+                </div>
+              </div>
+              <div className='w-2/4 shadow-md shadow-gray-600'>
+                <div className='border border-green-600 w-56 m-auto'>
+                  <PieChart />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className='donut-chart'>
-            {/* donut chart */}
           </div>
         </div>
       </div>

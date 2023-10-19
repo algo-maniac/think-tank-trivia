@@ -22,7 +22,7 @@ const BarChart = () => {
     const userId = '652a37c6038f4853dbb850d3';
     useEffect(() => {
         const fetchData = async () => {
-            await fetch(`/api/analytics/user/${userId}/${3}`, {
+            await fetch(`/api/analytics/user/${userId}/${7}`, {
                 method: 'GET',
                 header: {
                     'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ const BarChart = () => {
             }).then((data) => {
                 return data.json();
             }).then((data) => {
-                console.log(data.data);
+                console.log(data.data.forms);
                 setChart(data.data);
                 // console.log(data.data.forms[0].date);
             }).catch((e) => {
@@ -39,7 +39,7 @@ const BarChart = () => {
         }
 
         fetchData();
-    }, []);
+    }, [userId]);
 
     const date = new Date();
     const dates = [];
@@ -48,7 +48,7 @@ const BarChart = () => {
     const dp = [];
     // console.log(date.getMonth());
     // const newdate = new Date(date.valueOf() - 1000*60*60*24);
-    for (let i = 0; i <= 7; i++) {
+    for (let i = 0; i < 7; i++) {
         dates.push(new Date(date.valueOf() - i * 1000 * 60 * 60 * 24));
     // dp.push(i);
     }
@@ -77,17 +77,25 @@ const BarChart = () => {
 
     // console.log(store);
 
-    let start = new Date();
-    let end = new Date();
-    start.setDate(start.getDate() - 7);
-    start.setHours(0, 0, 0, 0);
+    // let start = new Date();
+    // let end = new Date();
+    // start.setDate(start.getDate() - 7);
+    // start.setHours(0, 0, 0, 0);
+
+    const newData = chart?.forms?.map((x)=>x.form_list.length);
+    console.log(newData);
+    const newDate = chart?.forms?.map((x)=>x.date_str);
+    console.log(newDate);
+    console.log(date);
 
     const data = {
         labels: [dates[0], dates[1], dates[2], dates[3], dates[4], dates[5], dates[6]],
+        // labels:newDate,
         // labels : start,
         datasets: [{
-            label: 'Votes',
-            data: [12, 5, 15, 3, 9, 13],
+            label: 'User forms',
+            // data: [12, 5, 15, 3, 9, 13],
+            data : newData,
             // data: [
             //     { x: "2023-11-1", y: 12 },
             //     { x: "2023-11-2", y: 5 },
@@ -120,9 +128,10 @@ const BarChart = () => {
         scales: {
             y: {
                 beginAtZero: true,
-                max: 20,
+                max: 10,
                 ticks: {
-                    stepSize: 2
+                    stepSize: 2,
+                    autoSkip :false
                 },
                 grid: {
                     display: false
@@ -133,12 +142,15 @@ const BarChart = () => {
                     display: false
                 },
                 type: 'time',
-                time: {
+                time:{
+                    unit:'day'
+                },
+                // time: {
                     // min: start,
                     // max: end,
-                    unit: "day"
+                    // unit: "day"
                     // parser:'yyyy:mm:dd'
-                },
+                // },
                 ticks: {
                     autoSkip: false,
                 }
@@ -148,19 +160,19 @@ const BarChart = () => {
         plugins: {
             legend: {
                 label: {
-                    fontSize: 26
+                    fontSize: 20
                 }
             },
             title: {
                 display: true,
-                text: "dummy chart"
+                text: "🙍‍♂️ No. of Forms Created"
             }
         }
     }
 
     return (
         <>
-            <Line
+            <Line 
                 data={data}
                 options={options}
             />
