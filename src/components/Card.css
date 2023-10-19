@@ -1,10 +1,15 @@
 .card{
     display: flex;
-flex-direction: column;
+    flex-direction: column;
     justify-content: space-around;
     margin: 10px;
     width: 20%;
+    border-radius: 2px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.card:hover{
+    background-color: rgb(245, 238, 197);
+    cursor: pointer;
 }
 .header{
     display: flex;

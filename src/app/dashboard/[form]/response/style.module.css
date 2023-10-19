@@ -252,7 +252,8 @@ font-family: 'Poppins', sans-serif;
 }
 .infocard label{
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 400;
+  text-align: left;
   margin: 5px;
 }
 .infocard .questionContainer{
@@ -264,14 +265,15 @@ font-family: 'Poppins', sans-serif;
   font-weight: 800;
 }
 .infocard .answer{
-  color: darkgreen;
+  color: rgb(5, 120, 5);
+  text-align: left;
 }
 .questionBox{
   padding: 3px;
   box-sizing: border-box;
 }
 .questionBox:nth-child(odd){
-  background-color: rgb(224, 222, 222);
+  background-color: rgb(255, 243, 209);
 
 }
 

@@ -10,7 +10,7 @@ export async function GET(req,{params}){
         const responses_list=await Responses.find({form:formId},{user:1,date:1})
         .populate({
             path:'user',
-            select:"username"
+            select:"name"
         });
         return NextResponse.json({ok:true,message:"Response list fetched successfully",responses_list:responses_list},{status:200});
     }

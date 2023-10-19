@@ -6,7 +6,9 @@ import { useEffect, useState } from "react"
 import Loader from "@/components/Loader"
 export default function Page({params}){
     const [flag,setFlag]=useState(true);
-    const [responseModal,setResponse]=useState(true);
+    const [responseModal,setResponse]=useState(false);
+    const [response,setRes]=useState([]);
+    const [loader,setLoader]=useState(true);
     const url=window.location.href.split('/');
     const formId=url[4];
     const flagHandler=()=>{
@@ -22,41 +24,17 @@ export default function Page({params}){
         }).then((data)=>{
             return data.json();
         }).then((data)=>{
-            console.log(data);
+            if(data.ok==true){
+                setFlag(true);
+                setRes(data.responses_list);
+            }
+            setLoader(false);
         }).catch((er)=>{
             console.log('Error');
         })
-    })
+    },[])
     return <>
-        {responseModal &&
-            <>
-            <div className={style.responsemodal}>
-            </div>
-            <div className={style.infocard}>
-                <div className={style.header}>
-                    <h1>Filled-Form</h1>
-                </div>
-                <label>Responded answer</label>
-                <div className={style.questionContainer}>
-                    <div className={style.questionBox}>
-                        <div className={style.question}>Who is Honey Singh</div>
-                        <div className={style.answer}>He is a singer</div>
-                    </div>
-                    <div className={style.questionBox}>
-                        <div className={style.question}>Who is Honey Singh</div>
-                        <div className={style.answer}>He is a singer</div>
-                    </div>
-                    <div className={style.questionBox}>
-                        <div className={style.question}>Who is Honey Singh</div>
-                        <div className={style.answer}>He is a singer</div>
-                    </div>
-                </div>
-                <div className={style.closeBtn}>   
-                    <button class={style.button1} role="button" onClick={closeHandler}>Close</button>
-                </div>
-            </div>
-                </>
-        }
+        {loader && <Loader></Loader>}
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/2.jpeg" height="50px"></img>
@@ -82,15 +60,11 @@ export default function Page({params}){
             </div>
         </div>
         {flag && <div className={style.individual}>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-
-            <Card></Card>
+            {
+                response.map(function(data){
+                    return <Card key={data._id} val={data}></Card>
+                })
+            }
         </div>}
     </>
 }
