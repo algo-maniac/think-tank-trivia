@@ -28,3 +28,8 @@ it also make a authentication check for the request
 api/analytics/user/[user_id]/[days]/
 -to fetch all the forms(only date) created in last 'days' days
 used for analytics
+
+
+api/analytics/user/[user_id]/
+-to fetch all the user analytics info
+used for analytics
