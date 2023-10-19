@@ -7,16 +7,16 @@ const MCQ=(props)=>{
         </div>
         <hr></hr>
         <div className="answer">
-            <input type='radio' value={true}></input><p>{props.content.option1}</p>
+            <input type='radio' value={true}></input><p>{props.content.a}</p>
         </div>
         <div className="answer">
-            <input type='radio' value={true}></input><p>{props.content.option2}</p>
+            <input type='radio' value={true}></input><p>{props.content.b}</p>
         </div>
         <div className="answer">
-            <input type='radio' value={true}></input><p>{props.content.option3}</p>
+            <input type='radio' value={true}></input><p>{props.content.c}</p>
         </div>
         <div className="answer">
-            <input type='radio' value={true}></input><p>{props.content.option4}</p>
+            <input type='radio' value={true}></input><p>{props.content.d}</p>
         </div>
     </div>
     </>

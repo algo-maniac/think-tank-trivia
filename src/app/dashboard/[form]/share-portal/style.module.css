@@ -156,16 +156,28 @@
     font-family: Georgia, serif;
     margin-top: 80px;
     border-radius: 9px;
+    font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .shareheader{
    padding: 10px;
    font-size: 1.24rem;
+   font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+  font-family: 'Poppins', sans-serif;
    background-color:  rgb(97, 78, 220);
    color: #F3F4F6;
    border-radius: 8px;
 }
 .sharecontent{
    padding: 10px;
+   font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .dialog{
    border: 1px solid rgb(4, 189, 41);
@@ -249,4 +261,16 @@
 .socialMedia{
   color: black;
   font-size: 1.2rem;
+}
+.shareLink{
+  margin-left: 10px;
+  color: red;
+}
+.shareLink a{
+  text-decoration: none;
+  color: darkred;
+}
+.shareLink a:hover{
+  cursor: pointer;
+  color: black;
 }

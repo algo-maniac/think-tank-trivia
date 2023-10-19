@@ -1,0 +1,119 @@
+"use client"
+import { use, useState } from 'react';
+import style from './../create-form/style.module.css'
+import style1 from './style1.module.css'
+import CreateQuestion from '@/components/CreateQuestion';
+import CreateMcq from '@/components/CreateMcq';
+import Modal from '@/components/Modal';
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+export default function Page(){
+    const [data,setData]=useState([]);
+    const [flag,setFlag]=useState(true);
+    const [question,setQuestion]=useState("");
+    const [a,seta]=useState("");
+    const [b,setb]=useState("");
+    const [c,setc]=useState("");
+    const [d,setd]=useState("");
+    const [error,setError]=useState(false);
+    const [correctOption,setcorrectOption]=useState("");
+    const {user}=useContext(UserContext);
+    const questionHandler1=(env)=>{
+        setQuestion(env.target.value)
+    }
+    const optionHandler1=(env)=>{
+        seta(env.target.value);
+    }
+    const optionHandler2=(env)=>{
+        setb(env.target.value);
+    }
+    const optionHandler3=(env)=>{
+        setc(env.target.value);
+    }
+    const optionHandler4=(env)=>{
+        setd(env.target.value);
+    } 
+    const addMCQ=()=>{
+        if(question==='' || a==='' || b==='' || c==='' || d===''){
+            setError(true);
+        }
+        else{
+            setData([...data,{
+                id:data.length,
+                value:{type:"MCQ",question:question,a:a,b:b,c:c,d:d,answer:correctOption}
+            }])
+        }
+    }
+    const optionanswerHandler=(env)=>{
+        setcorrectOption(env.target.value);
+    }
+    const submitHandler=()=>{
+        // console.log(question,a,b,c,d);
+        addMCQ();
+    }
+    const publishHandler=()=>{
+        console.log(data,user._id)
+        fetch('/api/create-form',{
+            method:'POST',
+            body:JSON.stringify({
+                data:data,
+                user_id:user._id,
+                quiz_name:"Quiz",
+            })
+        })
+    }
+    return <>
+        {error && <Modal val={{type:"error",msg:"Validation Error, Do need leave any input as blank"}}></Modal>}
+        <div className={style.header}>
+            <div className={style.logo}>
+                <img src="/2.jpeg" height="50px"></img>
+            </div>
+            <div className={style.mode}>
+                <button className={style.button4} onClick={publishHandler}>Publish</button>
+            </div>
+        </div>
+        <div className={style.main}>
+        <div className={style.header1}>
+            <div>
+                <h1>Control Panel</h1>
+            </div>
+        </div>
+        <div className={style.controlpanel}>
+            <div className={style.mcq}>
+                <p>Write the question?</p>
+                <textarea placeholder='Write your question here' className={style.question} onChange={questionHandler1}></textarea>
+                <p>Select Options</p>
+                <div className={style.options}>
+                    <div className={style.first}>
+                        A: <input onChange={optionHandler1}></input><br></br>
+                        B: <input onChange={optionHandler2}></input>
+                    </div>
+                    <div className={style.second}>
+                        C: <input onChange={optionHandler3}></input><br></br>
+                        D: <input onChange={optionHandler4}></input>
+                    </div>
+                </div>
+                <p>Choose the correct option</p>
+                <div className={style.options}>
+                    <div className={style.first}>
+                        <input onClick={optionanswerHandler}></input><br></br>
+                    </div>
+                </div>
+            </div>
+            <div className={style.submit}>
+                <button className={style.button9} onClick={submitHandler}>Submit</button>
+            </div>
+        </div>
+        {flag && 
+            data.map(function(val){
+                if(val.value.type==="MCQ"){
+                    return <CreateMcq key={val.id} content={val.value}/>
+                }
+                else{
+                    return <CreateQuestion key={val.id} content={val.value.question}/>
+                }
+            })
+        }
+        </div>
+    </>
+}

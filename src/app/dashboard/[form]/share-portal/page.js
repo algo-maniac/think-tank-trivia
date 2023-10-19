@@ -2,6 +2,7 @@
 import style from './style.module.css'
 import { FaGithub } from 'react-icons/fa';
 import copy from 'copy-to-clipboard'
+import Link from 'next/link';
 export default function Page({params}){
     const url=window.location.href.split('/');
     const formId=url[4];
@@ -38,6 +39,9 @@ export default function Page({params}){
                     <button className={style.button4} onClick={copyLinkHandler}>Copy</button>
                     <button className={style.button3}>Live</button>
                 </div>
+            </div>
+            <div>
+                <p className={style.shareLink}>Copy the FormId and paste it <b><Link href={'/search-form'}>Here</Link></b></p>
             </div>
         </div>
     </>
