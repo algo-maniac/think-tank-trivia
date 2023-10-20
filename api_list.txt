@@ -25,6 +25,7 @@ api/user/get-user-data/[email]
 -to fetch the user details of a user using the email.
 it also make a authentication check for the request
 
+
 api/attempt/fetch-form/[formId]
 -to fetch a form to attempt
 it also check whether a response already have been submitted against the form form the logged in user
@@ -44,3 +45,12 @@ api/fetch-responses-list/[formId]
 api/fetch-responses-list/[resId]
 -GET request
 -to fetch all details of a response (including questions and ans_given) with 'resId'
+
+api/analytics/user/[user_id]/[days]/
+-to fetch all the forms(only date) created in last 'days' days
+used for analytics
+
+
+api/analytics/user/[user_id]/
+-to fetch all the user analytics info
+used for analytics
