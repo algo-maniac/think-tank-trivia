@@ -132,16 +132,16 @@ export default function Page({ params }) {
                             </div>
                             <hr></hr>
                             <div className={style.answer}>
-                                <input type='radio' value='a' name='option' id="652c0994c7874276a00aa9f" className='a' onChange={mcqHandler}></input><p>{data.a}</p>
+                                <input type='radio' value='A' name='option' id={data._id} className='a' onChange={mcqHandler}></input><p>{data.a}</p>
                             </div>
                             <div className={style.answer}>
-                                <input type='radio' value='b' name='option' id="652c0994c7874276a00aa9f6" className='a' onChange={mcqHandler}></input><p>{data.b}</p>
+                                <input type='radio' value='B' name='option' id={data._id} className='a' onChange={mcqHandler}></input><p>{data.b}</p>
                             </div>
                             <div className={style.answer}>
-                                <input type='radio' value='c' name='option' id="652c0994c7874276a00aa9f6" className='a' onChange={mcqHandler}></input><p>{data.c}</p>
+                                <input type='radio' value='C' name='option' id={data._id} className='a' onChange={mcqHandler}></input><p>{data.c}</p>
                             </div>
                             <div className={style.answer}>
-                                <input type='radio' value='d' name='option' id="652c0994c7874276a00aa9f6" className='a' onChange={mcqHandler}></input><p>{data.d}</p>
+                                <input type='radio' value='D' name='option' id={data._id} className='a' onChange={mcqHandler}></input><p>{data.d}</p>
                             </div>
                         </div>
                     </>

@@ -12,15 +12,15 @@ export async function GET(req,{params}){
         const resDoc=await Responses.findById(resId)
         .populate({
             path:'user',
-            select:"username -_id"
+            select:"username "
         })
         .populate({
             path:'form',
-            select:"form_name -_id"
+            select:"form_name "
         })
         .populate({
             path:'responses.ques_id',
-            select:"-owner -_id"
+            select:"-owner "
         });
         return NextResponse.json({ok:true,message:"Response list fetched successfully",response_details:resDoc},{status:200});
     }
