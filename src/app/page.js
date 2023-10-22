@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import UserContext from "@/context/userContext/userContext";
 import Modal from "@/components/Modal";
+import './global.css'
 export default function App() {
 
   const router = useRouter();

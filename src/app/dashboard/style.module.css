@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
-*{
-  margin: 0px;
-  padding: 0px;
-}
-html,body{
-  height: 100%;
-}
+
 .main{
   display: flex;
   flex-direction: row;
@@ -13,14 +7,15 @@ html,body{
   height: 100%;
   text-decoration: none;
 }
-a{
+.anchor{
   text-decoration: none;
+  color: white;
 }
-.left-part{
+.leftpart{
   display: flex;
   background-color: rgb(5, 39, 69);
   width: 18%;
-  min-height: 100%;
+  min-height: 100vh;
   flex-direction: column;
   border: 1px solid black;
   justify-content: space-between;
@@ -28,7 +23,7 @@ a{
 .logo{
   height: 50%;
 }
-.logo h1{
+.logo .heading{
   font-weight: 700;
   width: 100%;
   height: 75px;
@@ -58,7 +53,7 @@ a{
   text-align: cneter;
   margin: 10px;
 }
-.links div{
+.links .sidelinks{
   display: block;
   color: white;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 10px -10px;
@@ -135,7 +130,7 @@ a{
 
 
 /* CSS */
-.button-26 {
+.button26 {
   appearance: button;
   background-color: #1652F0;
   border: 1px solid #1652F0;
@@ -158,27 +153,27 @@ a{
   width: fit-content;
 }
 
-.button-26:disabled {
+.button26:disabled {
   opacity: .5;
 }
 
-.button-26:focus {
+.button26:focus {
   outline: 0;
 }
 
-.button-26:hover {
+.button26:hover {
   background-color: #0c2669;
   border-color: #0c2669;
 }
 
-.button-26:active {
+.button26:active {
   background-color: #0039D7;
   border-color: #0039D7;
 }
 
 
 
-.button-27 {
+.button27 {
   appearance: button;
   background-color: #03aa38;
   border: 1px solid #03aa38;
@@ -201,24 +196,24 @@ a{
   width: fit-content;
 }
 
-.button-27:disabled {
+.button27:disabled {
   opacity: .5;
 }
 
-.button-27:focus {
+.button27:focus {
   outline: 0;
 }
 
-.button-27:hover {
+.button27:hover {
   background-color: #0e5223;
   border-color: #0e5223;
 }
 
-.button-27:active {
+.button27:active {
   background-color: #03aa38;
   border-color: #03aa38;
 }
-.right-part{
+.rightpart{
   width: 82%;
   /* border: 1px solid black; */
   height: 100%;
@@ -248,7 +243,7 @@ a{
   flex-direction: row;
   justify-content: space-around;
 }
-.button-26,.button-27{
+.button26,.button27{
   height: 60%;
   margin-top: auto;
   margin-bottom: auto;
@@ -272,7 +267,7 @@ a{
   color: darkblue;
   border: 1px solid darkblue;
 }
-.forms-container{
+.formscontainer{
   height: var(100%-75px);
 }
 .container{

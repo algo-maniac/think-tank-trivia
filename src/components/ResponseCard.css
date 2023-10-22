@@ -10,6 +10,9 @@
     text-decoration: none;
     box-shadow: rgba(51, 51, 51, 0.2) 0px 2px 8px 0px;
 }
+.anchor{
+    text-decoration: none;
+}
 .links{
     text-decoration: none;
 }

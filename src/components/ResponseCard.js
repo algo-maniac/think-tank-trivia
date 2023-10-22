@@ -10,7 +10,7 @@ const Page=(props)=>{
     var str=`${day} ${month},${year}`
     return <>
         <div className="card1">
-            <Link href={`/dashboard/${props.data._id}`}>
+            <Link href={`/dashboard/${props.data._id}`} className="anchor">
             <div className="header1">
                 <img src="exam.png" className="image"></img>
                 {/* name */}

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import QuizCard from "@/components/QuizCard";
-import "./style.css"
+import style from './style.module.css'
 import { Avatar } from "@mui/material";
 import ResponseCard from "@/components/ResponseCard";
 import { useEffect, useState } from "react";
@@ -43,51 +43,51 @@ export default function Dashboard() {
   return <>
     {modal && <Modal val={{type:"success",msg:"All the Forms fetched successfully"}}></Modal>}
     {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
-    <div className="main">
-      <div className="left-part">
-        <div className="logo">
-          <h1 className="heading">ThinkTankTrivia</h1>
-          <div className="links">
-            <Link href={'/dashboard'}>
-              <div className="sidelinks">
+    <div className={style.main}>
+      <div className={style.leftpart}>
+        <div className={style.logo}>
+          <h1 className={style.heading}>ThinkTankTrivia</h1>
+          <div className={style.links}>
+            <Link href={'/dashboard'} className={style.anchor}>
+              <div className={style.sidelinks}>
                 Dashboard
               </div>
             </Link>
-            <Link href={'/search-form'}>
-              <div className="sidelinks">
+            <Link href={'/search-form'} className={style.anchor}>
+              <div className={style.sidelinks}>
                 Search-Form
               </div>
             </Link>
-            <Link href={'/analytics'}>
-              <div className="sidelinks">
+            <Link href={'/analytics'} className={style.anchor}>
+              <div className={style.sidelinks}>
                 Analytics
               </div>
             </Link>
           </div>
         </div>
-        <div className="user">
-          <div className="avatar">
+        <div className={style.user}>
+          <div className={style.avatar}>
             <img src={auth_session.user.image} alt={user.name} height={30} width={50} />
           </div>
-          <div className="info">
-            <span className="name">{user.username}</span>
-            <span className="logout" onClick={() => { signOut() }}>Logout</span>
+          <div className={style.info}>
+            <span className={style.name}>{user.username}</span>
+            <span className={style.logout} onClick={() => { signOut() }}>Logout</span>
           </div>
         </div>
       </div>
-      <div className="right-part">
-        <div className="header">
-          <div className="content">Home</div>
-          <div className="buttons">
-            <button className="button-27" role="button"><Link href={'dashboard/create-form'}>+Create Form</Link></button>
-            <button className="button-26" role="button"><Link href={'dashboard/create-quiz'}>+Create Quiz</Link></button>
+      <div className={style.rightpart}>
+        <div className={style.header}>
+          <div className={style.content}>Home</div>
+          <div className={style.buttons}>
+            <button className={style.button27} role="button"><Link href={'dashboard/create-form'} className={style.anchor}>+Create Form</Link></button>
+            <button className={style.button26} role="button"><Link href={'dashboard/create-quiz'} className={style.anchor}>+Create Quiz</Link></button>
           </div>
         </div>
-        <div className="forms-container">
-          <div className="sorting">
+        <div className={style.formscontainer}>
+          <div className={style.sorting}>
             All Forms
           </div>
-          {!loaderFlag && <div className="container">
+          {!loaderFlag && <div className={style.container}>
             {
               data.map(function (val) {
                 return <ResponseCard data={val} key={val._id}></ResponseCard>

@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+}
+html,body{
+  height: 100%;
+}
