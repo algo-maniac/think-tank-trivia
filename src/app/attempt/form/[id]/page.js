@@ -6,9 +6,11 @@ import Loader from '@/components/Loader';
 import Modal from '@/components/Modal';
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Page({ params }) {
     const formId = params.id;
     // dummy data need to connect backend
+    const router=useRouter();
     const [questions, setQuestion] = useState([]);
     const [response, setResponse] = useState([]);
     const [modal, setModal] = useState(false)
@@ -35,9 +37,9 @@ export default function Page({ params }) {
             if(msg==="The reponse was submitted"){
                 setResponded(true);
             }
-            console.log(data.form.questions)
             setQuestion(data.form.questions)
             setLoader(false);
+            router.push('/dashboard');
         }).catch((er) => {
             console.log("Error");
         })

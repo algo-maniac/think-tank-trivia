@@ -30,7 +30,7 @@
     color: rgb(114, 113, 113);
 }
 
-textarea{
+.textarea{
     border: 0.2px solid black;
     background-color: rgb(233, 227, 227);
 }
