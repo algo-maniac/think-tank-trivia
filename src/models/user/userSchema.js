@@ -37,8 +37,8 @@ const userSchema = new mongoose.Schema({
         default:0
     },
     avg_score: {
-        type: mongoose.Schema.Types.Decimal128,
-        default:0
+        type: Number,
+        default:0.0
     },
     avatar: {
         type: String,

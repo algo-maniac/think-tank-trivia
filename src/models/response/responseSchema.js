@@ -22,9 +22,9 @@ const responseSchema = new mongoose.Schema({
     responses: [{
         type:ansSchema
     }],
-    marks_obtained: {
+    percentage_obtained: {
         type: Number,
-        default: 0
+        default: 0.0
     },
     date: {
         type: Date,

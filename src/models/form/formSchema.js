@@ -29,6 +29,10 @@ const formSchema = new mongoose.Schema({
     responses_no:{
         type: Number,
         default:0
+    },
+    total_marks:{
+        type: Number,
+        default:0.0
     }
 });
 

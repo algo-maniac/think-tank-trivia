@@ -7,7 +7,7 @@ export async function GET(req,{params}){
     try{
         const {formId}=params;
         await mongoose.connect(process.env.MONGO_URL);
-        const responses_list=await Responses.find({form:formId},{user:1,date:1})
+        const responses_list=await Responses.find({form:formId},{user:1,date:1,percentage_obtained:1})
         .populate({
             path:'user',
             select:"name"

@@ -14,6 +14,7 @@ export async function POST(request) {
             return NextResponse.json({ ok: false, message: "user not found" },{status:400});   
         }
         let questions = [];
+        let total_marks=0;
         for (let iter of data) {
             let it = iter.value;
             let questDoc;
@@ -24,9 +25,10 @@ export async function POST(request) {
                 questDoc = new Questions({ owner: user_id, ques_type: it.type, question: it.question, a: it.a, b: it.b, c: it.c, d: it.d });
             }
             await questDoc.save();
+            total_marks+=questDoc.marks;
             questions.push(questDoc._id);
         }
-        let formDoc = new Forms({ owner: user_id, form_name: form_name||"form-name", questions: questions, questions_no:questions.length });
+        let formDoc = new Forms({ owner: user_id, form_name: form_name||"form-name", questions: questions, questions_no:questions.length, total_marks:total_marks });
         await formDoc.save();
         userDoc.forms.push(formDoc._id);
         userDoc.forms_no=userDoc.forms.length;
