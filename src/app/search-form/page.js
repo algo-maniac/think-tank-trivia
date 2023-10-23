@@ -42,14 +42,18 @@ export default function Page(){
         }).then((data)=>{
             return data.json();
         }).then((data)=>{
-            setData(data.formsList);
-            console.log(data)
             setLoader(false);
             // if(mode==="URL"){
                 
-            // }
-            // else{
+                // }
+                // else{
             if(data!=undefined){
+                if(link===true){     
+                    setData([data.form]);               
+                }
+                else{
+                    setData(data.formsList);    
+                }
                 setForms(true);
                 setNotfound(false);
             }
