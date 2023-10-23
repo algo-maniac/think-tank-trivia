@@ -4,6 +4,8 @@ import React, { useContext, useState } from 'react';
 import { IoLogoDropbox } from "react-icons/io"
 import { AiOutlineDoubleLeft } from "react-icons/ai"
 import { AiTwotoneHome } from "react-icons/ai"
+import {IoMdAnalytics} from "react-icons/io"
+import {AiOutlineFileSearch} from "react-icons/ai"
 import { MdDashboardCustomize } from "react-icons/md"
 import { IoMdSettings } from "react-icons/io"
 import UserContext from '@/context/userContext/userContext';
@@ -42,27 +44,27 @@ const AnalyticsSidebar = () => {
                 </div>
                 <div className='flex flex-col gap-8 ml-4'>
                     <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
-                        <Link href={"/dashboard"}><AiTwotoneHome className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
-                        <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
-                            "hidden": !toggleExpand,
-                        })}>
-                            <Link href={"/"}>Home</Link>
-                        </div>
-                    </div>
-                    <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
                         <Link href={"/dashboard"}><MdDashboardCustomize className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
                         <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
                             "hidden": !toggleExpand,
                         })}>
-                            <Link href={"/dashboard"}>Form-Portal</Link>
+                            <Link href={"/dashboard"}>Dashboard</Link>
                         </div>
                     </div>
                     <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
-                        <Link href={"/#"}><IoMdSettings className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
+                        <Link href={"/search-form"}><AiOutlineFileSearch className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
                         <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
                             "hidden": !toggleExpand,
                         })}>
-                            <Link href={"/#"}>Settings</Link>
+                            <Link href={"/search-form"}>Search-Form</Link>
+                        </div>
+                    </div>
+                    <div className={classNames('flex  shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
+                        <Link href={"/analytics"}><IoMdAnalytics className='text-3xl hover:text-gray-400 hover:cursor-pointer' /></Link>
+                        <div className={classNames('ml-10 hover:text-gray-400 hover:cursor-pointer my-auto', {
+                            "hidden": !toggleExpand,
+                        })}>
+                            <Link href={"/analytics"}>Analytics</Link>
                         </div>
                     </div>
                 </div>

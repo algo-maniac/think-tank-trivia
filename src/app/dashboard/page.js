@@ -53,7 +53,7 @@ export default function Dashboard() {
                 Dashboard
               </div>
             </Link>
-            <Link href={'/search-form'} className={style.anchor}>
+            <Link href={'/search-form'} className={style.anchor}> 
               <div className={style.sidelinks}>
                 Search-Form
               </div>
