@@ -131,6 +131,7 @@ export default function Page({ params }) {
                                 <p>{data.question}</p>
                             </div>
                             <hr></hr>
+                            <form>
                             <div className={style.answer}>
                                 <input type='radio' value='A' name='option' id={data._id} className='a' onChange={mcqHandler}></input><p>{data.a}</p>
                             </div>
@@ -143,6 +144,7 @@ export default function Page({ params }) {
                             <div className={style.answer}>
                                 <input type='radio' value='D' name='option' id={data._id} className='a' onChange={mcqHandler}></input><p>{data.d}</p>
                             </div>
+                            </form>
                         </div>
                     </>
                 }
