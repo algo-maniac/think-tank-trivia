@@ -64,10 +64,10 @@ export default function Page({ params }) {
         // for(let it of answer){
         //     console.log("it",it);
         // }
-        if (answer.size !== questions.length) {
-            setError(true);
-        }
-        else {
+        // if (answer.size !== questions.length) {
+        //     setError(true);
+        // }
+        // else {
             //anwser is map with id as question id and value as value written in input
             let responses = [];
             for (let it of answer) {
@@ -90,7 +90,7 @@ export default function Page({ params }) {
                 console.log('Error');
             })
         }
-    }
+    // }
     return <>
         {loader && <Loader></Loader>}
         {modal && <Modal val={{ type: "success", msg: "Response Submitted successfully" }}></Modal>}
