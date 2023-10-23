@@ -1,21 +1,21 @@
-import './MCQ.css'
+import style from './MCQ.module.css'
 const MCQ=(props)=>{
     return <>
-    <div className={"mcqHeader"}>
-        <div className="question">
+    <div className={style.mcqHeader}>
+        <div className={style.question}>
             <p>{props.content.question}</p>
         </div>
         <hr></hr>
-        <div className="answer">
+        <div className={style.answer}>
             <input type='radio' value={true}></input><p>{props.content.a}</p>
         </div>
-        <div className="answer">
+        <div className={style.answer}>
             <input type='radio' value={true}></input><p>{props.content.b}</p>
         </div>
-        <div className="answer">
+        <div className={style.answer}>
             <input type='radio' value={true}></input><p>{props.content.c}</p>
         </div>
-        <div className="answer">
+        <div className={style.answer}>
             <input type='radio' value={true}></input><p>{props.content.d}</p>
         </div>
     </div>

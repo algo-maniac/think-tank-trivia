@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import './Card.css'
+import style1 from './Card.module.css'
 import Avatar from '@mui/material/Avatar';
 import style from '../app/dashboard/[form]/response/style.module.css'
 import { useState } from 'react';
@@ -59,12 +59,12 @@ const Card=(props)=>{
             </div>
             </>
         }
-        <div className="card" onClick={openHandler}>
-            <div className="header">
-                <Avatar className="avatar">{name[0]}</Avatar>
+        <div className={style1.card} onClick={openHandler}>
+            <div className={style1.header}>
+                <Avatar className={style1.avatar}>{name[0]}</Avatar>
                 <span>{props.val.user.name}</span>
             </div>
-            <div className="msg">
+            <div className={style1.msg}>
                 <span>Responded on<br></br><b>{str}</b></span>
             </div>
         </div>
