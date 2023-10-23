@@ -16,7 +16,7 @@ export default function Page(){
     const [b,setb]=useState("");
     const [c,setc]=useState("");
     const [d,setd]=useState("");
-    const [answer,setAnswer]=useState("");
+    const [answer,setAnswer]=useState("A");
     const [error,setError]=useState(false);
     const {user}=useContext(UserContext);
     const questionHandler1=(env)=>{

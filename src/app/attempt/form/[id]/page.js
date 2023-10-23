@@ -39,7 +39,6 @@ export default function Page({ params }) {
             }
             setQuestion(data.form.questions)
             setLoader(false);
-            router.push('/dashboard');
         }).catch((er) => {
             console.log("Error");
         })
@@ -88,6 +87,7 @@ export default function Page({ params }) {
                 return data.json();
             }).then((data) => {
                 setModal(true);
+                router.push('/dashboard');
             }).catch((er) => {
                 console.log('Error');
             })
