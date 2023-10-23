@@ -40,10 +40,10 @@ export default function Page({params}){
         {
             question.map(function(data){
                 if(data.ques_type=="TEXT"){
-                    return <Question data={data}></Question>
+                    return <Question data={data} key={data._id}></Question>
                 }
                 else{
-                    return <MCQ data={data}></MCQ>
+                    return <MCQ data={data} key={data._id}></MCQ>
                 }
             })
         }

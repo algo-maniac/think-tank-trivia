@@ -84,7 +84,6 @@ export default function Page(){
         }).then((data)=>{
             return data.json();
         }).then((data)=>{
-            console.log(data);
             setModal(true);
         }).catch((er)=>{
             console.log(er)
