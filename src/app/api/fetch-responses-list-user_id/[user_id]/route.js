@@ -5,9 +5,9 @@ import Users from "@/models/user/userSchema";
 
 export async function GET(req,{params}){
     try{
-        const {formId}=params;
+        const {user_id}=params;
         await mongoose.connect(process.env.MONGO_URL);
-        const responses_list=await Responses.find({form:formId},{user:1,date:1,percentage_obtained:1})
+        const responses_list=await Responses.find({user:user_id},{user:1,date:1,percentage_obtained:1})
         .populate({
             path:'user',
             select:"name"

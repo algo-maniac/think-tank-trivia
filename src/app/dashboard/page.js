@@ -12,13 +12,17 @@ import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
 import { signOut } from "next-auth/react";
 import Modal from '@/components/Modal'
+import Card from "@/components/Card";
 export default function Dashboard() {
   const [loaderFlag, setLoader] = useState(true);
-  const [modal,setModal]=useState(false);
-  const [error,setError]=useState(false);
+  const [modal, setModal] = useState(false);
+  const [error, setError] = useState(false);
   let [data, setData] = useState([]);
-  const { user,auth_session,auth_status } = useContext(UserContext);
-  const router=useRouter();
+  let [response, setResponse] = useState([]);
+  let [all_form, setAllForm] = useState(true);
+  let [all_response, setAllResponse] = useState(false);
+  const { user, auth_session, auth_status } = useContext(UserContext);
+  const router = useRouter();
   if (auth_status == 'unauthenticated') {
     return router.push('/login');
   }
@@ -39,15 +43,36 @@ export default function Dashboard() {
         setModal(true);
       }).catch((er) => {
         //console.log('Error');
+        setLoader(false)
         setError(true);
-      })
+      });
+
+      fetch(`/api/fetch-responses-list-user_id/${user._id}`, {
+        method: 'GET'
+      }).then((data) => {
+        return data.json();
+      }).then((data) => {
+        if (data.ok == true) {
+          // setFlag(true);
+          setResponse(data.responses_list);
+        }
+        setLoader(false);
+      }).catch((er) => {
+        // console.log('Error');
+      });
+
     }
+
+
+
     // name,date,responses.length,formid
     fetchDetails();
+
+
   }, [])
   return <>
-    {modal && <Modal val={{type:"success",msg:"All the Forms fetched successfully"}}></Modal>}
-    {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
+    {modal && <Modal val={{ type: "success", msg: "All fetched successfully" }}></Modal>}
+    {error && <Modal val={{ type: "error", msg: "Failed from Server Side" }}></Modal>}
     <div className={style.main}>
       <div className={style.leftpart}>
         <div className={style.logo}>
@@ -58,7 +83,7 @@ export default function Dashboard() {
                 Dashboard
               </div>
             </Link>
-            <Link href={'/search-form'} className={style.anchor}> 
+            <Link href={'/search-form'} className={style.anchor}>
               <div className={style.sidelinks}>
                 Search-Form
               </div>
@@ -89,13 +114,21 @@ export default function Dashboard() {
           </div>
         </div>
         <div className={style.formscontainer}>
-          <div className={style.sorting}>
+          <div className={style.sorting} onClick={()=>{setAllForm(true); setAllResponse(false)}}>
             All Forms
           </div>
+          <div className={style.sorting} onClick={()=>{setAllForm(false); setAllResponse(true)}}>
+            All Responses
+          </div>
           {!loaderFlag && <div className={style.container}>
-            {
+            {all_form &&
               data.map(function (val) {
                 return <ResponseCard data={val} key={val._id}></ResponseCard>
+              })
+            }
+            {all_response &&
+              response.map(function (data) {
+                return <Card key={data._id} val={data}></Card>
               })
             }
           </div>}

@@ -35,7 +35,7 @@ const Card=(props)=>{
         {responseModal &&<>
             <div className={style.responsemodal}>
             </div>
-            <div className={style.infocard}>
+            <div className={`${style.infocard} ${style.fixed_position_for_res_modal}`}>
                 <div className={style.header}>
                     <h1>Filled-Form</h1>
                 </div>
@@ -66,6 +66,8 @@ const Card=(props)=>{
             </div>
             <div className={style1.msg}>
                 <span>Responded on<br></br><b>{str}</b></span>
+                <br />
+                <b>{props.val.form.form_name}</b>
                 <br />
                 <span>Score: <b>{Math.floor(props.val.percentage_obtained)} %</b></span>
             </div>
