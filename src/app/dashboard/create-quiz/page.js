@@ -18,6 +18,8 @@ export default function Page(){
     const [d,setd]=useState("");
     const [answer,setAnswer]=useState("A");
     const [error,setError]=useState(false);
+    const [duration,setDuration]=useState(5);
+    const [formName,setFormName]=useState('form-name');
     const {user}=useContext(UserContext);
     const questionHandler1=(env)=>{
         setQuestion(env.target.value)
@@ -52,6 +54,12 @@ export default function Page(){
     const submitHandler=()=>{
         // console.log(question,a,b,c,d);
         addMCQ();
+        seta("");
+        setb("");
+        setc("");
+        setd("");
+        setQuestion("");
+        setAnswer("A");
     }
     const publishHandler=()=>{
         console.log(data,user._id);
@@ -60,12 +68,21 @@ export default function Page(){
             body:JSON.stringify({
                 data:data,
                 user_id:user._id,
-                quiz_name:"Quiz",
+                quiz_name:formName,
+                duration:duration==""?1:parseInt(duration)
             })
         })
         .then(res=>res.json())
         .then(data=>{setModal(true)})
         .catch(err=>console.log(err.message));
+    }
+    const formNameHandler=(env)=>{
+        setFormName(env.target.value);
+        // console.log("form name ",formName,typeof formName)
+    }
+    const durationHandler=(env)=>{
+        setDuration(env.target.value);
+        // console.log("duration ",duration,typeof duration)
     }
     return <>
         {error && <Modal val={{type:"error",msg:"Validation Error, Do need leave any input as blank"}}></Modal>}
@@ -82,21 +99,26 @@ export default function Page(){
         <div className={style.header1}>
             <div>
                 <h1>Control Panel</h1>
+                <span>Enter the quiz name </span>
+                <input type="text" value={formName} onChange={formNameHandler} />
+                <br />
+                <span>Enter the duration (in minutes) </span>
+                <input type="number" value={duration} onChange={durationHandler} />
             </div>
         </div>
         <div className={style.controlpanel}>
             <div className={style.mcq}>
                 <p>Write the question?</p>
-                <textarea placeholder='Write your question here' className={style.question} onChange={questionHandler1}></textarea>
+                <textarea placeholder='Write your question here' className={style.question} value={question} onChange={questionHandler1}></textarea>
                 <p>Select Options</p>
                 <div className={style.options}>
                     <div className={style.first}>
-                        A: <input onChange={optionHandler1}></input><br></br>
-                        B: <input onChange={optionHandler2}></input>
+                        A: <input onChange={optionHandler1} value={a}></input><br></br>
+                        B: <input onChange={optionHandler2} value={b}></input>
                     </div>
                     <div className={style.second}>
-                        C: <input onChange={optionHandler3}></input><br></br>
-                        D: <input onChange={optionHandler4}></input>
+                        C: <input onChange={optionHandler3} value={c}></input><br></br>
+                        D: <input onChange={optionHandler4} value={d}></input>
                     </div>
                 </div>
                 <p>Choose the correct option</p>

@@ -42,8 +42,9 @@ export default function Page({ params }) {
     const [error, setError] = useState(false);
     const { user } = useContext(UserContext);
     const [responded, setResponded] = useState(false);
-    const [second, setSecond] = useState(10);
-    const [minute, setMinute] = useState(10);
+    const [owner,setOwner]=useState(false);
+    const [second, setSecond] = useState(0);
+    const [minute, setMinute] = useState(0);
     // const [timerId1,setTimerId1]=useState();
     // const [timerId2,setTimerId2]=useState();
     // const [time,setTime]=useState(60);
@@ -51,6 +52,11 @@ export default function Page({ params }) {
     // console.log(user);
 
     if (localStorage.getItem('expTime')) {
+        let fomrId_local = localStorage.getItem('formId');
+        if (fomrId_local != formId) {
+            router.push(`/attempt/form/${fomrId_local}`);
+            return (<h1>Redirection to the currently attempting quiz</h1>)
+        }
         let data_from_localStorage = JSON.parse(localStorage.getItem('data'));
         let responses_from_localStorage = data_from_localStorage.responses;
         for (let it of responses_from_localStorage) {
@@ -63,6 +69,13 @@ export default function Page({ params }) {
     // let time;
 
     useEffect(() => {
+        if (localStorage.getItem('expTime')) {
+            let fomrId_local = localStorage.getItem('formId');
+            if (fomrId_local != formId) {
+                return;
+            }
+        }
+
         fetch(`/api/attempt/fetch-form/${formId}`, {
             method: 'POST',
             body: JSON.stringify({
@@ -78,6 +91,9 @@ export default function Page({ params }) {
             const msg = data.message;
             if (msg === "The reponse was submitted") {
                 setResponded(true);
+            }
+            else if(msg==="Owner"){
+                setOwner(true);
             }
             else {
                 setQuestion(data.form.questions);
@@ -105,6 +121,8 @@ export default function Page({ params }) {
                         let timerId2 = parseInt(localStorage.getItem('timerId2'));
                         clearInterval(timerId1);
                         clearInterval(timerId2);
+                        setSecond(0);
+                        setMinute(0);
                         console.log("TIme < 0");
                         console.log(timerId1);
                         console.log(timerId2);
@@ -129,7 +147,7 @@ export default function Page({ params }) {
                 }
                 let localStorage_set_id = setInterval(() => {
                     mapToLocalStorage(answer);
-                }, 60000);
+                }, 30000);//30s
                 localStorage.setItem('timerId2', localStorage_set_id.toString());
                 console.log("Timer 2", localStorage_set_id);
 
@@ -224,8 +242,13 @@ export default function Page({ params }) {
     }
     // }
     return <>
-        <h1>Timer</h1>
-        <p><span>min : {minute} - sec: {second}</span></p>
+        <div className={style.timer_style}>
+            <strong>Time Remains</strong>
+            <br />
+            <p><span>min : {minute} - sec: {second}</span></p>
+            <p>Don't leave or refresh <br /> the page until submitted</p>
+        </div>
+
         {loader && <Loader></Loader>}
         {modal && <Modal val={{ type: "success", msg: "Response Submitted successfully" }}></Modal>}
         {error && <Modal val={{ type: "Error", msg: "Validation error, Do not leave any input blank" }}></Modal>}
@@ -243,7 +266,8 @@ export default function Page({ params }) {
             </div>
         </div>
         {responded && <h1 className={style.center}>Already Responded</h1>}
-        {!responded &&
+        {owner && <h1 className={style.center}>The owner can't attempt his own form</h1>}
+        {!responded && !owner &&
             questions.map(function (data, id) {
                 if (data.ques_type === "TEXT") {
                     return <>

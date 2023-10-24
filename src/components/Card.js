@@ -66,6 +66,8 @@ const Card=(props)=>{
             </div>
             <div className={style1.msg}>
                 <span>Responded on<br></br><b>{str}</b></span>
+                <br />
+                <span>Score: <b>{Math.floor(props.val.percentage_obtained)} %</b></span>
             </div>
         </div>
     </>

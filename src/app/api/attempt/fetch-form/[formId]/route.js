@@ -4,6 +4,7 @@ import Forms from "@/models/form/formSchema"
 import Questions from "@/models/question/questionSchema";
 import Responses from "@/models/response/responseSchema";
 import ResInits from "@/models/responseInitiate/resInitSchema";
+// import { getServerSession } from "next-auth";
 export async function POST(req,{params}){
     try{
         const {formId}=params;
@@ -26,6 +27,9 @@ export async function POST(req,{params}){
         });
         if(!formDoc){
             return NextResponse.json({ok:false,message:"form not found"},{status:400});
+        }
+        if(formDoc.owner._id==user_id){
+            return NextResponse.json({ok:false,message:"Owner",form:{questions:[]}},{status:400});
         }
         const resInitDoc=await ResInits.findOne({userId:user_id,formId:formId});
         let expTime;
