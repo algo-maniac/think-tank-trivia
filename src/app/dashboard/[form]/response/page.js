@@ -4,35 +4,43 @@ import style from "./style.module.css"
 import Card from "@/components/Card"
 import { useEffect, useState } from "react"
 import Loader from "@/components/Loader"
-export default function Page({params}){
-    const [flag,setFlag]=useState(true);
-    const [responseModal,setResponse]=useState(false);
-    const [response,setRes]=useState([]);
-    const [loader,setLoader]=useState(true);
-    const url=window.location.href.split('/');
-    const formId=url[4];
-    const flagHandler=()=>{
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
+export default function Page({ params }) {
+    const { auth_status } = useContext(UserContext);
+    const router = useRouter();
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
+    const [flag, setFlag] = useState(true);
+    const [responseModal, setResponse] = useState(false);
+    const [response, setRes] = useState([]);
+    const [loader, setLoader] = useState(true);
+    const url = window.location.href.split('/');
+    const formId = url[4];
+    const flagHandler = () => {
         setFlag(!flag);
     }
-    const closeHandler=()=>{
+    const closeHandler = () => {
         setResponse(false);
     }
     // api call for response cards
-    useEffect(()=>{
-        fetch(`/api/fetch-responses-list/${formId}`,{
-            method:'GET'
-        }).then((data)=>{
+    useEffect(() => {
+        fetch(`/api/fetch-responses-list/${formId}`, {
+            method: 'GET'
+        }).then((data) => {
             return data.json();
-        }).then((data)=>{
-            if(data.ok==true){
+        }).then((data) => {
+            if (data.ok == true) {
                 setFlag(true);
                 setRes(data.responses_list);
             }
             setLoader(false);
-        }).catch((er)=>{
-            console.log('Error');
+        }).catch((er) => {
+            // console.log('Error');
         })
-    },[])
+    }, [])
     return <>
         {loader && <Loader></Loader>}
         <div className={style.header}>
@@ -61,7 +69,7 @@ export default function Page({params}){
         </div>
         {flag && <div className={style.individual}>
             {
-                response.map(function(data){
+                response.map(function (data) {
                     return <Card key={data._id} val={data}></Card>
                 })
             }

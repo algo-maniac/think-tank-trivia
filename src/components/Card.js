@@ -15,7 +15,7 @@ const Card=(props)=>{
     var str=`${day} ${month},${year}`
     const name=props.val.user.name;
     const res_id=props.val._id;
-    // console.log(res_id)
+    // //console.log(res_id)
     const closeHandler=()=>{
         setResponse(false);
     }
@@ -26,7 +26,7 @@ const Card=(props)=>{
         }).then((data)=>{
             return data.json();
         }).then((data)=>{
-            // console.log(data.response_details.responses);
+            // //console.log(data.response_details.responses);
             setQuestion(data.response_details.responses);
             setLoader(false)
         })

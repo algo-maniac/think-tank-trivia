@@ -40,16 +40,19 @@ export default function Page({ params }) {
     const [loader, setLoader] = useState(true);
     const [answer, setAnswer] = useState(new Map);
     const [error, setError] = useState(false);
-    const { user } = useContext(UserContext);
+    const { user, auth_status } = useContext(UserContext);
     const [responded, setResponded] = useState(false);
-    const [owner,setOwner]=useState(false);
+    const [owner, setOwner] = useState(false);
     const [second, setSecond] = useState(0);
     const [minute, setMinute] = useState(0);
     // const [timerId1,setTimerId1]=useState();
     // const [timerId2,setTimerId2]=useState();
     // const [time,setTime]=useState(60);
     // const [time,setTime]=useState(60)
-    // console.log(user);
+    // //console.log(user);
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
 
     if (localStorage.getItem('expTime')) {
         let fomrId_local = localStorage.getItem('formId');
@@ -92,7 +95,7 @@ export default function Page({ params }) {
             if (msg === "The reponse was submitted") {
                 setResponded(true);
             }
-            else if(msg==="Owner"){
+            else if (msg === "Owner") {
                 setOwner(true);
             }
             else {
@@ -123,15 +126,15 @@ export default function Page({ params }) {
                         clearInterval(timerId2);
                         setSecond(0);
                         setMinute(0);
-                        console.log("TIme < 0");
-                        console.log(timerId1);
-                        console.log(timerId2);
+                        //console.log("TIme < 0");
+                        //console.log(timerId1);
+                        //console.log(timerId2);
                         setTimeout(() => { submitHandler(); }, 1000);
 
                     }
-                    console.log("TIME", TIME);
-                    // console.log("state timer 1",timerId1);
-                    // console.log("state timer 2",timerId2);
+                    //console.log("TIME", TIME);
+                    // //console.log("state timer 1",timerId1);
+                    // //console.log("state timer 2",timerId2);
                     let min = Math.floor(TIME / 60);
                     let sec = TIME % 60;
                     setMinute(min);
@@ -140,7 +143,7 @@ export default function Page({ params }) {
                     localStorage.setItem('TIME', TIME.toString());
                 }, 1000);
                 localStorage.setItem('timerId1', time_counter_id.toString());
-                console.log("Timer 1", time_counter_id);
+                //console.log("Timer 1", time_counter_id);
 
                 if (localStorage.getItem('timerId2')) {
                     clearInterval(parseInt(localStorage.getItem('timerId2')));
@@ -149,7 +152,7 @@ export default function Page({ params }) {
                     mapToLocalStorage(answer);
                 }, 30000);//30s
                 localStorage.setItem('timerId2', localStorage_set_id.toString());
-                console.log("Timer 2", localStorage_set_id);
+                //console.log("Timer 2", localStorage_set_id);
 
 
 
@@ -162,7 +165,7 @@ export default function Page({ params }) {
 
             setLoader(false);
         }).catch((er) => {
-            console.log(er.message);
+            //console.log(er.message);
         })
 
 
@@ -185,9 +188,9 @@ export default function Page({ params }) {
     }
     const submitHandler = () => {
         // validation
-        // console.log(answer.size)
+        // //console.log(answer.size)
         // for(let it of answer){
-        //     console.log("it",it);
+        //     //console.log("it",it);
         // }
         // if (answer.size !== questions.length) {
         //     setError(true);
@@ -230,7 +233,7 @@ export default function Page({ params }) {
             localStorage.removeItem('timerId2');
             router.push('/dashboard');
         }).catch((er) => {
-            console.log('Error');
+            //console.log('Error');
             localStorage.removeItem('data');
             localStorage.removeItem('expTime');
             localStorage.removeItem('formId');

@@ -5,6 +5,7 @@ import CreateQuestion from '@/components/CreateQuestion';
 import CreateMcq from '@/components/CreateMcq';
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 import Modal from '@/components/Modal';
 export default function Page(){
     const [data,setData]=useState([]);
@@ -16,7 +17,11 @@ export default function Page(){
     const [b,setb]=useState("");
     const [c,setc]=useState("");
     const [d,setd]=useState("");
-    const {user}=useContext(UserContext);
+    const {user,auth_status}=useContext(UserContext);
+    const router=useRouter();
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
     const mcqHandler=()=>{
         setFlag(true);
     }
@@ -86,7 +91,7 @@ export default function Page(){
         }).then((data)=>{
             setModal(true);
         }).catch((er)=>{
-            console.log(er)
+            // console.log(er)
             setError(true);
         })
     }

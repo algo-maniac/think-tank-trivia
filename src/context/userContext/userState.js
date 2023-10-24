@@ -10,8 +10,8 @@ export default function UserState(props) {
 
     const [loaderFlag, setLoaderFlag] = useState(false);
 
-    // console.log("auth_status",auth_status);
-    // console.log("session",auth_session);
+    // //console.log("auth_status",auth_status);
+    // //console.log("session",auth_session);
 
     if (auth_status === 'loading') {
         return <h1>Loading...</h1>
@@ -19,7 +19,7 @@ export default function UserState(props) {
 
     const [user, setUser] = useState(() => {
         if (auth_status == 'authenticated') {
-            // console.log("props.user",props.user);
+            // //console.log("props.user",props.user);
             return props.user;
         }
         return "unauthenticated";
@@ -35,16 +35,16 @@ export default function UserState(props) {
                 return res.json();
             })
             .then(data => {
-                // console.log(data);
+                // //console.log(data);
                 setUser(data.user);
             })
             .catch((er) => {
-                console.log('Error from server side')
-                console.log(er);
+                //console.log('Error from server side')
+                //console.log(er);
             })
     }
 
-    // console.log("LocalStorage",localStorage.getItem('expTime'),localStorage);
+    // //console.log("LocalStorage",localStorage.getItem('expTime'),localStorage);
     
 
     if (localStorage.getItem('expTime')) {
@@ -83,7 +83,7 @@ export default function UserState(props) {
     //     fetchUserDetails();
     // },[]);
 
-    // console.log("user state",user);
+    // //console.log("user state",user);
 
     const value = {
         auth_session,
