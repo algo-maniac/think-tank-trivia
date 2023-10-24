@@ -22,7 +22,7 @@ export default function Page() {
     const [duration, setDuration] = useState(5);
     const [formName, setFormName] = useState('form-name');
     const { user, auth_status } = useContext(UserContext);
-    const router=useRouter();
+    const router = useRouter();
     if (auth_status == 'unauthenticated') {
         return router.push('/login');
     }
@@ -102,13 +102,15 @@ export default function Page() {
         </div>
         <div className={style.main}>
             <div className={style.header1}>
-                <div>
+                <div className={style.options}>
                     <h1>Control Panel</h1>
-                    <span>Enter the quiz name </span>
-                    <input type="text" value={formName} onChange={formNameHandler} />
-                    <br />
-                    <span>Enter the duration (in minutes) </span>
-                    <input type="number" value={duration} onChange={durationHandler} />
+                    <div>
+                        <span>Enter the quiz name </span>
+                        <input type="text" value={formName} onChange={formNameHandler} />
+                        <br />
+                        <span>Enter the duration (in minutes) </span>
+                        <input type="number" value={duration} onChange={durationHandler} />
+                    </div>
                 </div>
             </div>
             <div className={style.controlpanel}>
