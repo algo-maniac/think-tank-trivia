@@ -16,7 +16,8 @@ const Analyitcs = () => {
     return router.push('/login');
   }
 
-  const user_score = 90;
+  // const user_score = 90;
+  const user_score = user.avg_score;
   // const badgeUrl = "./BlackMamba.jpg";
   var badgeUrl = "";
   if(user_score>=0 && user_score<5){

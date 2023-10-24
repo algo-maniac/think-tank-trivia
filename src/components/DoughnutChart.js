@@ -14,8 +14,9 @@ const DoughnutChart = () => {
     const [chart, setChart] = useState();
     const { user } = useContext(UserContext);
 
-    // const userId = user._id;
-    const userId = '652a37c6038f4853dbb850d3';
+    const userId = user._id;
+    // const userId = '652a37c6038f4853dbb850d3';
+    // const userId = '65365d82c88be9f7f0f1b034';
 
     useEffect(() => {
 
