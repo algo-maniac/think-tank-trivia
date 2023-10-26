@@ -49,7 +49,7 @@ export default function UserState(props) {
 
     if (localStorage.getItem('expTime')) {
         let exp = new Date(localStorage.getItem('expTime'));
-        exp.setMinutes(exp.getMinutes+5);
+        exp.setMinutes(exp.getMinutes+2);
         let cur = new Date(Date.now());
         let diff = exp - cur;//ms
         let time = diff / 1000;
