@@ -32,7 +32,7 @@ const DoughnutChart = () => {
                 // console.log(data);
                 setChart(data.data);
             }).catch((e) => {
-                console.log(e);
+                // console.log(e);
             })
         }
 

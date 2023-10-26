@@ -17,7 +17,7 @@ export default function page() {
   if (auth_status === 'unauthenticated') {
     return router.push("/")
   }
-  console.log("User Details", auth_session);
+  // console.log("User Details", auth_session);
   return (
     <div>
       <button onClick={() => { signOut() }}>Logout</button>

@@ -269,3 +269,11 @@
   margin-top: 40px;
   text-align: center;
 }
+
+.timer_style{
+  position: fixed;
+  background-color: aquamarine;
+  z-index: -4;
+  top:60px;
+  left: 0;
+}

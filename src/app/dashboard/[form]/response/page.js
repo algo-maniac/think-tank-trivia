@@ -4,7 +4,15 @@ import style from "./style.module.css"
 import Card from "@/components/Card"
 import { useEffect, useState } from "react"
 import Loader from "@/components/Loader"
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Page({ params }) {
+    const { auth_status } = useContext(UserContext);
+    const router = useRouter();
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
     const [flag, setFlag] = useState(true);
     const [responseModal, setResponse] = useState(false);
     const [response, setRes] = useState([]);
@@ -30,7 +38,7 @@ export default function Page({ params }) {
             }
             setLoader(false);
         }).catch((er) => {
-            console.log('Error');
+            console.log("error");
         })
     }, [])
     return <>

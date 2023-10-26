@@ -30,10 +30,10 @@ const PieChart = () => {
             }).then((data)=>{
                 return data.json();
             }).then((data)=>{
-                console.log(data);
+                //console.log(data);
                 setChart(data.data);
             }).catch((e)=>{
-                console.log(e);
+                //console.log(e);
             })
         }
 

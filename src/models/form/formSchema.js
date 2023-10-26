@@ -33,6 +33,10 @@ const formSchema = new mongoose.Schema({
     total_marks:{
         type: Number,
         default:0.0
+    },
+    duration:{
+        type:Number,
+        default:5
     }
 });
 

@@ -20,13 +20,13 @@ const Analyitcs = () => {
   const user_score = user.avg_score;
   // const badgeUrl = "./BlackMamba.jpg";
   var badgeUrl = "";
-  if(user_score>=0 && user_score<5){
+  if (user_score >= 0 && user_score < 5) {
     badgeUrl = "./Unrated.jpg";
-  }else if(user_score>=5 && user_score<49){
+  } else if (user_score >= 5 && user_score < 49) {
     badgeUrl = "./BlackMamba.jpg";
-  }else if(user_score>=50 && user_score<79){
+  } else if (user_score >= 50 && user_score < 79) {
     badgeUrl = "./Wolves.jpg";
-  }else{
+  } else {
     badgeUrl = "./TheLion.jpg";
   }
   return (
@@ -43,15 +43,17 @@ const Analyitcs = () => {
                 <div className='left w-[50%] flex flex-col'>
                   <div className='flex'>
                     <div className='mt-[0.4rem]'>
-                      <GiPoliceBadge className='text-yellow-500'/>
+                      <GiPoliceBadge className='text-yellow-500' />
                     </div>
                     <div className='text-center'>
-                        <h1 className='font-bold text-xl ml-2 bg-gradient-to-r from-amber-700 via-yellow-900 to-red-500 inline-block text-transparent bg-clip-text'>Badge</h1>
+                      <h1 className='font-bold text-xl ml-2 bg-gradient-to-r from-amber-700 via-yellow-900 to-red-500 inline-block text-transparent bg-clip-text'>Badge</h1>
                     </div>
                   </div>
                   <div className=' text-center mt-8'>
                     <h1 className='font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text'>{user.username}</h1>
-                    <p className='text-sm'>avgerage_score : {user_score}</p>
+
+                    <p className='text-sm'>avgerage_score : {Math.floor(user_score)} %</p>
+
                   </div>
                   <div className='flex flex-col mt-8'>
                     <div className='text-center text-sm'>unrated : 0-4</div>

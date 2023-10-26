@@ -3,7 +3,19 @@ import style from './style.module.css'
 import { FaGithub } from 'react-icons/fa';
 import copy from 'copy-to-clipboard'
 import Link from 'next/link';
+<<<<<<< HEAD
 export default function Page({ params }) {
+=======
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
+export default function Page({ params }) {
+    const { auth_status } = useContext(UserContext);
+    const router = useRouter();
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
+>>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
     const url = window.location.href.split('/');
     const formId = url[4];
     const copyLinkHandler = () => {

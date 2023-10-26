@@ -4,7 +4,10 @@ import style from './style.module.css'
 import ResponseCard from '@/components/ResponseCard'
 import FormCard from '@/components/FormCard'
 import Loader from '@/components/Loader'
-import Notfound from '@/components/Notfound' 
+import Notfound from '@/components/Notfound'
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Page(){
     const [flag,setFlag]=useState(true);
     const [loader,setLoader]=useState(false);
@@ -14,6 +17,11 @@ export default function Page(){
     const [input,setInput]=useState('');
     const [formData,setData]=useState([]);
     const [notFound,setNotfound]=useState(false);
+    const {  auth_status } = useContext(UserContext);
+    const router=useRouter();
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
     const filterHandler=()=>{
         setFlag(!flag);
     }
@@ -29,7 +37,7 @@ export default function Page(){
     const submitHandler=()=>{
         setLoader(true);
         setSearch(false);
-        fetch("http://localhost:3000/api/search-form",{
+        fetch("/api/search-form",{
             method:'POST',
             body:JSON.stringify({
                 mode:link?"URL":"UserID",

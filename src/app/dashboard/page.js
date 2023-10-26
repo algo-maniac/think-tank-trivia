@@ -8,15 +8,26 @@ import ResponseCard from "@/components/ResponseCard";
 import { useEffect, useState } from "react";
 import UserContext from "@/context/userContext/userContext";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
 import { signOut } from "next-auth/react";
 import Modal from '@/components/Modal'
+import Card from "@/components/Card";
 export default function Dashboard() {
   const [loaderFlag, setLoader] = useState(true);
   const [modal, setModal] = useState(false);
   const [error, setError] = useState(false);
   let [data, setData] = useState([]);
-  const { user, auth_session } = useContext(UserContext);
+
+  let [response, setResponse] = useState([]);
+  let [all_form, setAllForm] = useState(true);
+  let [all_response, setAllResponse] = useState(false);
+  const { user, auth_session, auth_status } = useContext(UserContext);
+  const router = useRouter();
+  if (auth_status == 'unauthenticated') {
+    return router.push('/login');
+  }
+
   useEffect(() => {
     const fetchDetails = () => {
       fetch("/api/dashboard", {//automatically make a call on current domain
@@ -28,20 +39,41 @@ export default function Dashboard() {
       }).then((data) => {
         return data.json();
       }).then((data) => {
-        console.log(data)
+        //console.log(data)
         setData(data.formsList);
         setLoader(false)
         setModal(true);
       }).catch((er) => {
-        console.log('Error');
+        //console.log('Error');
+        setLoader(false)
         setError(true);
-      })
+      });
+
+      fetch(`/api/fetch-responses-list-user_id/${user._id}`, {
+        method: 'GET'
+      }).then((data) => {
+        return data.json();
+      }).then((data) => {
+        if (data.ok == true) {
+          // setFlag(true);
+          setResponse(data.responses_list);
+        }
+        setLoader(false);
+      }).catch((er) => {
+        // console.log('Error');
+      });
+
     }
+
+
+
     // name,date,responses.length,formid
     fetchDetails();
+
+
   }, [])
   return <>
-    {modal && <Modal val={{ type: "success", msg: "All the Forms fetched successfully" }}></Modal>}
+    {modal && <Modal val={{ type: "success", msg: "All fetched successfully" }}></Modal>}
     {error && <Modal val={{ type: "error", msg: "Failed from Server Side" }}></Modal>}
     <div className={style.main}>
       <div className={style.leftpart}>
@@ -79,18 +111,26 @@ export default function Dashboard() {
         <div className={style.header}>
           <Link href={"/"} style={{ textDecoration: 'none' }}><div className={style.content}>Home</div></Link>
           <div className={style.buttons}>
-            <button className={style.button27} role="button"><Link href={'dashboard/create-form'} className={style.anchor}>+Create Form</Link></button>
+            {/* <button className={style.button27} role="button"><Link href={'dashboard/create-form'} className={style.anchor}>+Create Form</Link></button> */}
             <button className={style.button26} role="button"><Link href={'dashboard/create-quiz'} className={style.anchor}>+Create Quiz</Link></button>
           </div>
         </div>
         <div className={style.formscontainer}>
-          <div className={style.sorting}>
+          <div className={style.sorting} onClick={()=>{setAllForm(true); setAllResponse(false)}}>
             All Forms
           </div>
+          <div className={style.sorting} onClick={()=>{setAllForm(false); setAllResponse(true)}}>
+            All Responses
+          </div>
           {!loaderFlag && <div className={style.container}>
-            {
+            {all_form &&
               data.map(function (val) {
                 return <ResponseCard data={val} key={val._id}></ResponseCard>
+              })
+            }
+            {all_response &&
+              response.map(function (data) {
+                return <Card key={data._id} val={data}></Card>
               })
             }
           </div>}

@@ -4,14 +4,22 @@ import FormHeader from '../../../components/FormHeader'
 import MCQ from '../../../components/MCQ'
 import Question from '@/components/Question';
 import { useEffect, useState } from 'react';
+import UserContext from '@/context/userContext/userContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Page({ params }) {
+    const { auth_status } = useContext(UserContext);
+    const router = useRouter();
+    if (auth_status == 'unauthenticated') {
+        return router.push('/login');
+    }
     const formId = params.form;
     const [question, setQuestion] = useState([]);
     useEffect(() => {
         async function fetchForm() {
             let data = await fetch(`/api/dashboard/${formId}`);
             data = await data.json();
-            console.log(data)
+            // console.log(data)
             // console.log("data received at client",data);
             setQuestion(data.form.questions)
         }
