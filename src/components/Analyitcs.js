@@ -46,11 +46,11 @@ const Analyitcs = () => {
                       <GiPoliceBadge className='text-yellow-500'/>
                     </div>
                     <div className='text-center'>
-                        <h1 className='font-bold text-xl ml-2 text-yellow-900'>Badge</h1>
+                        <h1 className='font-bold text-xl ml-2 bg-gradient-to-r from-amber-700 via-yellow-900 to-red-500 inline-block text-transparent bg-clip-text'>Badge</h1>
                     </div>
                   </div>
                   <div className=' text-center mt-8'>
-                    <h1 className='font-bold'>{user.username}</h1>
+                    <h1 className='font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text'>{user.username}</h1>
                     <p className='text-sm'>avgerage_score : {user_score}</p>
                   </div>
                   <div className='flex flex-col mt-8'>

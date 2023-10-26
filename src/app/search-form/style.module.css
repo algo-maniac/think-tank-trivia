@@ -1,65 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
-.header{
-    margin: 0px;
-    width: 100%;
-    display: flex;
-    font-family: 'Bungee Shade', cursive;
-    font-family: 'Cutive', serif;
-    font-family: 'Poppins', sans-serif;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 1px solid black; */
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+.header {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.logo{
-    width: 15%;
+
+.logo {
+  width: 20%;
+  display: flex;
+  /* border: 1px solid red; */
 }
-.nav div:hover{
-    background-color: rgb(203, 227, 245);
-    border-radius: 10px;
+
+.logo h3 {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 1rem;
+  font-weight: bolder;
 }
-.green{
+
+.nav div:hover {
+  background-color: rgb(203, 227, 245);
+  border-radius: 10px;
+}
+
+.green {
   color: white;
   background-color: rgb(12, 103, 13);
 }
-.nav{
-    display: flex;
-    flex-direction: row;
-    width: 25%;
-    justify-content: space-around;
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+  gap: 4rem;
 }
-.nav div{
-    text-align: center;
-    width: 20%;
-    height: 70%;
-    margin: auto;
-    align-items: center;
+
+.nav div {
+  text-align: center;
+  width: 20%;
+  height: 70%;
+  margin: auto;
+  align-items: center;
 }
-.nav div a{
-    text-decoration: none;
-    color: gray;
-    display: block;
-    margin-top: 8px;
+
+.nav div a {
+  text-decoration: none;
+  color: gray;
+  display: block;
+  margin-top: 8px;
+  cursor: pointer;
 }
-.nav div a:active{
-    color: rgb(18, 18, 183);
+
+.nav div a:active {
+  color: rgb(18, 18, 183);
 }
-.nav div a:hover{
-    color: blue;
+
+.nav div a:hover {
+  color: blue;
 }
-.mode{
-    width: 15%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+.mode {
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.mode button{
-    height: 65%;
-    width: 40%;
-    margin: auto;
-    text-align: center;
+
+.mode button {
+  height: 65%;
+  width: 40%; 
+  margin: auto;
+  text-align: center;
 
 }
+
 .button4 {
   appearance: none;
   background-color: #FAFBFC;
@@ -116,6 +142,7 @@
 .button4:-webkit-details-marker {
   display: none;
 }
+
 .button31 {
   background-color: #222;
   border-radius: 4px;
@@ -124,7 +151,7 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
@@ -148,14 +175,16 @@
 .button31:focus {
   opacity: .75;
 }
-.searchpanel{
+
+.searchpanel {
   width: 70%;
   margin: auto;
   /* border: 1px solid black; */
   margin-top: 45px;
   min-height: 50px;
 }
-.searchbox{
+
+.searchbox {
   display: grid;
   margin: 10px;
   /* border: 1px solid black; */
@@ -164,19 +193,24 @@
   grid-template-columns: 65% 15% 15%;
   grid-gap: 10px;
 }
-.searchinput{
+
+.searchinput {
   display: grid;
   grid-template-columns: 7% 93%;
 }
-.second,.first{
+
+.second,
+.first {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.first{
+
+.first {
   font-size: 1.6rem;
 }
-.searchinput input{
+
+.searchinput input {
   height: 80%;
   box-sizing: border-box;
   width: 100%;
@@ -184,20 +218,24 @@
   border: 2px solid black;
   /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
   border-radius: 5px;
+  padding: 1rem;
 }
-.filterbtn{
+
+.filterbtn {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.searchbtn{
+
+.searchbtn {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.filteroption{
+
+.filteroption {
   width: 70%;
   margin: auto;
   /* border: 1px solid black; */
@@ -205,7 +243,8 @@
   margin-top: 0px;
   min-height: 30px;
 }
-.filteroption .container{
+
+.filteroption .container {
   display: grid;
   box-sizing: border-box;
   /* border: 1px solid black; */
@@ -213,13 +252,16 @@
   height: 45px;
   grid-template-columns: 20% 20%;
 }
-.link,.user{
+
+.link,
+.user {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
 }
-.link:hover{
+
+.link:hover {
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
   font-family: 'Poppins', sans-serif;
@@ -228,7 +270,8 @@
   cursor: pointer;
 
 }
-.user:hover{
+
+.user:hover {
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
   font-weight: 800;
@@ -236,12 +279,13 @@
   background-color: rgb(227, 227, 227);
   cursor: pointer;
 }
+
 /* .link{
   border-bottom: 2px solid black;
 } */
 /* apply logic */
 
-.borderBottom{
+.borderBottom {
   border-bottom: 3px solid black;
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
@@ -249,7 +293,8 @@
   font-weight: 800;
   background-color: rgb(227, 227, 227);
 }
-.individual{
+
+.individual {
   width: 70%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   margin: auto;
@@ -261,29 +306,34 @@
   /* border: 1px solid black; */
 }
 
-.individual,.question{
+.individual,
+.question {
   display: flex;
   align-items: center;
   text-align: center;
 }
-.searchingContent{
+
+.searchingContent {
   margin: auto;
   width: 30%;
   /* border: 1px solid black; */
   margin-top: 50px;
   text-align: center;
 }
-.searchingLogo{
+
+.searchingLogo {
   margin: auto;
   /* border: 1px solid black; */
   width: 10%;
   font-size: 2.9rem;
 }
-.searchingContent h1{
+
+.searchingContent h1 {
   font-weight: 600;
   font-size: 1.4rem;
 }
-.formCard{
+
+.formCard {
   width: 70%;
   /* border: 1px solid black; */
   margin: auto;

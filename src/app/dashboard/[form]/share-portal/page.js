@@ -3,18 +3,20 @@ import style from './style.module.css'
 import { FaGithub } from 'react-icons/fa';
 import copy from 'copy-to-clipboard'
 import Link from 'next/link';
-export default function Page({params}){
-    const url=window.location.href.split('/');
-    const formId=url[4];
-    const copyLinkHandler=()=>{
+export default function Page({ params }) {
+    const url = window.location.href.split('/');
+    const formId = url[4];
+    const copyLinkHandler = () => {
         copy(document.getElementById('input').value);
     }
     return <>
         <div className={style.header}>
             <div className={style.logo}>
-                <img src="/2.jpeg" height="50px"></img>
+                <img src="/favicon.png" height="50px"></img>
+                <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.nav}>
+                <div><a href={"/"}>Home</a></div>
                 <div><a href={`/dashboard/${formId}`}>Preview</a></div>
                 <div><a href={`/dashboard/${formId}/share-portal`}>Share</a></div>
                 <div><a href={`/dashboard/${formId}/response`}>Response</a></div>

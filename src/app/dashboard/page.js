@@ -13,10 +13,10 @@ import { signOut } from "next-auth/react";
 import Modal from '@/components/Modal'
 export default function Dashboard() {
   const [loaderFlag, setLoader] = useState(true);
-  const [modal,setModal]=useState(false);
-  const [error,setError]=useState(false);
+  const [modal, setModal] = useState(false);
+  const [error, setError] = useState(false);
   let [data, setData] = useState([]);
-  const { user,auth_session } = useContext(UserContext);
+  const { user, auth_session } = useContext(UserContext);
   useEffect(() => {
     const fetchDetails = () => {
       fetch("/api/dashboard", {//automatically make a call on current domain
@@ -41,11 +41,11 @@ export default function Dashboard() {
     fetchDetails();
   }, [])
   return <>
-    {modal && <Modal val={{type:"success",msg:"All the Forms fetched successfully"}}></Modal>}
-    {error && <Modal val={{type:"error",msg:"Failed from Server Side"}}></Modal>}
+    {modal && <Modal val={{ type: "success", msg: "All the Forms fetched successfully" }}></Modal>}
+    {error && <Modal val={{ type: "error", msg: "Failed from Server Side" }}></Modal>}
     <div className={style.main}>
       <div className={style.leftpart}>
-        <div className={style.logo}>
+        <div className={style.logo}> 
           <h1 className={style.heading}>ThinkTankTrivia</h1>
           <div className={style.links}>
             <Link href={'/dashboard'} className={style.anchor}>
@@ -53,7 +53,7 @@ export default function Dashboard() {
                 Dashboard
               </div>
             </Link>
-            <Link href={'/search-form'} className={style.anchor}> 
+            <Link href={'/search-form'} className={style.anchor}>
               <div className={style.sidelinks}>
                 Search-Form
               </div>
@@ -77,7 +77,7 @@ export default function Dashboard() {
       </div>
       <div className={style.rightpart}>
         <div className={style.header}>
-          <div className={style.content}>Home</div>
+          <Link href={"/"} style={{ textDecoration: 'none' }}><div className={style.content}>Home</div></Link>
           <div className={style.buttons}>
             <button className={style.button27} role="button"><Link href={'dashboard/create-form'} className={style.anchor}>+Create Form</Link></button>
             <button className={style.button26} role="button"><Link href={'dashboard/create-quiz'} className={style.anchor}>+Create Quiz</Link></button>

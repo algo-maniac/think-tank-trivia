@@ -25,19 +25,19 @@ export default function App() {
       return router.push("/dashboard")
     }
   }
-
+ 
   return (
     <>
       {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
       {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
 
-      <div className={style.outer}>
+      <div className={style.outer}> 
         <div className={style.header}>
           <div className={style.logo}>
-            <div className={style.company}>
+            <div className={style.company}> 
               <img src="favicon.png"></img>
               <h3>Think-Fast-Trivia</h3>
-            </div>
+            </div> 
           </div>
           <div className={style.links}>
             {/* <div className={style.company_name}>

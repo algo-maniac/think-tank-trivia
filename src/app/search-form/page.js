@@ -4,7 +4,7 @@ import style from './style.module.css'
 import ResponseCard from '@/components/ResponseCard'
 import FormCard from '@/components/FormCard'
 import Loader from '@/components/Loader'
-import Notfound from '@/components/Notfound'
+import Notfound from '@/components/Notfound' 
 export default function Page(){
     const [flag,setFlag]=useState(true);
     const [loader,setLoader]=useState(false);
@@ -69,13 +69,13 @@ export default function Page(){
     return <>
        <div className={style.header}>
             <div className={style.logo}>
-                <img src="/2.jpeg" height="50px"></img>
+                {/* <img src="/favicon.png" height="50px"></img> */}
+                <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.nav}>
-                <div><a href>Preview</a></div>
-                <div><a href={"/share-portal"}>Share</a></div>
-                <div><a href={"/response"}>Response</a></div>
-                <div><a href="/setting">Setting</a></div>
+                <div><a href={"/"}>Home</a></div>
+                <div><a href={"/analytics"}>Analytics</a></div>
+                <div><a href={"/dashboard"}>DashBoard</a></div>
             </div>
             <div className={style.mode}>
                 <button className={style.button4}>Light</button>

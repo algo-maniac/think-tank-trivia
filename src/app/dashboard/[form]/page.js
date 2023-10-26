@@ -3,26 +3,28 @@ import style from './style.module.css'
 import FormHeader from '../../../components/FormHeader'
 import MCQ from '../../../components/MCQ'
 import Question from '@/components/Question';
-import {useEffect, useState } from 'react';
-export default function Page({params}){
-    const formId=params.form;
-    const [question,setQuestion]=useState([]);
-    useEffect(()=>{
-        async function fetchForm(){
-            let data=await fetch(`/api/dashboard/${formId}`);
-            data=await data.json();
+import { useEffect, useState } from 'react';
+export default function Page({ params }) {
+    const formId = params.form;
+    const [question, setQuestion] = useState([]);
+    useEffect(() => {
+        async function fetchForm() {
+            let data = await fetch(`/api/dashboard/${formId}`);
+            data = await data.json();
             console.log(data)
             // console.log("data received at client",data);
             setQuestion(data.form.questions)
         }
         fetchForm();
-    },[])
+    }, [])
     return <>
         <div className={style.header}>
             <div className={style.logo}>
-                <img src="/2.jpeg" height="50px"></img>
+                <img src="/favicon.png" height="50px"></img>
+                <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.nav}>
+                <div><a href={"/"}>Home</a></div>
                 <div><a href={`/dashboard/${formId}`}>Preview</a></div>
                 <div><a href={`/dashboard/${formId}/share-portal`}>Share</a></div>
                 <div><a href={`/dashboard/${formId}/response`}>Response</a></div>
@@ -38,11 +40,11 @@ export default function Page({params}){
         {/* Pass the data by props */}
         <FormHeader></FormHeader>
         {
-            question.map(function(data){
-                if(data.ques_type=="TEXT"){
+            question.map(function (data) {
+                if (data.ques_type == "TEXT") {
                     return <Question data={data} key={data._id}></Question>
                 }
-                else{
+                else {
                     return <MCQ data={data} key={data._id}></MCQ>
                 }
             })

@@ -30,7 +30,7 @@ const ChatIcon = () => {
                    
                 </div>
             </div>
-            <button onClick={handleClick} className='bg-purple-700 p-2 mx-2 fixed right-2 bottom-4 hover:bg-purple-900 text-white rounded-lg'>Chat-Bot</button>
+            <button onClick={handleClick} className='p-2 mx-2 fixed right-2 bottom-4 hover:bg-gradient-to-r hover:from-indigo-400 hover:via-green-500 hover:to-blue-600 hover:inline-block hover:text-transparent hover:bg-clip-text rounded-lg bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text border-2 border-violet-500 font-bold'>Chat-Bot</button>
         </>
     )
 }

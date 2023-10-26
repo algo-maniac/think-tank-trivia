@@ -53,6 +53,7 @@ const BarChart = () => {
     }
 
     const newData = chart?.forms?.map((x)=>x.form_list.length);
+    newData?.reverse();
     // console.log(newData);
     const newDate = chart?.forms?.map((x)=>x.date_str);
     // console.log(newDate);

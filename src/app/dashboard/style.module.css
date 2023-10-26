@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
-
 .main{
   display: flex;
   flex-direction: row;
@@ -236,6 +235,10 @@
   font-size: 1.5rem;
   color: gray;
   font-weight: 650;
+  margin-top: 1rem;
+}
+.content:hover{
+  color: rgb(72, 67, 67);
 }
 .buttons{
   width: 25%;

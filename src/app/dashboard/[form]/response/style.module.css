@@ -1,65 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
-.header{
-    margin: 0px;
-    width: 100%;
-    display: flex;
-    font-family: 'Bungee Shade', cursive;
-    font-family: 'Cutive', serif;
-    font-family: 'Poppins', sans-serif;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 1px solid black; */
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+.header {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.logo{
-    width: 15%;
+
+.logo {
+  width: 20%;
+  display: flex;
 }
-.nav div:hover{
-    background-color: rgb(203, 227, 245);
-    border-radius: 10px;
+
+.logo h3 {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.green{
+
+.nav div:hover {
+  background-color: rgb(203, 227, 245);
+  border-radius: 10px;
+}
+
+.green {
   color: white;
   background-color: rgb(12, 103, 13);
 }
-.nav{
-    display: flex;
-    flex-direction: row;
-    width: 25%;
-    justify-content: space-around;
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-around;
+  margin-right: 5rem;
+  gap: 3rem;
 }
-.nav div{
-    text-align: center;
-    width: 20%;
-    height: 70%;
-    margin: auto;
-    align-items: center;
+
+.nav div {
+  text-align: center;
+  width: 20%;
+  height: 70%;
+  margin: auto;
+  align-items: center;
 }
-.nav div a{
-    text-decoration: none;
-    color: gray;
-    display: block;
-    margin-top: 8px;
+
+.nav div a {
+  text-decoration: none;
+  color: gray;
+  display: block;
+  margin-top: 8px;
 }
-.nav div a:active{
-    color: rgb(18, 18, 183);
+
+.nav div a:active {
+  color: rgb(18, 18, 183);
 }
-.nav div a:hover{
-    color: blue;
+
+.nav div a:hover {
+  color: blue;
 }
-.mode{
-    width: 15%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+.mode {
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.mode button{
-    height: 65%;
-    width: 40%;
-    margin: auto;
-    text-align: center;
+
+.mode button {
+  height: 65%;
+  width: 40%;
+  margin: auto;
+  text-align: center;
 
 }
+
 .button4 {
   appearance: none;
   background-color: #FAFBFC;
@@ -116,6 +138,7 @@
 .button4:-webkit-details-marker {
   display: none;
 }
+
 .button31 {
   background-color: #222;
   border-radius: 4px;
@@ -124,7 +147,7 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
@@ -148,23 +171,27 @@
 .button31:focus {
   opacity: .75;
 }
-.responsebtn{
-    width: 30%;
-    margin: auto;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 25% 25%;
-    grid-gap: 50%;
-    height: 50px;
-    border: 1px solid black;
+
+.responsebtn {
+  width: 30%;
+  margin: auto;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 25% 25%;
+  grid-gap: 50%;
+  height: 50px;
+  border: 1px solid black;
 }
-.individual,.question{
-    display: flex;
-    align-items: center;
-    text-align: center;
+
+.individual,
+.question {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
-.examContainer .header1{
-display: flex;
+
+.examContainer .header1 {
+  display: flex;
   width: 40%;
   height: 40px;
   margin: auto;
@@ -173,10 +200,11 @@ display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   font-family: 'Bungee Shade', cursive;
-font-family: 'Cutive', serif;
-font-family: 'Poppins', sans-serif;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
 }
-.examContainer .header1 div{
+
+.examContainer .header1 div {
   width: 20%;
   display: flex;
   transition: all 0.5s;
@@ -186,32 +214,36 @@ font-family: 'Poppins', sans-serif;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
-.examContainer .header1 div:hover{
+
+.examContainer .header1 div:hover {
   cursor: pointer;
   /* background-color: rgb(183, 184, 184); */
   background-color: rgb(133, 250, 139);
   color: black;
   font-family: 'Bungee Shade', cursive;
-font-family: 'Cutive', serif;
-font-family: 'Poppins', sans-serif;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
 }
-.examContainer .header1 div span{
+
+.examContainer .header1 div span {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.individual{
-    width: 60%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    margin: auto;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* border: 1px solid black; */
+
+.individual {
+  width: 60%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* border: 1px solid black; */
 }
-.responsemodal{
+
+.responsemodal {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -219,7 +251,8 @@ font-family: 'Poppins', sans-serif;
   opacity: 0.3;
   z-index: 0;
 }
-.infocard{
+
+.infocard {
   width: 50%;
   margin: auto;
   position: absolute;
@@ -235,44 +268,53 @@ font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   min-height: 20%;
 }
-.infocard .header{
+
+.infocard .header {
   background-color: black;
   color: white;
   padding: 9px;
   border-radius: 6px;
 }
-.infocard .header svg{
+
+.infocard .header svg {
   font-size: 2.2rem;
   margin: 10px;
   color: white;
   box-sizing: border-box;
 }
-.infocard .card{
+
+.infocard .card {
   color: white;
 }
-.infocard label{
+
+.infocard label {
   font-size: 1.1rem;
   font-weight: 400;
   text-align: left;
   margin: 5px;
 }
-.infocard .questionContainer{
+
+.infocard .questionContainer {
   margin: 5px;
   box-sizing: border-box;
 }
-.infocard .question{
+
+.infocard .question {
   font-size: 1.04rem;
   font-weight: 800;
 }
-.infocard .answer{
+
+.infocard .answer {
   color: rgb(5, 120, 5);
   text-align: left;
 }
-.questionBox{
+
+.questionBox {
   padding: 3px;
   box-sizing: border-box;
 }
-.questionBox:nth-child(odd){
+
+.questionBox:nth-child(odd) {
   background-color: rgb(255, 243, 209);
 
 }
@@ -311,9 +353,11 @@ font-family: 'Poppins', sans-serif;
 .button1:focus {
   background-color: rgb(247, 3, 3);
 }
-.infocard .closeBtn{
+
+.infocard .closeBtn {
   margin: 5px;
 }
-.questionFeature{
+
+.questionFeature {
   text-align: center;
 }
