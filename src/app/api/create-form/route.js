@@ -7,7 +7,7 @@ export async function POST(request) {
     // console.log(res.params.id);
     try {
         mongoose.connect(process.env.MONGO_URL);
-        const { data, user_id, form_name } = await request.json();
+        const { data, user_id, form_name,duration } = await request.json();
         // console.log("form name",form_name);
         let userDoc = await Users.findById(user_id);
         if(!userDoc){
@@ -28,7 +28,7 @@ export async function POST(request) {
             total_marks+=questDoc.marks;
             questions.push(questDoc._id);
         }
-        let formDoc = new Forms({ owner: user_id, form_name: form_name||"form-name", questions: questions, questions_no:questions.length, total_marks:total_marks });
+        let formDoc = new Forms({ owner: user_id, form_name: form_name||"form-name", questions: questions, questions_no:questions.length, total_marks:total_marks, duration:duration||5 });
         await formDoc.save();
         userDoc.forms.push(formDoc._id);
         userDoc.forms_no=userDoc.forms.length;

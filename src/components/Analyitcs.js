@@ -51,7 +51,7 @@ const Analyitcs = () => {
                   </div>
                   <div className=' text-center mt-8'>
                     <h1 className='font-bold'>{user.username}</h1>
-                    <p className='text-sm'>avgerage_score : {user_score}</p>
+                    <p className='text-sm'>avgerage_score : {Math.floor(user_score)} %</p>
                   </div>
                   <div className='flex flex-col mt-8'>
                     <div className='text-center text-sm'>unrated : 0-4</div>

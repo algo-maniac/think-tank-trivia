@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import style from './FormCard.module.css'
 import Link from "next/link";
 const Page=(props)=>{
-    console.log(props);
+    // console.log(props);
     const date=new Date(props.data.date);
     var day=date.getDate();
     var month=date.toLocaleString('default', { month: 'long' });

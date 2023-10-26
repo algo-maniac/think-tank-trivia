@@ -5,9 +5,9 @@ import { faSquareCheck,faCircleExclamation } from '@fortawesome/free-solid-svg-i
 const Modal=(props)=>{
     const type=props.val.type;
     const msg=props.val.msg;
-    console.log(type,msg);
+    //console.log(type,msg);
     const [flag,setFlag]=useState(true);
-    console.log(flag);
+    //console.log(flag);
     const flagHandler=()=>{
         setFlag(false);
     }

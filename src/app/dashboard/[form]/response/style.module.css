@@ -317,3 +317,9 @@ font-family: 'Poppins', sans-serif;
 .questionFeature{
   text-align: center;
 }
+
+.fixed_position_for_res_modal{
+  position: fixed;
+  top:70px;
+  right: auto;
+}

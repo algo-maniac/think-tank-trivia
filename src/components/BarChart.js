@@ -33,7 +33,7 @@ const BarChart = () => {
             }).then((data) => {
                 setChart(data.data);
             }).catch((e) => {
-                console.log(e);
+                //console.log(e);
             })
         }
 
@@ -45,7 +45,7 @@ const BarChart = () => {
     // const dates = ['12:10:2022','13:10:2022','14:10:2022','15:10:2022','16:10:2022','17:10:2022','18:10:2022'];
     // const dates = ['2022-10-12','2022-10-13','2022-10-14','2022-10-15','2022-10-16','2022-10-17','2022-10-18']
     const dp = [];
-    // console.log(date.getMonth());
+    // //console.log(date.getMonth());
     // const newdate = new Date(date.valueOf() - 1000*60*60*24);
     for (let i = 0; i < 7; i++) {
         dates.push(new Date(date.valueOf() - i * 1000 * 60 * 60 * 24));
@@ -53,10 +53,10 @@ const BarChart = () => {
     }
 
     const newData = chart?.forms?.map((x)=>x.form_list.length);
-    // console.log(newData);
+    // //console.log(newData);
     const newDate = chart?.forms?.map((x)=>x.date_str);
-    // console.log(newDate);
-    // console.log(date);
+    // //console.log(newDate);
+    // //console.log(date);
 
     const data = {
         labels: [dates[0], dates[1], dates[2], dates[3], dates[4], dates[5], dates[6]],

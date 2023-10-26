@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import Forms from "@/models/form/formSchema"
 import Questions from "@/models/question/questionSchema";
 import Responses from "@/models/response/responseSchema";
+import ResInits from "@/models/responseInitiate/resInitSchema";
+// import { getServerSession } from "next-auth";
 export async function POST(req,{params}){
     try{
         const {formId}=params;
@@ -13,7 +15,8 @@ export async function POST(req,{params}){
         if(resDoc){
             return NextResponse.json({ok:false,message:"The reponse was submitted",form:{questions:[]}},{status:400});
         }
-        const formDoc=await Forms.findById(formId,{responses:0,responses_no:0})
+        
+        const formDoc=await Forms.findById(formId,{responses:0,responses_no:0,})
         .populate({
             path:'owner',
             select:"name username email"
@@ -25,7 +28,24 @@ export async function POST(req,{params}){
         if(!formDoc){
             return NextResponse.json({ok:false,message:"form not found"},{status:400});
         }
-        return NextResponse.json({ok:true,message:"form found",form:formDoc},{status:200});
+        if(formDoc.owner._id==user_id){
+            return NextResponse.json({ok:false,message:"Owner",form:{questions:[]}},{status:400});
+        }
+        const resInitDoc=await ResInits.findOne({userId:user_id,formId:formId});
+        let expTime;
+        if(resInitDoc){
+            expTime=resInitDoc.expireTime;
+        }
+        else{
+            const curTime=new Date(Date.now());
+            curTime.setMinutes(curTime.getMinutes()+formDoc.duration);
+            const newResInitDoc=new ResInits({userId:user_id,formId:formId,expireTime:curTime.toISOString()});
+            await newResInitDoc.save();
+            expTime=curTime.toISOString();
+        }
+        
+
+        return NextResponse.json({ok:true,message:"form found",form:formDoc,expTime:expTime},{status:200});
     }
     catch(er){
         // console.log(er);
