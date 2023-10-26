@@ -5,7 +5,7 @@
     width: 100%;
     position: relative;
     margin-left: 0px;
-    height: 70px;
+    height: 85px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
     background-color: #fff;
 }
@@ -22,28 +22,64 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+.logo{
+    /* border: 1px solid blue; */
+    width: 14rem;
+}
+.company{
+    /* border: 1px solid rgb(62, 20, 213); */
+    display: flex;
+    /* justify-content: center; */
     width: 100%;
+}
+.company h3{
+    /* border: 1px solid gray; */
+    width: 100%;
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.company img{
+    width: 30%;
+    border-radius: 100%;
+    /* border: 1px solid blanchedalmond; */
 }
 .links{
     display: flex;
     flex-direction: row;
-    margin-left: 35px;
+    /* margin-left: 10px; */
+}
+.company_name{
+    color: black;
+    font-weight: bolder;
+    /* float: left; */
+    border: 1px solid violet;
 }
 .links div{
-    width: 16%;
+    width: 22%;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
     font-family: 'Kanit', sans-serif;
     justify-content: space-around;
-    margin: 3px;
+    margin: 13px;
     font-size: 1.4rem;
+    /* text-align: center; */
+    /* border: 1px solid red; */
+    margin-top: -0.2rem;
+}
+.form_api{
+    margin-right: auto;
+    color: #052744;
+}
+.form_portal{
     text-align: center;
 }
 .links a:link{
     text-decoration: none;
     font-weight: 400;
-    color: rgb(69, 66, 66);
+    color: rgb(7, 6, 6);
     font-size: 1.15rem;
 }
 .links a{

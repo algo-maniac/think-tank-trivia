@@ -2,6 +2,7 @@
 import style from "./style.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faCircleStop } from "@fortawesome/free-solid-svg-icons";
+import Typewriter from 'typewriter-effect';
 import Link from "next/link";
 import ChatIcon from "@/components/ChatIcon";
 import { useSession, signOut } from "next-auth/react";
@@ -15,7 +16,7 @@ export default function App() {
   const router = useRouter();
   // const { data, status } = useSession();
   const { auth_session: data, auth_status: status } = useContext(UserContext);
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   // console.log(user)
   const middlewire = () => {
     if (status == "unauthenticated") {
@@ -27,21 +28,27 @@ export default function App() {
 
   return (
     <>
-    {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
-    {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
+      {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
+      {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
 
       <div className={style.outer}>
         <div className={style.header}>
           <div className={style.logo}>
-            <img src="2.jpeg" height="50px"></img>
+            <div className={style.company}>
+              <img src="favicon.png"></img>
+              <h3>Think-Fast-Trivia</h3>
+            </div>
           </div>
           <div className={style.links}>
-            <div>
+            {/* <div className={style.company_name}>
+                Think-Fast-Trivia
+            </div> */}
+            <div className={style.form_portal}>
               <a onClick={middlewire} className={style.linkTitle}>
                 Form-Portal
               </a>
             </div>
-            <div>
+            <div className={style.form_api}>
               <a href="/formportal" className={style.linkTitle}>
                 API
               </a>
@@ -61,10 +68,10 @@ export default function App() {
                   <li>
                     <div className={style.user_profile_header}>
                       <img src={data.user.image} alt={data.user.name} height={50} width={50} />
-                      <h3>{data.user.name}</h3>
+                      <h3>{user.name}</h3>
                     </div>
                     <ul className={style.drop_down}>
-                        <li> <Link href={"/analytics"} onClick={middlewire}> view profile </Link> </li>
+                      <li> <Link href={"/analytics"} onClick={middlewire}> view profile </Link> </li>
                       <li><button onClick={() => { signOut() }}>Logout</button></li>
                     </ul>
                   </li>
@@ -85,7 +92,14 @@ export default function App() {
             Show <span>Creativity.</span>
           </h1>
           <h1>
-            <span>Build</span> Community.
+            {/* <span>Build</span> Community. */}
+            <Typewriter
+              options={{
+                strings: ['Build Community', 'Spread Community', 'Grow Community'],
+                autoStart: true,
+                loop: true,
+              }}
+            />
           </h1>
           <div className={style.websiteDesc}>
             <p>

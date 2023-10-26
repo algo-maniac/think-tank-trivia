@@ -29,7 +29,8 @@ const AnalyticsSidebar = () => {
             <div className={sidebarClass}>
                 <div className='flex'>
                     <div className={classNames('flex relative justify-around space-x-7 shadow shadow-sky-900 p-2', { "shadow-none": !toggleExpand })}>
-                        <IoLogoDropbox className='text-green-600 text-5xl' />
+                        {/* <IoLogoDropbox className='text-green-600 text-5xl' /> */}
+                        <Link href={"/"}><img src="favicon.png" alt="loading" className='w-11 rounded-full'/></Link>
                         <div className={classNames('mt-2 font-bold text-lg', { 'hidden': !toggleExpand })}>
                             Think-Tank-Trivia
                         </div>
