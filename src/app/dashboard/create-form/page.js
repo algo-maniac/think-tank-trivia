@@ -7,20 +7,7 @@ import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import Modal from '@/components/Modal';
-<<<<<<< HEAD
-export default function Page() {
-    const [data, setData] = useState([]);
-    const [flag, setFlag] = useState(false);
-    const [question, setQuestion] = useState("");
-    const [modal, setModal] = useState(false);
-    const [error, setError] = useState(false);
-    const [a, seta] = useState("");
-    const [b, setb] = useState("");
-    const [c, setc] = useState("");
-    const [d, setd] = useState("");
-    const { user } = useContext(UserContext);
-    const mcqHandler = () => {
-=======
+
 export default function Page(){
     const [data,setData]=useState([]);
     const [flag,setFlag]=useState(false);
@@ -37,7 +24,6 @@ export default function Page(){
         return router.push('/login');
     }
     const mcqHandler=()=>{
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
         setFlag(true);
     }
     const questionHandler = () => {
@@ -105,13 +91,9 @@ export default function Page(){
             return data.json();
         }).then((data) => {
             setModal(true);
-<<<<<<< HEAD
-        }).catch((er) => {
-            console.log(er)
-=======
+
         }).catch((er)=>{
             // console.log(er)
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
             setError(true);
         })
     }

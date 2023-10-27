@@ -7,10 +7,7 @@ import CreateMcq from '@/components/CreateMcq';
 import Modal from '@/components/Modal';
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
-<<<<<<< HEAD
-=======
 import { useRouter } from 'next/navigation';
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
 export default function Page() {
     const [data, setData] = useState([]);
     const [flag, setFlag] = useState(true);
@@ -22,9 +19,6 @@ export default function Page() {
     const [d, setd] = useState("");
     const [answer, setAnswer] = useState("A");
     const [error, setError] = useState(false);
-<<<<<<< HEAD
-    const { user } = useContext(UserContext);
-=======
     const [duration, setDuration] = useState(5);
     const [formName, setFormName] = useState('form-name');
     const { user, auth_status } = useContext(UserContext);
@@ -32,7 +26,6 @@ export default function Page() {
     if (auth_status == 'unauthenticated') {
         return router.push('/login');
     }
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
     const questionHandler1 = (env) => {
         setQuestion(env.target.value)
     }
@@ -74,29 +67,19 @@ export default function Page() {
         setAnswer("A");
     }
     const publishHandler = () => {
-<<<<<<< HEAD
-        console.log(data, user._id);
-=======
         // console.log(data,user._id);
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
         fetch('/api/create-quiz', {
             method: 'POST',
             body: JSON.stringify({
                 data: data,
                 user_id: user._id,
-<<<<<<< HEAD
-                quiz_name: "Quiz",
-=======
                 quiz_name: formName,
                 duration: duration == "" ? 1 : parseInt(duration)
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
             })
         })
             .then(res => res.json())
             .then(data => { setModal(true) })
             .catch(err => console.log(err.message));
-<<<<<<< HEAD
-=======
     }
     const formNameHandler = (env) => {
         setFormName(env.target.value);
@@ -105,7 +88,6 @@ export default function Page() {
     const durationHandler = (env) => {
         setDuration(env.target.value);
         // console.log("duration ",duration,typeof duration)
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
     }
     return <>
         {error && <Modal val={{ type: "error", msg: "Validation Error, Do need leave any input as blank" }}></Modal>}
@@ -127,10 +109,6 @@ export default function Page() {
         </div>
         <div className={style.main}>
             <div className={style.header1}>
-<<<<<<< HEAD
-                <div>
-                    <h1>Control Panel</h1>
-=======
                 <div className={style.options}>
                     <h1>Control Panel</h1>
                     <div>
@@ -140,24 +118,11 @@ export default function Page() {
                         <span>Enter the duration (in minutes) </span>
                         <input type="number" value={duration} onChange={durationHandler} />
                     </div>
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
                 </div>
             </div>
             <div className={style.controlpanel}>
                 <div className={style.mcq}>
                     <p>Write the question?</p>
-<<<<<<< HEAD
-                    <textarea placeholder='Write your question here' className={style.question} onChange={questionHandler1}></textarea>
-                    <p>Select Options</p>
-                    <div className={style.options}>
-                        <div className={style.first}>
-                            A: <input onChange={optionHandler1}></input><br></br>
-                            B: <input onChange={optionHandler2}></input>
-                        </div>
-                        <div className={style.second}>
-                            C: <input onChange={optionHandler3}></input><br></br>
-                            D: <input onChange={optionHandler4}></input>
-=======
                     <textarea placeholder='Write your question here' className={style.question} value={question} onChange={questionHandler1}></textarea>
                     <p>Select Options</p>
                     <div className={style.options}>
@@ -168,7 +133,6 @@ export default function Page() {
                         <div className={style.second}>
                             C: <input onChange={optionHandler3} value={c}></input><br></br>
                             D: <input onChange={optionHandler4} value={d}></input>
->>>>>>> d4bd070d647ae8aeac5386981f875b3c7741e3e1
                         </div>
                     </div>
                     <p>Choose the correct option</p>

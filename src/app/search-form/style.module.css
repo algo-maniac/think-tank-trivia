@@ -24,7 +24,7 @@
   background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   font-weight: bolder;
 }
 

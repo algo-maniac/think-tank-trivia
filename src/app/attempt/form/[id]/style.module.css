@@ -1,61 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
-.header{
-    margin: 0px;
-    width: 100%;
-    display: flex;
-    font-family: 'Bungee Shade', cursive;
-    font-family: 'Cutive', serif;
-    font-family: 'Poppins', sans-serif;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 1px solid black; */
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+.header {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  font-family: 'Bungee Shade', cursive;
+  font-family: 'Cutive', serif;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.logo{
-    width: 15%;
+
+.logo {
+  width: 20%;
+  display: flex;
 }
-.nav div:hover{
-    background-color: rgb(203, 227, 245);
-    border-radius: 10px;
+
+.logo h3 {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* margin-left: 1rem; */
+  font-weight: bolder;
 }
-.nav{
-    display: flex;
-    flex-direction: row;
-    width: 25%;
-    justify-content: space-around;
+
+.nav div:hover {
+  background-color: rgb(203, 227, 245);
+  border-radius: 10px;
 }
-.nav div{
-    text-align: center;
-    width: 20%;
-    height: 70%;
-    margin: auto;
-    align-items: center;
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-around;
 }
-.nav div a{
-    text-decoration: none;
-    color: gray;
-    display: block;
-    margin-top: 8px;
+
+.nav div {
+  text-align: center;
+  width: 20%;
+  height: 70%;
+  margin: auto;
+  align-items: center;
 }
-.nav div a:active{
-    color: rgb(18, 18, 183);
+
+.nav div a {
+  text-decoration: none;
+  color: gray;
+  display: block;
+  margin-top: 8px;
 }
-.nav div a:hover{
-    color: blue;
+
+.nav div a:active {
+  color: rgb(18, 18, 183);
 }
-.mode{
-    width: 15%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+.nav div a:hover {
+  color: blue;
 }
-.mode button{
-    height: 65%;
-    width: 40%;
-    margin: auto;
-    text-align: center;
+
+.mode {
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.mode button {
+  height: 65%;
+  width: 40%;
+  margin: auto;
+  text-align: center;
 
 }
+
 .button4 {
   appearance: none;
   background-color: #FAFBFC;
@@ -112,6 +133,7 @@
 .button4:-webkit-details-marker {
   display: none;
 }
+
 .button31 {
   background-color: #222;
   border-radius: 4px;
@@ -120,7 +142,7 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
@@ -145,65 +167,70 @@
   opacity: .75;
 }
 
-.header1{
-    width: 55%;
-    /* border: 1px solid black; */
-    margin: auto;
-    height: 150px;
-    padding: 0px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    margin-top: 10px;
-    background-color: rgb(124, 124, 242);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  .header1 div{
-    font-size: 1.1rem;
-    padding: 10px;
-    box-sizing: border-box;
-    color: rgb(255, 253, 253);
-  }
-  .questionHeader{
-    /* border: 1px solid black;
+.header1 {
+  width: 55%;
+  /* border: 1px solid black; */
+  margin: auto;
+  height: 150px;
+  padding: 0px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: rgb(124, 124, 242);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.header1 div {
+  font-size: 1.1rem;
+  padding: 10px;
+  box-sizing: border-box;
+  color: rgb(255, 253, 253);
+}
+
+.questionHeader {
+  /* border: 1px solid black;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; */
-    box-shadow: rgba(71, 70, 70, 0.2) 0px 2px 8px 0px;
-    margin: auto;
-    margin-top: 12px;
-    box-sizing: border-box;
-    width: 55%;
-    border-radius: 11px;
-    padding: 10px;
-    border-left: 6px solid rgb(8, 11, 195);
-    border-right: 6px solid rgb(8, 11, 195);
-}
-.questionHeader .question p{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-weight: 800;
-    font-size: 1.1rem;
-}
-.questionHeader .answer{
-    display: flex;
-    flex-direction: row;
-    margin: 0px;
+  box-shadow: rgba(71, 70, 70, 0.2) 0px 2px 8px 0px;
+  margin: auto;
+  margin-top: 12px;
+  box-sizing: border-box;
+  width: 55%;
+  border-radius: 11px;
+  padding: 10px;
+  border-left: 6px solid rgb(8, 11, 195);
+  border-right: 6px solid rgb(8, 11, 195);
 }
 
-.questionHeader .answer p{
-    margin: 4px;
-    margin-left: 7px;
-    font-size: 0.9rem;
-    color: rgb(114, 113, 113);
+.questionHeader .question p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 800;
+  font-size: 1.1rem;
 }
 
-.textfield{
-    border: 0.2px solid black;
-    width: 100%;
-    border-radius: 5px;
-    background-color: rgb(233, 227, 227);
+.questionHeader .answer {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
 }
-.mcqHeader{
+
+.questionHeader .answer p {
+  margin: 4px;
+  margin-left: 7px;
+  font-size: 0.9rem;
+  color: rgb(114, 113, 113);
+}
+
+.textfield {
+  border: 0.2px solid black;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgb(233, 227, 227);
+}
+
+.mcqHeader {
   margin: auto;
   box-shadow: rgba(65, 63, 63, 0.2) 0px 2px 8px 0px;
   margin-top: 12px;
@@ -211,22 +238,24 @@
   width: 55%;
   border-radius: 11px;
   padding: 10px;
-  border-left: 6px solid rgb(6,150,6);
+  border-left: 6px solid rgb(6, 150, 6);
   border-right: 6px solid rgb(6, 150, 6);
 }
-.mcqHeader .question p{
+
+.mcqHeader .question p {
   margin-top: 5px;
   margin-bottom: 5px;
   font-weight: 800;
   font-size: 1.1rem;
 }
-.mcqHeader .answer{
+
+.mcqHeader .answer {
   display: flex;
   flex-direction: row;
   margin: 0px;
 }
 
-.mcqHeader .answer p{
+.mcqHeader .answer p {
   margin: 4px;
   margin-left: 7px;
   font-size: 0.9rem;
@@ -265,15 +294,16 @@
     padding: 10px 30px;
   }
 }
-.center{
+
+.center {
   margin-top: 40px;
   text-align: center;
 }
 
-.timer_style{
+.timer_style {
   position: fixed;
   background-color: aquamarine;
   z-index: -4;
-  top:60px;
+  top: 60px;
   left: 0;
 }

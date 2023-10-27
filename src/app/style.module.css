@@ -9,7 +9,7 @@
     height: 84px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     background-color: #fff;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .outer {
@@ -752,8 +752,9 @@
     /* left: 50%; */
     /* transform: translateX(50%); */
     transform: translateY(7%);
-    width: 13rem;
+    width: 12.4rem;
     align-items: center;
+    border-radius: 5%;
 
     visibility: hidden;
     opacity: 0;

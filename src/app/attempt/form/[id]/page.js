@@ -257,7 +257,8 @@ export default function Page({ params }) {
         {error && <Modal val={{ type: "Error", msg: "Validation error, Do not leave any input blank" }}></Modal>}
         <div className={style.header}>
             <div className={style.logo}>
-                <img src="/2.jpeg" height="50px"></img>
+                <img src="/favicon.png" height="50px"></img>
+                <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.mode}>
                 <button className={style.button31} onClick={submitHandler}>Submit</button>
@@ -294,16 +295,16 @@ export default function Page({ params }) {
                             <hr></hr>
                             <form>
                                 <div className={style.answer}>
-                                    <input type='radio' value='A' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="A"}></input><p>{data.a}</p>
+                                    <input type='radio' value='A' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "A"}></input><p>{data.a}</p>
                                 </div>
                                 <div className={style.answer}>
-                                    <input type='radio' value='B' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="B"}></input><p>{data.b}</p>
+                                    <input type='radio' value='B' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "B"}></input><p>{data.b}</p>
                                 </div>
                                 <div className={style.answer}>
-                                    <input type='radio' value='C' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="C"}></input><p>{data.c}</p>
+                                    <input type='radio' value='C' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "C"}></input><p>{data.c}</p>
                                 </div>
                                 <div className={style.answer}>
-                                    <input type='radio' value='D' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="D"}></input><p>{data.d}</p>
+                                    <input type='radio' value='D' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "D"}></input><p>{data.d}</p>
                                 </div>
                             </form>
                         </div>

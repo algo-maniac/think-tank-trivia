@@ -8,7 +8,7 @@ import ChatIcon from "@/components/ChatIcon";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import UserContext from "@/context/userContext/userContext";
+import UserContext from "@/context/userContext/userContext"; 
 import Modal from "@/components/Modal";
 import './global.css'
 export default function App() {
