@@ -11,7 +11,16 @@ const resInitSchema=new mongoose.Schema({
     },
     expireTime:{
         type:String
-    }
+    },
+    responses:[{
+        ques_id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'questions'
+        },
+        ans_given:{
+            type:String
+        }
+    }]
 });
 
 const ResInits = mongoose.models.resInits || mongoose.model("resInits", resInitSchema);
