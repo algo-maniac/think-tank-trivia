@@ -13,6 +13,9 @@ import Loader from "@/components/Loader";
 import { signOut } from "next-auth/react";
 import Modal from '@/components/Modal'
 import Card from "@/components/Card";
+import { MdDashboardCustomize } from "react-icons/md"
+import { AiOutlineFileSearch } from "react-icons/ai"
+import { IoMdAnalytics } from "react-icons/io"
 export default function Dashboard() {
   const [loaderFlag, setLoader] = useState(true);
   const [modal, setModal] = useState(false);
@@ -77,7 +80,7 @@ export default function Dashboard() {
     {error && <Modal val={{ type: "error", msg: "Failed from Server Side" }}></Modal>}
     <div className={style.main}>
       <div className={style.leftpart}>
-        <div className={style.logo}> 
+        {/* <div className={style.logo}>
           <h1 className={style.heading}>ThinkTankTrivia</h1>
           <div className={style.links}>
             <Link href={'/dashboard'} className={style.anchor}>
@@ -105,21 +108,64 @@ export default function Dashboard() {
             <span className={style.name}>{user.username}</span>
             <span className={style.logout} onClick={() => { signOut() }}>Logout</span>
           </div>
+        </div> */}
+
+        <div className={style.upper}>
+          <div className={style.logo_icon}>
+            <Link href={"/"}><img src="./favicon.png" alt="loading" /></Link>
+          </div>
+          <div className={style.logo_name}>
+            <h3>Think-Fast-Trivia</h3>
+          </div>
         </div>
+        <div className={style.middle}>
+          <div className={style.child}>
+            <Link href={"/dashboard"} style={{ textDecoration: 'none', color: 'white' }}><MdDashboardCustomize className={style.child_icons} /></Link>
+            <Link href={"/dashboard"} style={{ textDecoration: 'none' }}><div className={style.child_link}>Dashboard</div></Link>
+          </div>
+          <div className={style.child}>
+            <Link href={"/search-form"} style={{ textDecoration: 'none', color: 'white' }}><AiOutlineFileSearch className={style.child_icons} /></Link>
+            <Link href={"/search-form"} style={{ textDecoration: 'none' }}><div className={style.child_link}>Search-Form</div></Link>
+          </div>
+          <div className={style.child}>
+            <Link href={"/analytics"} style={{ textDecoration: 'none', color: 'white' }}><IoMdAnalytics className={style.child_icons} /></Link>
+            <Link href={"/analytics"} style={{ textDecoration: 'none' }}><div className={style.child_link}>Analytics</div></Link>
+          </div>
+        </div>
+        <div className={style.lower}>
+          <div className={style.user_logo}>
+            <img src={auth_session.user.image} alt={user.name} height={40} />
+          </div>
+          <div className={style.user_info}>
+            <div className={style.user_name}>
+              <span>{user.username}</span>
+            </div>
+            <div className={style.log_out} onClick={() => { signOut() }}>
+              <span>Logout</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+
+
+
+
+      {/* ...................................................Right_side .............................................................*/}
       <div className={style.rightpart}>
         <div className={style.header}>
           <Link href={"/"} style={{ textDecoration: 'none' }}><div className={style.content}>Home</div></Link>
           <div className={style.buttons}>
             {/* <button className={style.button27} role="button"><Link href={'dashboard/create-form'} className={style.anchor}>+Create Form</Link></button> */}
-            <button className={style.button26} role="button"><Link href={'dashboard/create-quiz'} className={style.anchor}>+Create Quiz</Link></button>
+            <button className={style.button26} role="button"><Link href={'dashboard/create-quiz'} style={{ textDecoration: 'none', color: 'white' }} className={style.anchor}>+Create Quiz</Link></button>
           </div>
         </div>
         <div className={style.formscontainer}>
-          <div className={style.sorting} onClick={()=>{setAllForm(true); setAllResponse(false)}}>
+          <div className={style.sorting} onClick={() => { setAllForm(true); setAllResponse(false) }}>
             All Forms
           </div>
-          <div className={style.sorting} onClick={()=>{setAllForm(false); setAllResponse(true)}}>
+          <div className={style.sorting} onClick={() => { setAllForm(false); setAllResponse(true) }}>
             All Responses
           </div>
           {!loaderFlag && <div className={style.container}>

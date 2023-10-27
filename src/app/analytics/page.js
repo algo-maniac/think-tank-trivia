@@ -1,7 +1,7 @@
 import Analyitcs from '@/components/Analyitcs'
 import React from 'react'
 export const metadata = {
-    title: "Analytics : THINK-TANK-TRIVIA"
+    title: "Analytics : Think-Fast-Trivia"
   };
 const page = () => {
   return (

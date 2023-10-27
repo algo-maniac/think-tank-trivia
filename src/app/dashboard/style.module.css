@@ -1,25 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
-.main{
+
+.main {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 100%;
   text-decoration: none;
 }
-.anchor{
+
+/* .anchor{
   text-decoration: none;
   color: white;
-}
-.leftpart{
+} */
+.leftpart {
   display: flex;
-  background-color: rgb(5, 39, 69);
-  width: 18%;
-  min-height: 100vh;
+  /* background-color: rgb(5, 39, 69); */
+  background-color: rgb(8 47 73);
+  /* width: 18%; */
+  height: 100vh;
+  position: sticky;
+  left: 0px;
+  top: 0px;
   flex-direction: column;
   border: 1px solid black;
   justify-content: space-between;
 }
-.logo{
+
+/* .logo{
   height: 50%;
 }
 .logo .heading{
@@ -57,7 +64,6 @@
   color: white;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 10px -10px;
   height: 100%;
-  /* border: 1px solid white; */
 }
 .links div:hover{
   cursor: pointer;
@@ -94,11 +100,9 @@
 .info{
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
 }
 .logout{
   display: block;
-  /* border: 1px solid black; */
   margin-top: 5px;
 }
 .logout:hover{
@@ -125,9 +129,111 @@
   font-size: 0.9rem;
   color: white;
   font-family: 'Poppins', sans-serif;
+} */
+
+
+.upper {
+  /* border: 1px solid red; */
+  margin: 1rem;
+  display: flex;
+  padding: 0.7rem;
+  padding-bottom: 0.4rem;
+  gap: 1rem;
+  box-shadow: -1.2px 1px 2px #0c4a6e, 0.4px -0.4px 1px #0c4a6e;
+}
+
+.logo_name {
+  color: white;
+  width: 11rem;
+  font-weight: bolder;
+  padding-top: 0.1rem;
+
+  background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo_icon img {
+  width: 2.10rem;
 }
 
 
+.middle {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  margin: 1rem;
+  gap: 1.5rem;
+}
+
+.child {
+  /* border: 1px solid green; */
+  /* padding-left: 0.6rem;
+  padding-bottom: 0.3rem;
+  padding-top: 0.3rem; */
+  padding: 0.7rem;
+  display: flex;
+  color: white;
+  gap: 2rem;
+  box-shadow: -1.2px 1px 2px #0c4a6e, 0.2px -0.2px 1px #0c4a6e;
+}
+
+.child_icons {
+  font-size: xx-large;
+}
+
+.child_link {
+  color: white;
+  margin-top: 0.2rem;
+}
+
+.child_icons:hover,
+.child_link:hover {
+  color: rgb(205, 199, 199);
+}
+
+
+.lower {
+  display: flex;
+  margin: 1rem;
+  gap: 2rem;
+  /* border: 1px solid red; */
+  padding: 0.7rem;
+  box-shadow: -1.2px 1px 2px #0c4a6e, 0.2px -0.2px 1px #0c4a6e;
+}
+
+.user_logo img {
+  border-radius: 50%;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user_info span {
+  color: white;
+}
+
+.user_name span{
+  background: linear-gradient(90deg, rgb(10, 218, 245), rgb(202, 147, 234), rgb(13, 109, 226));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.log_out {
+  cursor: pointer;
+}
+
+.log_out span:hover {
+  color: rgb(205, 199, 199);
+}
+
+
+
+
+/*.............................................................. rightside ............................................................*/
 /* CSS */
 .button26 {
   appearance: button;
@@ -137,7 +243,7 @@
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  font-family: Graphik,-apple-system,system-ui,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-family: Graphik, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   line-height: 1.15;
   overflow: visible;
@@ -180,7 +286,7 @@
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  font-family: Graphik,-apple-system,system-ui,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-family: Graphik, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   line-height: 1.15;
   overflow: visible;
@@ -212,21 +318,25 @@
   background-color: #03aa38;
   border-color: #03aa38;
 }
-.rightpart{
+
+.rightpart {
   width: 82%;
   /* border: 1px solid black; */
   height: 100%;
 }
-.header{
+
+.header {
   /* border: 1px solid black; */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  ;
   height: 75px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.content{
+
+.content {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -237,21 +347,26 @@
   font-weight: 650;
   margin-top: 1rem;
 }
-.content:hover{
+
+.content:hover {
   color: rgb(72, 67, 67);
 }
-.buttons{
+
+.buttons {
   width: 25%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.button26,.button27{
+
+.button26,
+.button27 {
   height: 60%;
   margin-top: auto;
   margin-bottom: auto;
 }
-.sorting{
+
+.sorting {
   display: block;
   width: 8%;
   margin: 20px;
@@ -265,25 +380,30 @@
   font-family: 'Poppins', sans-serif;
   background-color: rgb(199, 231, 244);
 }
-.sorting:hover{
+
+.sorting:hover {
   cursor: pointer;
   color: darkblue;
   border: 1px solid darkblue;
 }
-.formscontainer{
+
+.formscontainer {
   height: var(100%-75px);
 }
-.container{
+
+.container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.logo h1{
-  background: linear-gradient(90deg,gold,orange,rgb(250, 58, 5));
+
+.logo h1 {
+  background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.sidelinks{
+
+.sidelinks {
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
   font-family: 'Kanit', sans-serif;
