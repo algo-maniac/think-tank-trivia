@@ -85,6 +85,7 @@ export default function Page({ params }) {
     const [notInit,setNotInit]=useState(false);
     const [second, setSecond] = useState(0);
     const [minute, setMinute] = useState(0);
+    const [formName,setFormName]=useState("");
     const [firstTimeLoad,setFirstTimeLoad]=useState(()=>{return true});
     // const [timerId1,setTimerId1]=useState();
     // const [timerId2,setTimerId2]=useState();
@@ -147,6 +148,7 @@ export default function Page({ params }) {
             }
             else {
                 setQuestion(data.form.questions);
+                setFormName(data.form.form_name);
                 //set the time out time in local storage
                 localStorage.setItem('expTime', data.expTime);
                 localStorage.setItem('formId', formId);
@@ -313,6 +315,7 @@ export default function Page({ params }) {
         <div className={style.header}>
             <div className={style.logo}>
                 <img src="/favicon.png" height="50px"></img>
+                
                 <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.mode}>
@@ -321,7 +324,8 @@ export default function Page({ params }) {
         </div>
         <div className={style.header1}>
             <div>
-                <h1>Fill out the Form </h1>
+                <h1>{formName}</h1>
+                <h4>Fill out the Form </h4>
             </div>
         </div>
         {responded && <h1 className={style.center}>Already Responded</h1>}

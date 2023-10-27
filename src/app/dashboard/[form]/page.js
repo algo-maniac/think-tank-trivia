@@ -15,6 +15,7 @@ export default function Page({ params }) {
     }
     const formId = params.form;
     const [question, setQuestion] = useState([]);
+    const [formName,setFormName]=useState("");
     useEffect(() => {
         async function fetchForm() {
             let data = await fetch(`/api/dashboard/${formId}`);
@@ -22,6 +23,7 @@ export default function Page({ params }) {
             // console.log(data)
             // console.log("data received at client",data);
             setQuestion(data.form.questions)
+            setFormName(data.form.form_name);
         }
         fetchForm();
     }, [])
@@ -46,7 +48,7 @@ export default function Page({ params }) {
             <img src="/form-header1.png" height={"100%"} width={"100%"}></img>
         </div>
         {/* Pass the data by props */}
-        <FormHeader></FormHeader>
+        <FormHeader formName={formName}></FormHeader>
         {
             question.map(function (data) {
                 if (data.ques_type == "TEXT") {
