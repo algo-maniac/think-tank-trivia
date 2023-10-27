@@ -17,14 +17,15 @@ const Analyitcs = () => {
   }
 
   // const user_score = 90;
-  const user_score = user.avg_score;
+  const user_score = Math.floor(user.avg_score);
+  console.log(user_score);
   // const badgeUrl = "./BlackMamba.jpg";
   var badgeUrl = "";
-  if (user_score >= 0 && user_score < 5) {
+  if (user_score >= 0 && user_score <= 4) { 
     badgeUrl = "./Unrated.jpg";
-  } else if (user_score >= 5 && user_score < 49) {
+  } else if (user_score >= 5 && user_score <= 49) {
     badgeUrl = "./BlackMamba.jpg";
-  } else if (user_score >= 50 && user_score < 79) {
+  } else if (user_score >= 50 && user_score <= 79) {
     badgeUrl = "./Wolves.jpg";
   } else {
     badgeUrl = "./TheLion.jpg";
