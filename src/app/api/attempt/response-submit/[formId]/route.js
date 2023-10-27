@@ -4,6 +4,7 @@ import Responses from "@/models/response/responseSchema";
 import Forms from "@/models/form/formSchema";
 import Users from "@/models/user/userSchema";
 import Questions from "@/models/question/questionSchema";
+import ResInits from "@/models/responseInitiate/resInitSchema";
 
 
 export async function POST(req,{params}){
@@ -11,7 +12,7 @@ export async function POST(req,{params}){
         await mongoose.connect(process.env.MONGO_URL);
         const {formId}=params;
         const payload=await req.json();
-        const {user_id,answer}=payload;
+        let {user_id,answer}=payload;
         let resDoc=await Responses.findOne({user:user_id,form:formId});
         if(resDoc){
             return NextResponse.json({ok:false,message:"The reponse was submitted"},{status:400});
@@ -24,6 +25,16 @@ export async function POST(req,{params}){
 
         // marks calculation
         let total_obtain=0;
+        const resInitDoc=await ResInits.findOne({userId:user_id,formId:formId});
+        if(!resInitDoc){
+            return NextResponse.json({ok:false,message:"not-initiated"},{status:400});
+        }
+        let curTime=new Date(Date.now());
+        let exp=new Date(resInitDoc.expireTime);
+        exp.setMinutes(exp.getMinutes()+2);
+        if(curTime>exp){
+            answer=resInitDoc.responses;
+        }
         // let total_attempt=0;
         for(let it of answer){
             const quesDoc=await Questions.findById(it.ques_id,{correct_ans:1,marks:1,ques_type:1});
@@ -59,6 +70,7 @@ export async function POST(req,{params}){
         formDoc.responses_no=formDoc.responses.length;
         await userDoc.save();
         await formDoc.save();
+        await ResInits.deleteOne({userId:user_id,formId:formId});
         return NextResponse.json({ok:true,message:"response submitted successfully"},{status:200})
     }
     catch(er){

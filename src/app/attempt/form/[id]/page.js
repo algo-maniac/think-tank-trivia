@@ -20,6 +20,43 @@ function mapToArrayResponse(answer) {
 function mapToLocalStorage(answer) {
     let responses = mapToArrayResponse(answer);
     localStorage.setItem('data', JSON.stringify({ responses }));
+
+
+    // let formId = localStorage.getItem('formId');
+    // let userId = localStorage.getItem('userId');
+    // fetch("/api/attempt/temp-response", {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //         // answer:answer,
+    //         userId: userId,
+    //         formId:formId,
+    //         responses:responses
+    //     }),
+    //     header: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // });
+}
+
+function localStorageToServer(){
+    let formId = localStorage.getItem('formId');
+    let userId = localStorage.getItem('userId');
+
+    let data = JSON.parse(localStorage.getItem('data'));
+    let responses = data==null?[]:data.responses;
+
+    fetch("/api/attempt/temp-response", {
+        method: 'POST',
+        body: JSON.stringify({
+            // answer:answer,
+            userId: userId,
+            formId:formId,
+            responses:responses
+        }),
+        header: {
+            'Content-Type': 'application/json'
+        }
+    });
 }
 
 function localStorageToMap(answer) {
@@ -29,6 +66,8 @@ function localStorageToMap(answer) {
         answer.set(it.ques_id, it.ans_given);
     }
 }
+
+// let time;
 
 export default function Page({ params }) {
     const formId = params.id;
@@ -43,8 +82,10 @@ export default function Page({ params }) {
     const { user, auth_status } = useContext(UserContext);
     const [responded, setResponded] = useState(false);
     const [owner, setOwner] = useState(false);
+    const [notInit,setNotInit]=useState(false);
     const [second, setSecond] = useState(0);
     const [minute, setMinute] = useState(0);
+    const [firstTimeLoad,setFirstTimeLoad]=useState(()=>{return true});
     // const [timerId1,setTimerId1]=useState();
     // const [timerId2,setTimerId2]=useState();
     // const [time,setTime]=useState(60);
@@ -60,10 +101,13 @@ export default function Page({ params }) {
             router.push(`/attempt/form/${fomrId_local}`);
             return (<h1>Redirection to the currently attempting quiz</h1>)
         }
-        let data_from_localStorage = JSON.parse(localStorage.getItem('data'));
-        let responses_from_localStorage = data_from_localStorage.responses;
-        for (let it of responses_from_localStorage) {
-            answer.set(it.ques_id, it.ans_given);
+        if(firstTimeLoad){
+            let data_from_localStorage = JSON.parse(localStorage.getItem('data'));
+            let responses_from_localStorage = data_from_localStorage.responses;
+            for (let it of responses_from_localStorage) {
+                answer.set(it.ques_id, it.ans_given);
+            }
+            setFirstTimeLoad(false);
         }
     }
 
@@ -98,6 +142,9 @@ export default function Page({ params }) {
             else if (msg === "Owner") {
                 setOwner(true);
             }
+            else if(notInit== "not-initiated"){
+                setNotInit(true);
+            }
             else {
                 setQuestion(data.form.questions);
                 //set the time out time in local storage
@@ -114,11 +161,13 @@ export default function Page({ params }) {
                 // setTime(diff/1000);
                 let TIME = diff / 1000;
                 localStorage.setItem('TIME', TIME.toString());
+                // time = TIME;
                 if (localStorage.getItem('timerId1')) {
                     clearInterval(parseInt(localStorage.getItem('timerId1')));
                 }
                 let time_counter_id = setInterval(() => {
                     let TIME = parseInt(localStorage.getItem('TIME')) - 1;
+                    // let TIME = time - 1;
                     if (TIME <= 0) {
                         let timerId1 = parseInt(localStorage.getItem('timerId1'));
                         let timerId2 = parseInt(localStorage.getItem('timerId2'));
@@ -130,7 +179,7 @@ export default function Page({ params }) {
                         //console.log(timerId1);
                         //console.log(timerId2);
                         setTimeout(() => { submitHandler(); }, 1000);
-
+                        return;
                     }
                     //console.log("TIME", TIME);
                     // //console.log("state timer 1",timerId1);
@@ -141,6 +190,7 @@ export default function Page({ params }) {
                     setSecond(sec);
                     // setTime(TIME);
                     localStorage.setItem('TIME', TIME.toString());
+                    // time = TIME;
                 }, 1000);
                 localStorage.setItem('timerId1', time_counter_id.toString());
                 //console.log("Timer 1", time_counter_id);
@@ -149,7 +199,8 @@ export default function Page({ params }) {
                     clearInterval(parseInt(localStorage.getItem('timerId2')));
                 }
                 let localStorage_set_id = setInterval(() => {
-                    mapToLocalStorage(answer);
+                    // mapToLocalStorage(answer);
+                    localStorageToServer();
                 }, 30000);//30s
                 localStorage.setItem('timerId2', localStorage_set_id.toString());
                 //console.log("Timer 2", localStorage_set_id);
@@ -177,6 +228,8 @@ export default function Page({ params }) {
         if (val === '') {
             answer.delete(id, val);
         }
+        setTimeout(()=>{mapToLocalStorage(answer)},0);
+        setAnswer(new Map(answer));
     }
     const mcqHandler = (env) => {
         const val = env.target.value;
@@ -185,6 +238,8 @@ export default function Page({ params }) {
         if (val === '') {
             answer.delete(id, val);
         }
+        setTimeout(()=>{mapToLocalStorage(answer)},0);
+        setAnswer(new Map(answer));
     }
     const submitHandler = () => {
         // validation
@@ -270,7 +325,8 @@ export default function Page({ params }) {
         </div>
         {responded && <h1 className={style.center}>Already Responded</h1>}
         {owner && <h1 className={style.center}>The owner can't attempt his own form</h1>}
-        {!responded && !owner &&
+        {notInit && <h1 className={style.center}>The user haven't initiated to attemp this form</h1>}
+        {!responded && !owner && !notInit &&
             questions.map(function (data, id) {
                 if (data.ques_type === "TEXT") {
                     return <>
@@ -294,16 +350,16 @@ export default function Page({ params }) {
                             <hr></hr>
                             <form>
                                 <div className={style.answer}>
-                                    <input type='radio' value='A' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="A"}></input><p>{data.a}</p>
+                                    <input type='radio' value='A' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "A"}></input><p>{data.a}</p>
                                 </div>
                                 <div className={style.answer}>
-                                    <input type='radio' value='B' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="B"}></input><p>{data.b}</p>
+                                    <input type='radio' value='B' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "B"}></input><p>{data.b}</p>
                                 </div>
                                 <div className={style.answer}>
-                                    <input type='radio' value='C' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="C"}></input><p>{data.c}</p>
+                                    <input type='radio' value='C' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "C"}></input><p>{data.c}</p>
                                 </div>
                                 <div className={style.answer}>
-                                    <input type='radio' value='D' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id)=="D"}></input><p>{data.d}</p>
+                                    <input type='radio' value='D' name='option' id={data._id} className='a' onChange={mcqHandler} checked={answer.get(data._id) == "D"}></input><p>{data.d}</p>
                                 </div>
                             </form>
                         </div>

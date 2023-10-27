@@ -45,19 +45,23 @@ export default function UserState(props) {
     }
 
     // //console.log("LocalStorage",localStorage.getItem('expTime'),localStorage);
-    
+
 
     if (localStorage.getItem('expTime')) {
         let exp = new Date(localStorage.getItem('expTime'));
-        exp.setMinutes(exp.getMinutes+2);
+        exp.setMinutes(exp.getMinutes + 2);
         let cur = new Date(Date.now());
         let diff = exp - cur;//ms
         let time = diff / 1000;
-        if(time<=0){
+        if (time <= 0) {
             let data = JSON.parse(localStorage.getItem('data'));
             let responses = data.responses;
             let formId = localStorage.getItem('formId');
             let userId = localStorage.getItem('userId');
+            let timerId1 = parseInt(localStorage.getItem('timerId1'));
+            let timerId2 = parseInt(localStorage.getItem('timerId2'));
+            clearInterval(timerId1);
+            clearInterval(timerId2);
             fetch(`/api/attempt/response-submit/${formId}`, {
                 method: 'POST',
                 body: JSON.stringify({
