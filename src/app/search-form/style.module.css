@@ -9,6 +9,7 @@
   font-family: 'Poppins', sans-serif;
   flex-direction: row;
   justify-content: space-between;
+  height: 50px;
   /* border: 1px solid black; */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -101,7 +102,7 @@
   font-weight: 500;
   line-height: 20px;
   list-style: none;
-  padding: 6px 16px;
+  padding: 5px;
   position: relative;
   transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
   user-select: none;

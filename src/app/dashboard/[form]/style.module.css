@@ -7,6 +7,7 @@
   font-family: 'Poppins', sans-serif;
   flex-direction: row;
   justify-content: space-between;
+  height: 50px;
   /* border: 1px solid black; */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -21,6 +22,8 @@
   background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* margin-left: 1rem; */
+  font-weight: bolder;
 }
 
 .nav div:hover {

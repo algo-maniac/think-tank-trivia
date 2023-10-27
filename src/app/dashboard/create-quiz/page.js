@@ -1,7 +1,7 @@
 "use client"
 import { use, useState } from 'react';
 import style from './../create-form/style.module.css'
-import style1 from './style1.module.css'
+// import style1 from './style1.module.css'
 import CreateQuestion from '@/components/CreateQuestion';
 import CreateMcq from '@/components/CreateMcq';
 import Modal from '@/components/Modal';

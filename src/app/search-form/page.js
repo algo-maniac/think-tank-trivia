@@ -77,7 +77,7 @@ export default function Page(){
     return <>
        <div className={style.header}>
             <div className={style.logo}>
-                <img src="/favicon.png" height="50px"></img>
+                <img src="/favicon.png" height="50px"></img> 
                 <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.nav}>

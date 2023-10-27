@@ -24,7 +24,7 @@ export default function Page({ params }) {
                 <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.nav}>
-                <div><a href={"/"}>Home</a></div>
+                <div><a href={"/dashboard"}>DashBoard</a></div>
                 <div><a href={`/dashboard/${formId}`}>Preview</a></div>
                 <div><a href={`/dashboard/${formId}/share-portal`}>Share</a></div>
                 <div><a href={`/dashboard/${formId}/response`}>Response</a></div>
