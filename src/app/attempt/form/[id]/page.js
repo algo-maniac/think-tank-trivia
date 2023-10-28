@@ -192,6 +192,8 @@ export default function Page({ params }) {
                     setSecond(sec);
                     // setTime(TIME);
                     localStorage.setItem('TIME', TIME.toString());
+                    // console.log("map",answer);
+                    // console.log("responses",responses);
                     // time = TIME;
                 }, 1000);
                 localStorage.setItem('timerId1', time_counter_id.toString());
@@ -231,7 +233,7 @@ export default function Page({ params }) {
             answer.delete(id, val);
         }
         setTimeout(()=>{mapToLocalStorage(answer)},0);
-        setAnswer(new Map(answer));
+        // setAnswer(new Map(answer));
     }
     const mcqHandler = (env) => {
         const val = env.target.value;
@@ -241,7 +243,7 @@ export default function Page({ params }) {
             answer.delete(id, val);
         }
         setTimeout(()=>{mapToLocalStorage(answer)},0);
-        setAnswer(new Map(answer));
+        // setAnswer(new Map(answer));
     }
     const submitHandler = () => {
         // validation
@@ -267,6 +269,8 @@ export default function Page({ params }) {
         clearInterval(timerId1);
         clearInterval(timerId2);
         let responses = mapToArrayResponse(answer);
+        // console.log("map",answer);
+        // console.log("responses",responses);
         mapToLocalStorage(answer);
         fetch(`/api/attempt/response-submit/${formId}`, {
             method: 'POST',
