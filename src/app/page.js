@@ -301,11 +301,11 @@ export default function App() {
               </div>
             </div>
             <div className={style.title}>
-              <h1>ThinkTankTrivia</h1>
+              <h1>ThinkFastTrivia</h1>
             </div>
           </div>
           <div className={style.copyright}>
-            <p>Copyright reserved by ThinkTankTrivia</p>
+            <p>Copyright reserved by ThinkFastTrivia</p>
           </div>
         </footer>
       </div>
