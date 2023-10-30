@@ -49,11 +49,15 @@ export default function UserState(props) {
 
     if (localStorage.getItem('expTime')) {
         let exp = new Date(localStorage.getItem('expTime'));
-        exp.setMinutes(exp.getMinutes + 2);
+        // console.log("exp",exp);
+        exp.setMinutes(exp.getMinutes() + 2);
         let cur = new Date(Date.now());
+        // console.log("cur",cur);
         let diff = exp - cur;//ms
         let time = diff / 1000;
-        if (time <= 0) {
+        // console.log("time",time);
+        // console.log(cur>=exp);
+        if (cur>=exp||time<=0) {
             let data = JSON.parse(localStorage.getItem('data'));
             let responses = data.responses;
             let formId = localStorage.getItem('formId');
