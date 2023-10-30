@@ -2,11 +2,13 @@ import { OpenAIApi, Configuration } from "openai-edge";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 
 export const runtime = 'edge';
+const GPT_API_KEY = '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';
 const config = new Configuration({
-    apiKey: process.env.GPT_API_KEY
+    // apiKey: process.env.GPT_API_KEY
+    apiKey: GPT_API_KEY
 })
 const openai = new OpenAIApi(config);
-
+ 
 export async function POST(request) {
     const { messages } = await request.json();
 
