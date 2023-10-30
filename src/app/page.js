@@ -8,7 +8,7 @@ import ChatIcon from "@/components/ChatIcon";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import UserContext from "@/context/userContext/userContext"; 
+import UserContext from "@/context/userContext/userContext";
 import Modal from "@/components/Modal";
 import './global.css'
 export default function App() {
@@ -25,19 +25,19 @@ export default function App() {
       return router.push("/dashboard")
     }
   }
- 
+
   return (
     <>
       {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
       {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
 
-      <div className={style.outer}> 
+      <div className={style.outer}>
         <div className={style.header}>
           <div className={style.logo}>
-            <div className={style.company}> 
+            <div className={style.company}>
               <img src="favicon.png"></img>
               <h3>Think-Fast-Trivia</h3>
-            </div> 
+            </div>
           </div>
           <div className={style.links}>
             {/* <div className={style.company_name}>
@@ -107,14 +107,24 @@ export default function App() {
               your audience and gather insights with ease on ThinkTankTrivia
             </p>
           </div>
-          <div className={style.btn}>
-            <button className={style.button68}>Get Started</button>
-          </div>
+          {
+            status == "unauthenticated" ?
+              <>
+                <div className={style.btn}>
+                  <Link href={"/login"}><button className={style.button68}>Get Started</button></Link>
+                </div>
+              </>
+              :
+              <div className={style.btn}>
+                <Link href={"/dashboard"}><button className={style.button68}>Get Started</button></Link>
+              </div>
+
+          }
         </div>
         <div className={style.sloganImage}>
           <img src="74pZ.gif"></img>
         </div>
-      </div>
+      </div >
       <div className={style.working}>
         <div className={style.workingHeader}>
           <h2>How it works</h2>

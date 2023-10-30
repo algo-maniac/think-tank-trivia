@@ -202,8 +202,16 @@
   box-shadow: -1.2px 1px 2px #0c4a6e, 0.2px -0.2px 1px #0c4a6e;
 }
 
+.user_logo{
+  /* border: 1px solid red; */
+  height: 50px;
+  /* border-radius: 50%; */
+}
+
 .user_logo img {
   border-radius: 50%;
+  height: 50px;
+  width: 64px;
 }
 
 .user_info {

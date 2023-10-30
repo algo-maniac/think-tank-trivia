@@ -8,76 +8,77 @@ import Notfound from '@/components/Notfound'
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
-export default function Page(){
-    const [flag,setFlag]=useState(true);
-    const [loader,setLoader]=useState(false);
-    const [link,setLink]=useState(true);
-    const [search,setSearch]=useState(true);
-    const [forms,setForms]=useState(false);
-    const [input,setInput]=useState('');
-    const [formData,setData]=useState([]);
-    const [notFound,setNotfound]=useState(false);
-    const {  auth_status } = useContext(UserContext);
-    const router=useRouter();
+import Link from 'next/link'
+export default function Page() {
+    const [flag, setFlag] = useState(true);
+    const [loader, setLoader] = useState(false);
+    const [link, setLink] = useState(true);
+    const [search, setSearch] = useState(true);
+    const [forms, setForms] = useState(false);
+    const [input, setInput] = useState('');
+    const [formData, setData] = useState([]);
+    const [notFound, setNotfound] = useState(false);
+    const { auth_status } = useContext(UserContext);
+    const router = useRouter();
     if (auth_status == 'unauthenticated') {
         return router.push('/login');
     }
-    const filterHandler=()=>{
+    const filterHandler = () => {
         setFlag(!flag);
     }
-    const linkTrue=()=>{
+    const linkTrue = () => {
         setLink(true);
     }
-    const linkFalse=()=>{
+    const linkFalse = () => {
         setLink(false);
     }
-    const inputHandler=(env)=>{
+    const inputHandler = (env) => {
         setInput(env.target.value)
     }
-    const submitHandler=()=>{
+    const submitHandler = () => {
         setLoader(true);
         setSearch(false);
-        fetch("/api/search-form",{
-            method:'POST',
-            body:JSON.stringify({
-                mode:link?"URL":"UserID",
-                input:input
+        fetch("/api/search-form", {
+            method: 'POST',
+            body: JSON.stringify({
+                mode: link ? "URL" : "UserID",
+                input: input
             })
             ,
-            header:{
-                'Content-Type':'application/json'
+            header: {
+                'Content-Type': 'application/json'
             }
-        }).then((data)=>{
+        }).then((data) => {
             return data.json();
-        }).then((data)=>{
+        }).then((data) => {
             setLoader(false);
             // if(mode==="URL"){
-                
-                // }
-                // else{
-            if(data!=undefined){
-                if(link===true){     
-                    setData([data.form]);               
+
+            // }
+            // else{
+            if (data != undefined) {
+                if (link === true) {
+                    setData([data.form]);
                 }
-                else{
-                    setData(data.formsList);    
+                else {
+                    setData(data.formsList);
                 }
                 setForms(true);
                 setNotfound(false);
             }
-            else{
+            else {
                 setNotfound(true);
             }
             // }
-        }).catch((er)=>{
+        }).catch((er) => {
             console.log('Error');
             console.log(er)
         })
     }
     return <>
-       <div className={style.header}>
+        <div className={style.header}>
             <div className={style.logo}>
-                <img src="/favicon.png" height="50px"></img> 
+                <img src="/favicon.png" height="50px"></img>
                 <h3>Think-Fast-Trivia</h3>
             </div>
             <div className={style.nav}>
@@ -94,7 +95,7 @@ export default function Page(){
             <div className={style.searchbox}>
                 <div className={style.searchinput}>
                     <div className={style.first}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" /></svg>
                     </div>
                     <div className={style.second}>
                         <input type='text' placeholder='search by userID' onChange={inputHandler}></input>
@@ -113,7 +114,7 @@ export default function Page(){
                 <div className={`${style.link} ${link && style.borderBottom}`} onClick={linkTrue}>
                     <span>Raw-Link</span>
                 </div>
-                 <div className={`${style.user} ${!link && style.borderBottom}`} onClick={linkFalse}>
+                <div className={`${style.user} ${!link && style.borderBottom}`} onClick={linkFalse}>
                     <span>UserID</span>
                 </div>
             </div>
@@ -125,7 +126,7 @@ export default function Page(){
             <ResponseCard></ResponseCard> */}
         </div>
         {search && <div className={style.searchingContent}>
-            <div className={style.searchingLogo}><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></div>
+            <div className={style.searchingLogo}><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" /></svg></div>
             <div><h1>Search By user-name/Form-ID</h1></div>
         </div>}
         {
@@ -134,7 +135,7 @@ export default function Page(){
         {/* dummy data */}
         {forms && <div className={style.formCard}>
             {
-                formData?.map(function(val){
+                formData?.map(function (val) {
                     return <FormCard data={val}></FormCard>
                 })
             }

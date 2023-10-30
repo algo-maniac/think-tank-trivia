@@ -134,7 +134,7 @@ export default function Dashboard() {
         </div>
         <div className={style.lower}>
           <div className={style.user_logo}>
-            <img src={auth_session.user.image} alt={user.name} height={40} />
+            <img src={auth_session.user.image} alt={user.name} height={40}/>
           </div>
           <div className={style.user_info}>
             <div className={style.user_name}>
