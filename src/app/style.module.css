@@ -13,7 +13,6 @@
 }
 
 .outer {
-    padding: 8px;
     position: sticky;
     z-index: 1;
     top: 1px;
@@ -88,6 +87,8 @@
 .form_api {
     margin-right: auto;
     color: #052744;
+    font-weight: 900;
+
 }
 
 .form_api .linkTitle{
@@ -96,6 +97,7 @@
 
 .form_portal {
     text-align: center;
+    font-weight: 600;
 }
 
 .links a:link {
@@ -652,9 +654,14 @@
 }
 
 .footer_outer {
-    padding: 8px;
-}
 
+}
+.general a:hover{
+    color: white;
+}
+.account a:hover{
+    color: white;
+}
 .general h2 {
     font-weight: bold;
     font-size: 1.5rem;
@@ -662,12 +669,19 @@
 
 .title h1 {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.9rem;
     background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+.footer .title span{
+    background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.socialMedia:hover{
+    color: gray;
+}
 .account h2 {
     font-weight: bold;
     font-size: 1.5rem;
@@ -796,4 +810,10 @@
 
 .drop_down button {
     width: 100%;
+}
+.working h2{
+    text-decoration: none;
+    background: linear-gradient(90deg, rgb(10, 218, 245), rgb(144, 67, 189), rgb(13, 109, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

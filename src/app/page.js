@@ -49,7 +49,7 @@ export default function App() {
               </a>
             </div>
             <div className={style.form_api}>
-              <a href="/formportal" className={style.linkTitle}>
+              <a href="/api" className={style.linkTitle}>
                 API
               </a>
             </div>
@@ -138,10 +138,7 @@ export default function App() {
             <div>
               <h2>Create Your Form</h2>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Nostrum nesciunt ea eum nulla recusandae placeat excepturi
-                deserunt pariatur quidem, reiciendis voluptas fuga at atque
-                facilis eveniet debitis! Perspiciatis, sed tenetur.
+              Welcome to the creative hub of Think Fast Trivia! With our "Create Your Form" feature, the power to craft engaging quizzes and forms is now at your fingertips. Unleash your creativity, challenge your friends, and spark exciting conversations with personalized quizzes tailored to your interests.
               </p>
             </div>
           </div>
@@ -159,10 +156,7 @@ export default function App() {
             <div>
               <h2>Fill Your Form</h2>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Nostrum nesciunt ea eum nulla recusandae placeat excepturi
-                deserunt pariatur quidem, reiciendis voluptas fuga at atque
-                facilis eveniet debitis! Perspiciatis, sed tenetur.
+              Ready for a brain-teasing adventure? Dive into the diverse world of trivia crafted by the Think Fast Trivia community with our "Fill Your Form" feature. Whether you're a seasoned trivia enthusiast or a casual player, this is your chance to explore a multitude of quizzes and forms created by users just like you.
               </p>
             </div>
           </div>
@@ -176,10 +170,7 @@ export default function App() {
             <div>
               <h2>Analyse Your Performance</h2>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Nostrum nesciunt ea eum nulla recusandae placeat excepturi
-                deserunt pariatur quidem, reiciendis voluptas fuga at atque
-                facilis eveniet debitis! Perspiciatis, sed tenetur.
+              Elevate your trivia game to new heights with the "Analyze Your Performance" feature on Think Fast Trivia. Dive into detailed insights and statistics that go beyond the thrill of answering questions. Understand your strengths, pinpoint areas for improvement, and track your progress as you embark on your trivia journey.
               </p>
             </div>
           </div>
