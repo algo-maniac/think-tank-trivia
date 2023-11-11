@@ -268,7 +268,7 @@ color: yellow;
   justify-content: space-between;
 }
 .outer{
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
   background-color: #343541;
 }
