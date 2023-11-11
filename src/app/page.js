@@ -8,17 +8,48 @@ import Link from "next/link";
 import ChatIcon from "@/components/ChatIcon";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/userContext/userContext";
+import { FaLightbulb } from "react-icons/fa";
 import Modal from "@/components/Modal";
 import './global.css'
 export default function App() {
-  const mode=true;
+  const [mode,setMode]=useState(true)
   const router = useRouter();
+  useEffect(()=>{
+    const modes=()=>{
+      const g=localStorage.getItem('website_mode');
+      if(g===null){
+        setMode(true);
+        localStorage.setItem('website_mode',true);
+      }
+      else{
+        let f=true;
+        if(g==='false'){
+          f=false;
+        }
+        else{
+          f=true
+        }
+        setMode(f)
+      }
+    }
+    modes()
+  },[])
   // const { data, status } = useSession();
   const { auth_session: data, auth_status: status } = useContext(UserContext);
   const { user } = useContext(UserContext);
   // console.log(user)
+  const modeHandler=()=>{
+      if(mode===true){
+        setMode(false);
+        localStorage.setItem('website_mode',false);
+      }      
+      else{
+        setMode(true);
+        localStorage.setItem('website_mode',true);
+      }
+  }
   const middlewire = () => {
     if (status == "unauthenticated") {
       return router.push("/login")
@@ -33,24 +64,24 @@ export default function App() {
       {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
 
       <div className={style.outer}>
-        <div className={style.header}>
-          <div className={style.logo}>
-            <div className={style.company}>
+        <div className={`${mode?style.header:dark.header}`}>
+          <div className={`${mode?style.logo:dark.logo}`}>
+            <div className={`${mode?style.company:dark.company}`}>
               <img src="favicon.png"></img>
               <h3>Think-Fast-Trivia</h3>
             </div>
           </div>
-          <div className={style.links}>
+          <div className={`${mode?style.links:dark.links}`}>
             {/* <div className={style.company_name}>
                 Think-Fast-Trivia
             </div> */}
-            <div className={style.form_portal}>
-              <a onClick={middlewire} className={style.linkTitle}>
+            <div className={`${mode?style.form_portal:dark.form_portal}`}>
+              <a onClick={middlewire} className={`${mode?style.linkTitle:dark.linkTitle}`}>
                 Form-Portal
               </a>
             </div>
-            <div className={style.form_api}>
-              <a href="/api" className={style.linkTitle}>
+            <div className={`${mode?style.form_api:dark.form_api}`}>
+              <a href="/api" className={`${mode?style.linkTitle:dark.linkTitle}`}>
                 API
               </a>
             </div>
@@ -66,13 +97,13 @@ export default function App() {
                       <li>logout</li>
                     </ul>
                   </div> */}
-                <ul className={style.user_profile}>
+                <ul className={`${mode?style.user_profile:dark.user_profile}`}>
                   <li>
-                    <div className={style.user_profile_header}>
+                    <div className={`${mode?style.user_profile_header:dark.user_profile_header}`}>
                       <img src={data.user.image} alt={data.user.name} height={50} width={50} />
                       <h3>{user.name}</h3>
                     </div>
-                    <ul className={style.drop_down}>
+                    <ul className={`${mode?style.drop_down:dark.drop_down}`}>
                       <li> <Link href={"/analytics"} onClick={middlewire}> view profile </Link> </li>
                       <li><button onClick={() => { signOut() }}>Logout</button></li>
                     </ul>
@@ -80,19 +111,20 @@ export default function App() {
                 </ul>
               </>
               :
-              <div className={style.loginBtn}>
+              <div className={`${mode?style.loginBtn:dark.loginBtn}`}>
                 <Link href={"/login"}>
-                  <button className={style.button9}>Login</button>
+                  <button className={`${mode?style.button9:dark.button9}`}>Login</button>
                 </Link>
               </div>
           }
-          <div className={style.iconGrid}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg>
+          <div className={`${mode?style.iconGrid:dark.iconGrid}`} onClick={modeHandler}>
+            <FaLightbulb className={`${mode?style.bulb:dark.bulb}`}></FaLightbulb>
           </div>
         </div>
       </div>
-      <div className={style.content}>
-        <div className={style.slogan}>
+      <div className={`${mode?style.contentOuter:dark.contentOuter}`}>
+      <div className={`${mode?style.content:dark.content}`}>
+        <div className={`${mode?style.slogan:dark.slogan}`}>
           <h1>
             Show <span>Creativity.</span>
           </h1>
@@ -106,7 +138,7 @@ export default function App() {
               }}
             />
           </h1>
-          <div className={style.websiteDesc}>
+          <div className={`${mode?style.websiteDesc:dark.websiteDesc}`}>
             <p>
               Create custom forms and interactive quizzes effortlessly. Engage
               your audience and gather insights with ease on ThinkTankTrivia
@@ -115,31 +147,31 @@ export default function App() {
           {
             status == "unauthenticated" ?
               <>
-                <div className={style.btn}>
-                  <Link href={"/login"}><button className={style.button68}>Get Started</button></Link>
+                <div className={`${mode?style.btn:dark.btn}`}>
+                  <Link href={"/login"}><button className={`${mode?style.button68:dark.button68}`}>Get Started</button></Link>
                 </div>
               </>
               :
-              <div className={style.btn}>
-                <Link href={"/dashboard"}><button className={style.button68}>Get Started</button></Link>
+              <div className={`${mode?style.btn:dark.btn}`}>
+                <Link href={"/dashboard"}><button className={`${mode?style.button68:dark.button68}`}>Get Started</button></Link>
               </div>
 
           }
         </div>
-        <div className={style.sloganImage}>
+        <div className={`${mode?style.sloganImage:dark.sloganImage}`}>
           <img src="74pZ.gif"></img>
         </div>
       </div >
-      <div className={style.working}>
-        <div className={style.workingHeader}>
+      <div className={`${mode?style.working:dark.working}`}>
+        <div className={`${mode?style.workingHeader:dark.workingHeader}`}>
           <h2>How it works</h2>
         </div>
-        <div className={style.createForm}>
-          <div className={style.descIcon}></div>
-          <div className={style.descImg}>
+        <div className={`${mode?style.createForm:dark.createForm}`}>
+          <div className={`${mode?style.descIcon:dark.descIcon}`}></div>
+          <div className={`${mode?style.descImg:dark.descImg}`}>
             <img src="Create-a-Form.png" height="100%" width="90%"></img>
           </div>
-          <div className={style.descContent}>
+          <div className={`${mode?style.descContent:dark.descContent}`}>
             <div>
               <h2>Create Your Form</h2>
               <p>
@@ -148,16 +180,16 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div className={style.createForm}>
-          <div className={style.descIcon}></div>
-          <div className={style.descImg}>
+        <div className={`${mode?style.createForm:dark.createForm}`}>
+          <div className={`${mode?style.descIcon:dark.descIcon}`}></div>
+          <div className={`${mode?style.descImg:dark.descImg}`}>
             <img
               src="istockphoto-500641404-612x612.jpg"
               height="80%"
               width="90%"
             ></img>
           </div>
-          <div className={style.descContent}>
+          <div className={`${mode?style.descContent:dark.descContent}`}>
             <div>
               <h2>Fill Your Form</h2>
               <p>
@@ -166,12 +198,12 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div className={style.createForm}>
-          <div className={style.descIcon}></div>
-          <div className={style.descImg}>
+        <div className={`${mode?style.createForm:dark.createForm}`}>
+          <div className={`${mode?style.descIcon:dark.descIcon}`}></div>
+          <div className={`${mode?style.descImg:dark.descImg}`}>
             <img src="download.jpeg" height="90%" width="90%"></img>
           </div>
-          <div className={style.descContent}>
+          <div className={`${mode?style.descContent:dark.descContent}`}>
             <div>
               <h2>Analyse Your Performance</h2>
               <p>
@@ -181,17 +213,17 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className={style.newFeature}>
-        <div className={style.featureTitle}>
-          <h2 className={style.featureHeading}>
+      <div className={`${mode?style.newFeature:dark.newFeature}`}>
+        <div className={`${mode?style.featureTitle:dark.featureTitle}`}>
+          <h2 className={`${mode?style.featureHeading:dark.featureHeading}`}>
             Tryout our<br></br>{" "}
-            <span className={style.black}>new templates</span>
+            <span className={`${mode?style.black:dark.black}`}>new templates</span>
           </h2>
         </div>
-        <div className={style.featureImg}>
-          <div className={style.lightMode}>
-            <div className={style.icon}></div>
-            <div className={style.img}>
+        <div className={`${mode?style.featureImg:dark.featureImg}`}>
+          <div className={`${mode?style.lightMode:dark.lightMode}`}>
+            <div className={`${mode?style.icon:dark.icon}`}></div>
+            <div className={`${mode?style.img:dark.img}`}>
               <img
                 src="07100e0e7d47b0eb58f7cef3d5e19224.png"
                 height="100%"
@@ -202,19 +234,19 @@ export default function App() {
         </div>
       </div>
       <br></br>
-      <div className={style.websiteApi}>
-        <h1 className={style.apiHeading}>
-          Want<span className={style.green}> another feature?</span>
+      <div className={`${mode?style.websiteApi:dark.websiteApi}`}>
+        <h1 className={`${mode?style.apiHeading:dark.apiHeading}`}>
+          Want<span className={`${mode?style.green:dark.green}`}> another feature?</span>
         </h1>
-        <div className={style.apiContent}>
-          <div className={style.apiHeader}>
+        <div className={`${mode?style.apiContent:dark.apiContent}`}>
+          <div className={`${mode?style.apiHeading:dark.apiHeading}`}>
             <h1>
               Intoducing our<br></br>{" "}
-              <span className={style.brown}>new Feature</span>
+              <span className={`${mode?style.brown:dark.brown}`}>new Feature</span>
             </h1>
-            <button className={style.button68}>Get API</button>
+            <button className={`${mode?style.button68:dark.button68}`}>Get API</button>
           </div>
-          <div className={style.apiImg}>
+          <div className={`${mode?style.apiImg:dark.apiImg}`}>
             <img src="Icons_API.png" height="100%" width="100%"></img>
           </div>
         </div>
@@ -223,13 +255,14 @@ export default function App() {
       <br></br>
       <br></br>
       <br></br>
-      <div className={style.footer_outer}>
-        <footer className={style.footer}>
-          <div className={style.connectInvite}>
-            <div className={style.title}>
+      </div>
+      <div className={`${mode?style.footer_outer:dark.footer_outer}`}>
+        <footer className={`${mode?style.footer:dark.footer}`}>
+          <div className={`${mode?style.connectInvite:dark.connectInvite}`}>
+            <div className={`${mode?style.title:dark.title}`}>
               <span>Invite your friend</span>
             </div>
-            <div className={style.input}>
+            <div className={`${mode?style.input:dark.input}`}>
               <input
                 name="connect"
                 placeholder="Enter the Email"
@@ -248,7 +281,7 @@ export default function App() {
             </div>
           </div>
           <hr></hr>
-          <div className={style.socialMedia}>
+          <div className={`${mode?style.socialMedia:dark.socialMedia}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="white"
@@ -283,9 +316,9 @@ export default function App() {
             </svg>
           </div>
           <hr></hr>
-          <div className={style.footerLinks}>
-            <div className={style.headerlinks}>
-              <div className={style.general}>
+          <div className={`${mode?style.footerLinks:dark.footerLinks}`}>
+            <div className={`${mode?style.headerlinks:dark.headerlinks}`}>
+              <div className={`${mode?style.general:dark.general}`}>
                 <h2>General</h2>
                 <div>
                   <a href="">About</a>
@@ -295,7 +328,7 @@ export default function App() {
                   <a href="">Privacy</a>
                 </div>
               </div>
-              <div className={style.account}>
+              <div className={`${mode?style.account:dark.account}`}>
                 <h2>Account</h2>
                 <div>
                   <a href="">Login</a>
@@ -306,11 +339,11 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div className={style.title}>
+            <div className={`${mode?style.title:dark.title}`}>
               <h1>ThinkFastTrivia</h1>
             </div>
           </div>
-          <div className={style.copyright}>
+          <div className={`${mode?style.copyright:dark.copyright}`}>
             <p>Copyright reserved by ThinkFastTrivia</p>
           </div>
         </footer>

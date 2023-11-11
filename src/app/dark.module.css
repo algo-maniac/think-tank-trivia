@@ -5,10 +5,9 @@
     grid-template-columns: 0.5fr 1.8fr 0.6fr 0.2fr;
     width: 100%;
     position: relative;
-    margin-left: 0px;
     height: 84px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    background-color: #030303;
+    background-color: #282828;
     /* overflow: hidden; */
 }
 .iconGrid{
@@ -18,18 +17,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
     margin: auto;
     border-radius: 11px;
 }
-.iconGrid svg{
+.iconGrid{
     font-size: 1.35rem;
 }
+.bulb{
+    margin: auto;
+}
 .iconGrid{
-    border-color: rgb(198, 195, 195);
+    border-color: rgb(255, 255, 255);
+    color: white;
 }
 .iconGrid:hover{
-    border-color: black;
+    border-color: rgb(222, 217, 217);
+    color: rgb(222, 217, 217);
     cursor: pointer;
 }
 .outer {
@@ -63,9 +66,8 @@
     font-size: medium;
     font-weight: bold;
     margin-top: 1rem;
-
     /* background: -webkit-radial-gradient(#03eb31, #9a4902); */
-    background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+    background: linear-gradient(90deg, rgb(226, 246, 8), rgb(252, 181, 48), rgb(226, 66, 13));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -101,7 +103,7 @@
     font-size: 1.4rem;
     /* text-align: center; */
     /* border: 1px solid red; */
-    margin-top: -0.2rem;
+    margin-top: -0.1rem;
 }
 
 .form_api {
@@ -123,17 +125,19 @@
 .links a:link {
     text-decoration: none;
     font-weight: 400;
-    color: rgb(7, 6, 6);
+    color: rgb(249, 245, 245);
     font-size: 1.15rem;
 }
-
+.links a:active{
+    color: white;
+}
 .links a {
-    color: rgb(124, 50, 173);
+    color: rgb(247, 245, 248);
     cursor: pointer;
 }
 
 .links a:hover {
-    color: rgb(56, 8, 88);
+    color: rgb(115, 111, 111);
 }
 
 .header .loginBtn {
@@ -148,16 +152,19 @@
     width: 45%;
     margin: auto;
 }
-
+.contentOuter{
+    background-color: #1a1a1a;
+}
 .button9 {
     appearance: button;
     backface-visibility: hidden;
-    background-color: #405cf5;
+    background-color: #e8c606;
     border-radius: 6px;
     border-width: 0;
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
     box-sizing: border-box;
-    color: #fff;
+    color: black;
+    font-weight: 600;
     cursor: pointer;
     font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
     font-size: 100%;
@@ -175,18 +182,18 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 100%;
+    width: 50%;
 }
 
-.button-9:disabled {
+.button9:disabled {
     cursor: default;
 }
 
 .button9:hover {
-    background-color: #2037bf;
+    background-color: #b2940e;
 }
 
-.button-9:focus {
+.button9:focus {
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
 
@@ -195,7 +202,8 @@
     flex-direction: row;
     width: 86%;
     margin: auto;
-    margin-top: 30px;
+    /* margin-top: 30px; */
+    padding-top: 30px;
     justify-content: space-between;
 }
 
@@ -211,15 +219,14 @@
 }
 
 .content .slogan span {
-    color: rgb(70, 70, 191);
+    color: e8c606;
 }
 
 .content .slogan h1 {
     margin: 10px;
     font-weight: bold;
     font-size: 3.5rem;
-
-    background: linear-gradient(90deg, rgb(10, 218, 245), rgb(202, 147, 234), rgb(13, 109, 226));
+    background: linear-gradient(90deg, rgb(226, 246, 8), rgb(219, 77, 21), rgb(254, 67, 5));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -240,7 +247,7 @@
     font-weight: 500;
     font-size: 1.48rem;
     margin: 0px;
-    color: gray;
+    color: rgb(226, 225, 225);
 }
 
 .websiteDesc p {
@@ -252,12 +259,12 @@
 .button68 {
     appearance: none;
     backface-visibility: hidden;
-    background-color: #27ae60;
+    background-color: #e8c606;
     border-radius: 5px;
     border-style: none;
     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
     box-sizing: border-box;
-    color: #fff;
+    color: black;
     cursor: pointer;
     display: inline-block;
     font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -280,7 +287,7 @@
 }
 
 .button68:hover {
-    background-color: #1e8449;
+    background-color: rgb(132, 108, 30);
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
@@ -288,6 +295,7 @@
 
 .button68:hover {
     box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+    background-color: rgb(132, 108, 30);
 }
 
 .slogan .btn {
@@ -314,6 +322,7 @@
 
 .working .workingHeader {
     text-align: center;
+    color: #e8c606;
     font-family: 'Bungee Shade', cursive;
     font-family: 'Cutive', serif;
     font-family: 'Kanit', sans-serif;
@@ -321,10 +330,12 @@
     text-decoration: underline;
 }
 
+
 .workingHeader {
     font-weight: bold;
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: #e8c606;
 }
 
 .working .createForm {
@@ -346,7 +357,7 @@
     justify-content: space-around;
     text-align: center;
     font-size: 1.4rem;
-    color: blue;
+    color: #e8c606;
 }
 
 .working .createForm .descImg {
@@ -371,13 +382,15 @@
     margin-bottom: 2rem;
     font-size: 1.6rem;
 }
-
+.descContent p{
+    color: rgb(229, 227, 227);
+}
 .brown {
-    color: rgba(221, 39, 39, 0.49);
+    color: goldenrod;
 }
 
 .green {
-    color: #1e8449;
+    color: goldenrod;
 }
 
 .apiHeading {
@@ -450,7 +463,9 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
     margin-top: 60px;
-    background-color: rgb(255, 248, 248);
+    border-radius: 12px;
+    color: white;
+    background-color: rgb(45, 45, 45);
 }
 
 .websiteApi .apiContent {
@@ -468,12 +483,12 @@
     font-size: 3rem;
     margin-top: 1.8rem;
 }
-
+/* Footer Code css */
 .footer {
     height: 450px;
     border: 1px solid black;
     width: 100%;
-    background-color: #052744;
+    background-color: #282828;
 }
 
 .connectInvite {
@@ -638,7 +653,7 @@
     flex-direction: column;
     color: white;
     justify-content: space-around;
-    background-color: #031b2f;
+    background-color: #282828;
 }
 
 .headerlinks .general {
@@ -835,7 +850,7 @@
 }
 .working h2{
     text-decoration: none;
-    background: linear-gradient(90deg, rgb(10, 218, 245), rgb(144, 67, 189), rgb(13, 109, 226));
+    background: linear-gradient(90deg, rgb(226, 246, 8), rgb(219, 77, 21), rgb(254, 67, 5));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
