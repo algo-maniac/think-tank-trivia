@@ -1,0 +1,31 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+    width: 20%;
+    border-radius: 5px;
+    background-color: #f9d781;
+    box-sizing: border-box;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.card:hover{
+    background-color: rgb(245, 238, 197);
+    cursor: pointer;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5px;
+}
+.header span{
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    justify-content: space-around;
+}
+.msg span{
+    font-size: 0.7rem;
+    color: rgb(17, 177, 35);
+}
