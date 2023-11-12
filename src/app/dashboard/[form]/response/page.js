@@ -1,18 +1,21 @@
 "use client"
 import { useParams } from "next/navigation"
 import style from "./style.module.css"
+import dark from "./dark.module.css"
 import Card from "@/components/Card"
 import { useEffect, useState } from "react"
 import Loader from "@/components/Loader"
 import UserContext from '@/context/userContext/userContext';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
+import { FaLightbulb } from "react-icons/fa"
 export default function Page({ params }) {
     const { auth_status } = useContext(UserContext);
     const router = useRouter();
     if (auth_status == 'unauthenticated') {
         return router.push('/login');
     }
+    const mode=false
     const [flag, setFlag] = useState(true);
     const [responseModal, setResponse] = useState(false);
     const [response, setRes] = useState([]);
@@ -24,6 +27,9 @@ export default function Page({ params }) {
     }
     const closeHandler = () => {
         setResponse(false);
+    }
+    const modeHandler=()=>{
+
     }
     // api call for response cards
     useEffect(() => {
@@ -43,24 +49,23 @@ export default function Page({ params }) {
     }, [])
     return <>
         {loader && <Loader></Loader>}
-        <div className={style.header}>
-            <div className={style.logo}>
+        <div className={`${mode?style.header:dark.header}`}>
+            <div className={`${mode?style.logo:dark.logo}`}>
                 <img src="/favicon.png" height="50px"></img>
                 <h3>Think-Fast-Trivia</h3>
             </div>
-            <div className={style.nav}>
+            <div className={`${mode?style.nav:dark.nav}`}>
                 <div><a href={"/dashboard"}>DashBoard</a></div>
                 <div><a href={`/dashboard/${formId}`}>Preview</a></div>
                 <div><a href={`/dashboard/${formId}/share-portal`}>Share</a></div>
                 <div><a href={`/dashboard/${formId}/response`}>Response</a></div>
             </div>
-            <div className={style.mode}>
-                <button className={style.button4}>Light</button>
-                <button className={style.button31}>Dark</button>
+            <div className={`${mode?style.iconGrid:dark.iconGrid}`} onClick={modeHandler}>
+              <FaLightbulb className={`${mode?style.bulb:dark.bulb}`}></FaLightbulb>
             </div>
         </div>
-        <div className={`${style.examContainer}`}>
-            <div className={style.header1}>
+        <div className={`${mode?style.examContainer:dark.examContainer}`}>
+            <div className={`${mode?style.header1:dark.header1}`}>
                 <div className={`${flag && style.green}`} onClick={flagHandler}>
                     <span className={`${flag && style.blue}`}>Individual</span>
                 </div>
@@ -69,7 +74,7 @@ export default function Page({ params }) {
                 </div>
             </div>
         </div>
-        {flag && <div className={style.individual}>
+        {flag && <div className={`${mode?style.individual:dark.individual}`}>
             {
                 response.map(function (data) {
                     return <Card key={data._id} val={data}></Card>
