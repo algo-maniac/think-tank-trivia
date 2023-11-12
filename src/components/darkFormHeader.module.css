@@ -5,10 +5,14 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-top: 10px;
     border-radius: 11px;
-    border-left: 7px solid rgb(22, 22, 32);
-    border-right: 7px solid rgb(22, 22, 32);
+    border-left: 7px solid rgb(0, 0, 0);
+    border-right: 7px solid rgb(0, 0, 0);
     padding: 10px;
     box-sizing: border-box;
+    background-color: rgb(0, 0, 0);
+}
+.header h2{
+    color: whitesmoke;
 }
 .heading{
     font-size: 1.5rem;
@@ -18,5 +22,5 @@
 }
 .msg{
     font-size: 0.9rem;
-    color: gray;
+    color: whitesmoke
 }
