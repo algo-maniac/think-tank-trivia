@@ -241,14 +241,14 @@
 }
 
 .dialog {
-  border: 1px solid rgb(4, 189, 41);
+  border: 2px solid black;
   color: rgb(6, 108, 6);
   width: 80%;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 10px;
-  background-color: #94f980;
+  background-color: rgb(221, 202, 24);
 }
 
 .inputcard {

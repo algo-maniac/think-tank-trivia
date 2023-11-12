@@ -92,7 +92,8 @@
   cursor: pointer;
 }
 .green {
-  color: white;
+  color: rgb(8, 8, 8);
+  font-weight: bolder;
   background-color: rgb(12, 103, 13);
 }
 .mode {
@@ -246,16 +247,19 @@
 .examContainer .header1 div:hover {
   cursor: pointer;
   /* background-color: rgb(183, 184, 184); */
-  background-color: rgb(133, 250, 139);
+  background-color: rgb(247, 167, 18);
   color: black;
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
   font-family: 'Poppins', sans-serif;
 }
-
+.examContainer{
+  
+}
 .examContainer .header1 div span {
   display: flex;
   flex-direction: column;
+  font-weight: bolder;
   justify-content: center;
 }
 

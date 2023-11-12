@@ -15,7 +15,43 @@ export default function Page({ params }) {
     if (auth_status == 'unauthenticated') {
         return router.push('/login');
     }
-    const mode=false
+    const [mode,setMode]=useState(true)
+    let [all_form, setAllForm] = useState(true);
+    let [all_response, setAllResponse] = useState(false);
+    useEffect(()=>{
+        const modes=()=>{
+          const g=localStorage.getItem('website_mode');
+          if(g===null){
+            setMode(true);
+            localStorage.setItem('website_mode',true);
+          }
+          else{
+            let f=true;
+            if(g==='false'){
+              f=false;
+            }
+            else{
+              f=true
+            }
+            setMode(f)
+          }
+        }
+        modes()
+        setAllForm(!all_form);
+        setAllForm(!all_form);
+        setAllResponse(!all_response)
+        setAllResponse(!all_response)
+      },[])
+      const modeHandler=()=>{
+        if(mode===true){
+          setMode(false);
+          localStorage.setItem('website_mode',false);
+        }      
+        else{
+          setMode(true);
+          localStorage.setItem('website_mode',true);
+        }
+      }
     const [flag, setFlag] = useState(true);
     const [responseModal, setResponse] = useState(false);
     const [response, setRes] = useState([]);
@@ -27,9 +63,6 @@ export default function Page({ params }) {
     }
     const closeHandler = () => {
         setResponse(false);
-    }
-    const modeHandler=()=>{
-
     }
     // api call for response cards
     useEffect(() => {
@@ -64,16 +97,18 @@ export default function Page({ params }) {
               <FaLightbulb className={`${mode?style.bulb:dark.bulb}`}></FaLightbulb>
             </div>
         </div>
+        <div className={`${mode?style.outer:dark.outer}`}>
         <div className={`${mode?style.examContainer:dark.examContainer}`}>
             <div className={`${mode?style.header1:dark.header1}`}>
-                <div className={`${flag && style.green}`} onClick={flagHandler}>
+                <div className={`${flag && `${mode?dark.green:style.green}`} ${dark.header2}`} onClick={flagHandler}>
                     <span className={`${flag && style.blue}`}>Individual</span>
                 </div>
-                <div className={`${!flag && style.green}`} onClick={flagHandler}>
+                <div className={`${!flag && `${mode?dark.green:style.green}`} ${dark.header2}`} onClick={flagHandler}>
                     <span>Questions</span>
                 </div>
             </div>
         </div>
+        <div className={`${mode?dark.containerouter:style.containerouter}`}>
         {flag && <div className={`${mode?style.individual:dark.individual}`}>
             {
                 response.map(function (data) {
@@ -81,5 +116,7 @@ export default function Page({ params }) {
                 })
             }
         </div>}
+        </div>
+        </div>
     </>
 }
