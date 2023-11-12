@@ -1,98 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
 
-
 .header {
-  margin: 0px;
-  width: 100%;
-  display: flex;
-  font-family: 'Bungee Shade', cursive;
-  font-family: 'Cutive', serif;
-  font-family: 'Poppins', sans-serif;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 65px;
-  /* border: 1px solid black; */
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.logo {
-  width: 20%;
-  display: flex;
-}
-
-.logo h3 {
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, rgb(226, 246, 8), rgb(252, 181, 48), rgb(226, 66, 13));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* margin-left: 1rem; */
-  font-weight: bolder;
-}
-
-.nav div:hover {
-  background-color: rgb(157, 157, 157);
-  border-radius: 10px;
-}
-
-.nav {
-  display: flex;
-  flex-direction: row;
-  width: 65%;
-  padding-left: 10%;
-  padding-right: 20%;
-  color: rgb(0, 0, 0);
-  justify-content: space-around;
-  margin-right: 5rem;
-  gap: 3rem;
-}
-
-.nav div {
-  text-align: center;
-  width: 20%;
-  height: 65%;
-  margin: auto;
-  align-items: center;
-}
-
-.nav div a {
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  display: block;
-  font-weight: 600;
-  margin-top: 8px;
-}
-
-.nav div a:active {
-  color: rgb(18, 18, 183);
-}
-
-.nav div a:hover {
-  color: rgb(13, 13, 13);
-}
-.iconGrid{
-  border: 2px solid black;
-  height: 50%;
-  width: 2.5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin: auto;
-  border-radius: 11px;
-}
-.iconGrid svg{
-  font-size: 1.35rem;
-  margin: auto;
-}
-.iconGrid{
-  border-color: rgb(198, 195, 195);
-}
-.iconGrid:hover{
-  border-color: rgb(159, 158, 158);
-  color: rgb(48, 45, 45);
-  cursor: pointer;
-}
-
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 65px;
+    background-color: #101011;
+    /* border: 1px solid black; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .logo {
+    width: 20%;
+    display: flex;
+  }
+  
+  .logo h3 {
+    margin-top: 0.5rem;
+    background: linear-gradient(90deg, rgb(226, 246, 8), rgb(252, 181, 48), rgb(226, 66, 13));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* margin-left: 1rem; */
+    font-weight: bolder;
+  }
+  
+  .nav div:hover {
+    background-color: rgb(157, 157, 157);
+    border-radius: 10px;
+  }
+  
+  .nav {
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+    padding-left: 10%;
+    padding-right: 20%;
+    color: white;
+    justify-content: space-around;
+    margin-right: 5rem;
+    gap: 3rem;
+  }
+  
+  .nav div {
+    text-align: center;
+    width: 20%;
+    height: 65%;
+    margin: auto;
+    align-items: center;
+  }
+  
+  .nav div a {
+    text-decoration: none;
+    color: whitesmoke;
+    display: block;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  
+  .nav div a:active {
+    color: rgb(18, 18, 183);
+  }
+  
+  .nav div a:hover {
+    color: rgb(13, 13, 13);
+  }
+  .iconGrid{
+    border: 2px solid black;
+    height: 50%;
+    width: 2.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 11px;
+  }
+  .iconGrid svg{
+    font-size: 1.35rem;
+    margin: auto;
+    color: whitesmoke;
+  }
+  .iconGrid{
+    border-color: rgb(198, 195, 195);
+  }
+  .iconGrid:hover{
+    border-color: rgb(159, 158, 158);
+    color: rgb(48, 45, 45);
+    cursor: pointer;
+  }
 .mode {
   width: 15%;
   display: flex;
@@ -166,11 +166,11 @@
 }
 
 .button31 {
-  background-color: #222;
+  background-color: #ffffff;
   border-radius: 4px;
   border-style: none;
   box-sizing: border-box;
-  color: #fff;
+  color: #000000;
   cursor: pointer;
   display: inline-block;
   font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
@@ -202,7 +202,6 @@
   width: 70%;
   margin: auto;
   /* border: 1px solid black; */
-  margin-top: 45px;
   min-height: 50px;
 }
 
@@ -338,6 +337,7 @@
 .searchingContent {
   margin: auto;
   width: 30%;
+  color: whitesmoke;
   /* border: 1px solid black; */
   margin-top: 50px;
   text-align: center;
@@ -345,11 +345,14 @@
 
 .searchingLogo {
   margin: auto;
+  color: whitesmoke;
   /* border: 1px solid black; */
   width: 10%;
   font-size: 2.9rem;
 }
-
+.searchingLogo svg{
+  color: whitesmoke;
+}
 .searchingContent h1 {
   font-weight: 600;
   font-size: 1.4rem;
@@ -364,4 +367,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.outer{
+  background-color: #343541;
+  min-height: 100vh;
+  padding-top: 20px;
 }
