@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/userContext/userContext";
 import { FaLightbulb } from "react-icons/fa";
 import Modal from "@/components/Modal";
+import { toast } from 'react-toastify';
 import './global.css'
 export default function App() {
   const [mode,setMode]=useState(true)
@@ -72,8 +73,12 @@ export default function App() {
         email
       })
     })
-  }
 
+    setEmail("");
+    toast.success("... email is successfully sent ...", {
+      position: "top-center"
+  })
+  }
   return (
     <>
       {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
@@ -286,6 +291,7 @@ export default function App() {
                 onChange={(e)=>{
                   setEmail(e.target.value);
                 }}
+                value={email}
               ></input>
             </div>
             <div className={style.btn} onClick={sendEmail}>

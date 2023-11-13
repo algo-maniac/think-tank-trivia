@@ -5,6 +5,8 @@ import { getServerSession } from "next-auth";
 import UserState from "@/context/userContext/userState";
 import mongoose from "mongoose";
 import Users from "@/models/user/userSchema";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 // import './globals.css';
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +36,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <SessionProvider session={session}>
         <UserState user={user}>
+        <ToastContainer />
           <body className={inter.className}>{children}</body>
         </UserState>
       </SessionProvider>
