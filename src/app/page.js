@@ -58,6 +58,22 @@ export default function App() {
     }
   }
 
+  const [email, setEmail] = useState("");
+  // console.log(email);
+
+  const sendEmail = async()=>{
+    // console.log("hello world");
+    const res = await fetch("/api/mail", {
+      method: "POST",
+      header: {
+          "Content-Type": "applications/json"
+      },
+      body: JSON.stringify({
+        email
+      })
+    })
+  }
+
   return (
     <>
       {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
@@ -264,12 +280,15 @@ export default function App() {
             </div>
             <div className={`${mode?style.input:dark.input}`}>
               <input
-                name="connect"
+                name="email"
                 placeholder="Enter the Email"
-                type="text"
+                type="email"
+                onChange={(e)=>{
+                  setEmail(e.target.value);
+                }}
               ></input>
             </div>
-            <div className="btn">
+            <div className={style.btn} onClick={sendEmail}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="green"
@@ -278,6 +297,7 @@ export default function App() {
               >
                 <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
               </svg>
+              {/* <button className={style.mail} type="submit">send</button> */}
             </div>
           </div>
           <hr></hr>

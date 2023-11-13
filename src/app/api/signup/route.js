@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import Users from "@/models/user/userSchema";
 
 export async function POST(request){
-    const payload=await request.json();
+    const payload=await request.json(); 
     const {password,confirm_password}=payload;
     if(password!=confirm_password){
         return NextResponse.json({ok:false,message:"Confirm password did not matched"},{status:400});

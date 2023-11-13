@@ -299,7 +299,9 @@
 .websiteDesc .btn button {
     margin: 10px;
 }
-
+.btn:hover{
+   cursor: pointer;
+}
 .pageDown {
     text-align: center;
     margin-top: 10px;
