@@ -1,10 +1,32 @@
 import Link from 'next/link';
 import style1 from './Card.module.css'
+import dark from './darkCard.module.css'
 import Avatar from '@mui/material/Avatar';
 import style from '../app/dashboard/[form]/response/style.module.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Loader from './Loader';
 const Card=(props)=>{
+    const [mode,setMode]=useState(true)
+    useEffect(()=>{
+    const modes=()=>{
+      const g=localStorage.getItem('website_mode');
+      if(g===null){
+        setMode(true);
+        localStorage.setItem('website_mode',true);
+      }
+      else{
+        let f=true;
+        if(g==='false'){
+          f=false;
+        }
+        else{
+          f=true
+        }
+        setMode(f)
+      }
+    }
+    modes()
+  })
     const date=new Date(props.val.date);
     const [responseModal,setResponse]=useState(false);
     const [loader,setLoader]=useState(true);
@@ -59,12 +81,12 @@ const Card=(props)=>{
             </div>
             </>
         }
-        <div className={style1.card} onClick={openHandler}>
-            <div className={style1.header}>
-                <Avatar className={style1.avatar}>{name[0]}</Avatar>
+        <div className={`${mode?style1.card:dark.card}`} onClick={openHandler}>
+            <div className={`${mode?style1.header:dark.header}`}>
+                <Avatar className={`${mode?style1.avatar:dark.avatar}`}>{name[0]}</Avatar>
                 <span>{props.val.user.name}</span>
             </div>
-            <div className={style1.msg}>
+            <div className={`${mode?style1.msg:dark.msg}`}>
                 <span>Responded on<br></br><b>{str}</b></span>
                 <br />
                 <b>{props.val.form.form_name}</b>

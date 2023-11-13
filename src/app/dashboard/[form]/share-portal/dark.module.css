@@ -1,96 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
 
+
 .header {
-  margin: 0px;
-  width: 100%;
-  display: flex;
-  font-family: 'Bungee Shade', cursive;
-  font-family: 'Cutive', serif;
-  font-family: 'Poppins', sans-serif;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 65px;
-  /* border: 1px solid black; */
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #101011;
+    height: 65px;
+    /* border: 1px solid black; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .logo {
+    width: 20%;
+    display: flex;
+  }
+  
+  .logo h3 {
+    margin-top: 0.5rem;
+    background: linear-gradient(90deg, rgb(226, 246, 8), rgb(252, 181, 48), rgb(226, 66, 13));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* margin-left: 1rem; */
+    font-weight: bolder;
+  }
+  
+  .nav div:hover {
+    background-color: rgb(157, 157, 157);
+    border-radius: 10px;
+  }
+  
+  .nav {
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+    padding-left: 10%;
+    padding-right: 20%;
+    color: white;
+    justify-content: space-around;
+    margin-right: 5rem;
+    gap: 3rem;
+  }
+  
+  .nav div {
+    text-align: center;
+    width: 20%;
+    height: 65%;
+    margin: auto;
+    align-items: center;
+    color: whitesmoke;
+  }
+  
+  .nav div a {
+    text-decoration: none;
+    color: whitesmoke;
+    display: block;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  
+  .nav div a:active {
+    color: rgb(18, 18, 183);
+  }
+  
+  .nav div a:hover {
+    color: rgb(13, 13, 13);
+  }
+  .iconGrid{
+    border: 2px solid whitesmoke;
+    height: 50%;
+    width: 2.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 11px;
+  }
+  .iconGrid svg{
+    font-size: 1.35rem;
+    margin: auto;
+    color: whitesmoke;
+  }
+  .iconGrid{
+    border-color: rgb(198, 195, 195);
+  }
+  .iconGrid:hover{
+    border-color: rgb(159, 158, 158);
+    color: rgb(159, 158, 158);
+    cursor: pointer;
+  }
 
-.logo {
-  width: 20%;
-  display: flex;
-}
-
-.logo h3 {
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, rgb(226, 246, 8), rgb(252, 181, 48), rgb(226, 66, 13));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* margin-left: 1rem; */
-  font-weight: bolder;
-}
-
-.nav div:hover {
-  background-color: rgb(157, 157, 157);
-  border-radius: 10px;
-}
-
-.nav {
-  display: flex;
-  flex-direction: row;
-  width: 65%;
-  padding-left: 10%;
-  padding-right: 20%;
-  color: white;
-  justify-content: space-around;
-  margin-right: 5rem;
-  gap: 3rem;
-}
-
-.nav div {
-  text-align: center;
-  width: 20%;
-  height: 65%;
-  margin: auto;
-  align-items: center;
-}
-
-.nav div a {
-  text-decoration: none;
-  color: black;
-  display: block;
-  font-weight: 600;
-  margin-top: 8px;
-}
-
-.nav div a:active {
-  color: rgb(18, 18, 183);
-}
-
-.nav div a:hover {
-  color: rgb(13, 13, 13);
-}
-.iconGrid{
-  border: 2px solid black;
-  height: 50%;
-  width: 2.5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin: auto;
-  border-radius: 11px;
-}
-.iconGrid svg{
-  font-size: 1.35rem;
-  margin: auto;
-}
-.iconGrid{
-  border-color: rgb(198, 195, 195);
-}
-.iconGrid:hover{
-  border-color: rgb(159, 158, 158);
-  color: rgb(159, 158, 158);
-  cursor: pointer;
-}
 .mode {
   width: 15%;
   display: flex;
@@ -108,12 +113,12 @@
 
 .button4 {
   appearance: none;
-  background-color: #FAFBFC;
+  background-color: #000000;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292E;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -135,13 +140,14 @@
 .button4:hover {
   background-color: #F3F4F6;
   text-decoration: none;
+  color: black;
   transition-duration: 0.1s;
 }
 
 .button4:disabled {
   background-color: #FAFBFC;
   border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
+  color: #000000;
   cursor: default;
 }
 
@@ -206,7 +212,6 @@
   border-radius: 15px;
   margin: auto;
   font-family: Georgia, serif;
-  margin-top: 80px;
   border-radius: 9px;
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
@@ -221,7 +226,7 @@
   font-family: 'Cutive', serif;
   font-family: 'Kanit', sans-serif;
   font-family: 'Poppins', sans-serif;
-  background-color: rgb(97, 78, 220);
+  background-color: rgb(0, 0, 0);
   color: #F3F4F6;
   border-radius: 8px;
 }
@@ -232,17 +237,18 @@
   font-family: 'Cutive', serif;
   font-family: 'Kanit', sans-serif;
   font-family: 'Poppins', sans-serif;
+  background-color: rgb(96, 95, 95);
 }
 
 .dialog {
-  border: 1px solid rgb(4, 189, 41);
-  color: green;
+  border: 2px solid black;
+  color: rgb(6, 108, 6);
   width: 80%;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 10px;
-  background-color: #e1fbdc;
+  background-color: rgb(221, 202, 24);
 }
 
 .inputcard {
@@ -266,7 +272,7 @@
 
 .button3 {
   appearance: none;
-  background-color: #2ea44f;
+  background-color: #e88719;
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -295,7 +301,8 @@
 }
 
 .button3:hover {
-  background-color: #2c974b;
+  background-color: #afbd1a;
+  color: black;
 }
 
 .button3:focus {
@@ -326,9 +333,15 @@
 
 .shareLink {
   margin-left: 10px;
-  color: red;
+  font-weight: 500;
+  background: linear-gradient(90deg, rgb(243, 206, 18), rgb(255, 45, 3), rgb(226, 66, 13));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+.sharefooter{
+  background-color: rgb(96, 95, 95);
 
+}
 .shareLink a {
   text-decoration: none;
   color: darkred;
@@ -337,4 +350,12 @@
 .shareLink a:hover {
   cursor: pointer;
   color: black;
+}
+.outer{
+    background-color: #343541;
+    padding-top: 80px;
+    min-height: 100vh;
+}
+.sharecontent h4{
+    color: whitesmoke;
 }

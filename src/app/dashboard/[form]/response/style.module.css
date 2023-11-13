@@ -8,8 +8,8 @@
   font-family: 'Cutive', serif;
   font-family: 'Poppins', sans-serif;
   flex-direction: row;
-  justify-content: space-between;
-  height: 50px;
+  justify-content: space-around;
+  height: 65px;
   /* border: 1px solid black; */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -21,7 +21,7 @@
 
 .logo h3 {
   margin-top: 0.5rem;
-  background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+  background: linear-gradient(90deg, rgb(226, 246, 8), rgb(252, 181, 48), rgb(226, 66, 13));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /* margin-left: 1rem; */
@@ -29,19 +29,17 @@
 }
 
 .nav div:hover {
-  background-color: rgb(203, 227, 245);
+  background-color: rgb(157, 157, 157);
   border-radius: 10px;
-}
-
-.green {
-  color: white;
-  background-color: rgb(12, 103, 13);
 }
 
 .nav {
   display: flex;
   flex-direction: row;
-  width: 25%;
+  width: 65%;
+  padding-left: 10%;
+  padding-right: 20%;
+  color: white;
   justify-content: space-around;
   margin-right: 5rem;
   gap: 3rem;
@@ -50,15 +48,16 @@
 .nav div {
   text-align: center;
   width: 20%;
-  height: 70%;
+  height: 65%;
   margin: auto;
   align-items: center;
 }
 
 .nav div a {
   text-decoration: none;
-  color: gray;
+  color: black;
   display: block;
+  font-weight: 600;
   margin-top: 8px;
 }
 
@@ -67,9 +66,36 @@
 }
 
 .nav div a:hover {
-  color: blue;
+  color: rgb(13, 13, 13);
 }
-
+.iconGrid{
+  border: 2px solid black;
+  height: 50%;
+  width: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  border-radius: 11px;
+}
+.iconGrid svg{
+  font-size: 1.35rem;
+  margin: auto;
+}
+.iconGrid{
+  border-color: rgb(198, 195, 195);
+}
+.iconGrid:hover{
+  border-color: rgb(159, 158, 158);
+  color: rgb(159, 158, 158);
+  cursor: pointer;
+}
+.green {
+  color: rgb(8, 8, 8);
+  font-weight: bolder;
+  background-color: rgb(12, 103, 13);
+}
 .mode {
   width: 15%;
   display: flex;
@@ -221,16 +247,19 @@
 .examContainer .header1 div:hover {
   cursor: pointer;
   /* background-color: rgb(183, 184, 184); */
-  background-color: rgb(133, 250, 139);
+  background-color: rgb(247, 167, 18);
   color: black;
   font-family: 'Bungee Shade', cursive;
   font-family: 'Cutive', serif;
   font-family: 'Poppins', sans-serif;
 }
-
+.examContainer{
+  
+}
 .examContainer .header1 div span {
   display: flex;
   flex-direction: column;
+  font-weight: bolder;
   justify-content: center;
 }
 

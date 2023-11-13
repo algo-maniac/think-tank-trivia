@@ -1,11 +1,13 @@
 "use client"
 import style from './style.module.css'
+import dark from './dark.module.css'
 import { FaGithub } from 'react-icons/fa';
 import copy from 'copy-to-clipboard'
 import Link from 'next/link';
 import UserContext from '@/context/userContext/userContext';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { FaLightbulb } from 'react-icons/fa';
 export default function Page({ params }) {
     const { auth_status } = useContext(UserContext);
     const router = useRouter();
@@ -17,42 +19,80 @@ export default function Page({ params }) {
     const copyLinkHandler = () => {
         copy(document.getElementById('input').value);
     }
+    const [mode,setMode]=useState(true);
+    let [all_form, setAllForm] = useState(true);
+    let [all_response, setAllResponse] = useState(false);
+    useEffect(()=>{
+        const modes=()=>{
+        const g=localStorage.getItem('website_mode');
+        if(g===null){
+            setMode(true);
+            localStorage.setItem('website_mode',true);
+        }
+        else{
+            let f=true;
+            if(g==='false'){
+            f=false;
+            }
+            else{
+            f=true
+            }
+            setMode(f)
+        }
+        }
+        modes()
+        setAllForm(!all_form);
+        setAllForm(!all_form);
+        setAllResponse(!all_response)
+        setAllResponse(!all_response)
+    },[])
+    const modeHandler=()=>{
+        if(mode===true){
+          setMode(false);
+          localStorage.setItem('website_mode',false);
+        }      
+        else{
+          setMode(true);
+          localStorage.setItem('website_mode',true);
+        }
+    }
     return <>
-        <div className={style.header}>
-            <div className={style.logo}>
+        <div className={`${mode?style.header:dark.header}`}>
+            <div className={`${mode?style.logo:dark.logo}`}>
                 <img src="/favicon.png" height="50px"></img>
                 <h3>Think-Fast-Trivia</h3>
             </div>
-            <div className={style.nav}>
+            <div className={`${mode?style.nav:dark.nav}`}>
                 <div><a href={"/dashboard"}>DashBoard</a></div>
                 <div><a href={`/dashboard/${formId}`}>Preview</a></div>
                 <div><a href={`/dashboard/${formId}/share-portal`}>Share</a></div>
                 <div><a href={`/dashboard/${formId}/response`}>Response</a></div>
             </div>
-            <div className={style.mode}>
-                <button className={style.button4}>Light</button>
-                <button className={style.button31}>Dark</button>
+            <div className={`${mode?style.iconGrid:dark.iconGrid}`} onClick={modeHandler}>
+              <FaLightbulb className={`${mode?style.bulb:dark.bulb}`}></FaLightbulb>
             </div>
         </div>
-        <div className={style.shareportal}>
-            <div className={style.shareheader}>
+        <div className={`${mode?style.outer:dark.outer}`}>
+        <div className={`${mode?style.shareportal:dark.shareportal}`}>
+            <div className={`${mode?style.shareheader:dark.shareheader}`}>
                 <h1>Share It</h1>
             </div>
-            <div className={style.sharecontent}>
-                <div className={style.dialog}>
+            <div className={`${mode?style.sharecontent:dark.sharecontent}`}>
+                <div className={`${mode?style.dialog:dark.dialog}`}>
                     <h3>Your Form is ready to deploy</h3>
                     <p>Share the link directly on any site</p>
                 </div>
                 <h4>Form Link</h4>
-                <div className={style.inputcard}>
+                <div className={`${mode?style.inputcard:dark.inputcard}`}>
                     <input value={formId} id='input'></input>
-                    <button className={style.button4} onClick={copyLinkHandler}>Copy</button>
-                    <button className={style.button3}>Live</button>
+                    <button className={`${mode?style.button4:dark.button4}`} onClick={copyLinkHandler}>Copy</button>
+                    <button className={`${mode?style.button3:dark.button3}`}>Live</button>
                 </div>
             </div>
-            <div>
-                <p className={style.shareLink}>Copy the FormId and paste it <b><Link href={'/search-form'}>Here</Link></b></p>
+            <div className={`${mode?style.sharefooter:dark.sharefooter}`}>
+                <p className={`${mode?style.shareLink:dark.shareLink}`}>Copy the FormId and paste it <b><Link href={'/search-form'}>Here</Link></b></p>
             </div>
+        </div>
         </div>
     </>
 }
