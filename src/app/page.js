@@ -294,7 +294,7 @@ export default function App() {
                 value={email}
               ></input>
             </div>
-            <div className={style.btn} onClick={sendEmail}>
+            <div className={`${mode?style.btn:dark.btn}`} onClick={sendEmail}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="green"
