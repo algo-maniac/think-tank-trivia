@@ -842,3 +842,38 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.contributors{
+    text-align: center;
+}
+.contributors h2{
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.profiles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.profile{
+    margin: 3px;
+}
+.profile img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.profile h3{
+    font-size: 0.7rem;
+    color: rgb(165, 165, 165);
+}
+.profile:hover{
+    font-size: 1.4rem;
+}
+.profiles{
+    width: 24%;
+    margin: auto;
+}

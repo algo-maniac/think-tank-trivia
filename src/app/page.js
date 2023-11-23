@@ -14,9 +14,27 @@ import { FaLightbulb } from "react-icons/fa";
 import Modal from "@/components/Modal";
 import { toast } from 'react-toastify';
 import './global.css'
+import { FaSmile } from "react-icons/fa";
 export default function App() {
   const [mode,setMode]=useState(true)
   const router = useRouter();
+  const [github,setGithub]=useState(false);
+  const [contributors,setContributors]=useState([]);
+  useEffect(()=>{
+    const fetchContributors=()=>{
+      fetch('https://api.github.com/repositories/699492494/contributors',{
+        method:'GET',
+      }).then((data)=>{
+        return data.json();
+      }).then((data)=>{
+        setContributors(data);
+        if(typeof(data)===Array){
+          setGithub(true)
+        }
+      })
+    }
+    fetchContributors();
+  },[])
   useEffect(()=>{
     const modes=()=>{
       const g=localStorage.getItem('website_mode');
@@ -272,6 +290,26 @@ export default function App() {
           </div>
         </div>
       </div>
+      <br></br>
+      <br></br>
+      <section className={`${mode?style.contributors:dark.contributors}`}>
+          <h2>Contributors</h2>
+          <div className={style.profiles}>
+            {github && 
+              contributors.map(function (data) {
+                return <div className={style.profile} key={data.id}>
+                        <a href={data.html_url}>
+                        <img src={data.avatar_url}></img>
+                        <h3>{data.login}</h3>
+                        </a>
+                      </div>
+              })
+            }
+            {
+              !github && <h1>Loading...</h1>
+            }
+          </div>
+      </section>
       <br></br>
       <br></br>
       <br></br>

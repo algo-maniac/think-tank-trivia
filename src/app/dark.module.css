@@ -858,3 +858,15 @@
 .btn:hover{
     cursor: pointer;
 }
+.contributors{
+    text-align: center;
+    color: goldenrod;
+}
+.contributors h2{
+    font-size: 2rem;
+    font-weight: 800;
+    color: goldenrod;
+    background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
