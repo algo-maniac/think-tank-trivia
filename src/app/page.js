@@ -28,8 +28,8 @@ export default function App() {
         return data.json();
       }).then((data)=>{
         setContributors(data);
-        if(typeof(data)===Array){
-          setGithub(true)
+        if(data.length==4){
+          setGithub(true);
         }
       })
     }
