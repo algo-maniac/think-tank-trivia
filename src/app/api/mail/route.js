@@ -5,43 +5,40 @@ export async function POST(req, res) {
     console.log(payload.email);
     const email = payload.email;
 
+
     try {
 
-        // const transporter = nodemailer.createTransport({
-        //     service: "gmail",
-        //     auth:{
-        //         user:process.env.GMAIL,
-        //         pass:process.env.PASSWORD,
-        //     }
-        // });
-
         const transporter = nodemailer.createTransport({
-            host: 'smtp.sendgrid.net',
             port: 465,
-            secure: true,
+            host: "smtp.gmail.com",
             auth: {
                 user: process.env.GMAIL,
-                pass:process.env.PASSWORD,
-            }
-        })
+                pass: process.env.PASSWORD,
+            },
+            secure: true,
+        });
 
-        const mailOptions = {
+        const mailData = {
             from: process.env.GMAIL,
             to: email,
             subject: "think-fast-trivia Invitation",
             html: "<h1>Check Out This Amazing Website :- https://think-fast-trivia.vercel.app/ </h1>"
-        }
+        };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log("error : " + error);
-            } else {
-                console.log("email sent " + info.response);
-                return NextResponse.json({ ok: true, message: "mail fetched successfully" }, { status: 200 });
-            }
-        })
+
+        await new Promise((resolve, reject) => {
+            transporter.sendMail(mailData, (err, info) => {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+                } else {
+                    resolve(info);
+                }
+            });
+        });
+
+        res.status(200).json({ message: "Email sent" });
     } catch (error) {
-        console.log("error : ", error);
-        return NextResponse.json({ ok: true, message: "mail is not fetched" }, { status: 404 });
+        res.status(500).json({ message: error.message });
     }
 }
