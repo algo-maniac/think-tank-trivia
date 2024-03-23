@@ -6,7 +6,8 @@
 }
 .main-outer .header{
     position: fixed;
-    opacity: 1;
+    opacity: 0.7;
+    background-color: rgb(0, 0, 0);
     box-shadow: rgba(219, 219, 219, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     min-height: 80px;
     margin: auto;
@@ -16,8 +17,13 @@
     top: 4%;
     display: flex;
     z-index: 6;
+    transition: all 0.7s;
     flex-direction: row;
     justify-content: space-between;
+}
+.main-outer .header:hover{
+
+    opacity: 1;
 }
 .main-outer .header .header-text{
     width: 35%;
@@ -75,6 +81,7 @@
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
+  border-radius: 20px;
   font-family: Graphik,-apple-system,system-ui,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -151,7 +158,7 @@
     padding-bottom: 60px;
 }
 .main-outer .content .heading h3{
-    font-size: 4.8em;
+    font-size: 4em;
     font-weight: 100;
     color: rgb(208, 208, 208);
     letter-spacing: 4px;
@@ -273,3 +280,99 @@
     color: rgb(157, 147, 238);
     background-color: rgb(37, 37, 37);
 }
+
+
+
+/* Timeless section feature */
+.timeline-container{
+    /* background: radial-gradient(circle,rgb(206, 255, 229),white); */
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 4em;
+    padding-bottom: 10em;
+  }
+  .timeline-container .line{
+    width: 30vw;
+    margin: auto;
+  }
+  .timeline-container .line svg{
+    color: black;
+  }
+  .timeline-container .content-section{
+    width: 60vw;
+    margin: auto;
+  }
+  .timeline-container .box .left-side,.right-side{
+    width: 50%;
+    height: 100%;
+  }
+  .timeline-container .box .left-side{
+    padding: 1.4em;
+  }
+  .timeline-container .box .serial{
+    width: 2.7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 2.5em;
+    margin-bottom: 0.5em;
+    background-color: #2f2b31;
+    color: #9f93ee;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .timeline-container .box .right-side img{
+    border-radius: 0px;
+    width: 70%;
+  }
+  .timeline-container .box .header1 h4{
+    color: rgb(219, 219, 219);
+    background: linear-gradient(-45deg,white,rgb(215, 215, 215));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .timeline-container .box{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+  .timeline-container .box .text-content{
+    color: rgb(183, 183, 183);
+    margin-top: 0.8em;
+    font-size: 0.95em;
+    line-height: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .timeline-heading{
+    background-color: rgb(230, 255, 241);
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 13vw;
+    min-height: 5vh;
+    border: 2px solid rgb(16, 194, 122);
+    margin: auto;
+  }
+  .timeline-heading h3{
+    color: #009578;
+    font-weight: 500;
+  }
+  .timeline-slogan p{
+    color: black;
+    background: -webkit-linear-gradient(0deg,#6dddcc, #1a8875,rgb(2, 89, 66));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.7em;
+    text-align: center;
+    font-weight: 700;
+    font-family: "Lato",sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  
