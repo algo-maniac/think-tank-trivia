@@ -81,7 +81,7 @@ export default function App() {
   // console.log(email);
 
   const sendEmail = async()=>{
-    // console.log("hello world");
+    
     const res = await fetch("/api/mail", {
       method: "POST",
       header: {
