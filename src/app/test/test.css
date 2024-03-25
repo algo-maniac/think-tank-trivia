@@ -2,7 +2,8 @@
     background-color: black;
     min-height: 100vh;
     min-width: 100vw;
-    font-family: 'Lato',sans-serif;
+    /* font-family: 'Lato',sans-serif; */
+    font-family: "Poppins";
 }
 .main-outer .header{
     position: fixed;
@@ -296,7 +297,7 @@
     margin: auto;
   }
   .timeline-container .line svg{
-    color: black;
+    color: rgb(255, 255, 255);
   }
   .timeline-container .content-section{
     width: 60vw;
@@ -328,7 +329,7 @@
   }
   .timeline-container .box .header1 h4{
     color: rgb(219, 219, 219);
-    background: linear-gradient(-45deg,white,rgb(215, 215, 215));
+    background: linear-gradient(-45deg,white,white,rgb(197, 197, 197));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-weight: 700;
@@ -375,4 +376,32 @@
     margin-top: 1rem;
     margin-bottom: 1.2rem;
   }
-  
+.feature-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  color: white;
+  margin-bottom: 13em;
+}
+.feature-box .feature1{
+  width: 300px;
+}
+.feature-box .feature1 img{
+  width: 160px;
+  height: 150px;
+  border-radius: 50%;
+}
+.feature-box .heading h3{
+  font-weight: 400;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  font-size: 1.6em;
+  background: linear-gradient(135deg,rgb(255, 217, 63),rgb(101, 17, 161),rgb(80, 0, 80));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+} 
+.feature-box p{
+  font-size: 0.85em;
+  color: rgb(190, 190, 190);
+}

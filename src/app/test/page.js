@@ -46,6 +46,51 @@ const Test=()=>{
                         </div>
                     </button>
                 </div>
+                {/* <img src="https://media.giphy.com/media/3oKIPtjElfqwMOTbH2/giphy.gif"></img> */}
+            </div>
+            <div className="feature-box">
+                <div className="feature1">
+                    <div className="img">
+                        <img draggable={false} src="https://media.giphy.com/media/l4KhQo2MESJkc6QbS/giphy.gif?cid=790b76117okumfeujocsgo4rqe2rzwjsdxrd7yb3wfyxuaqi&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
+                    </div>
+                    <div className="heading">
+                        <h3>Fast & Flexible</h3>
+                    </div>
+                    <div>
+                        <span></span>
+                    </div>
+                    <div>
+                        <p>Our Application is faster than others</p>
+                    </div>
+                </div>
+                <div className="feature1">
+                    <div className="img">
+                        <img draggable={false} src="https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif?cid=790b7611m24ldx0xkeguhnpp28unmuh35eau7wkazivct2et&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
+                    </div>
+                    <div className="heading">
+                        <h3>Gather Information</h3>
+                    </div>
+                    <div>
+                        <span></span>
+                    </div>
+                    <div>
+                        <p>Our Application is faster than others</p>
+                    </div>
+                </div>
+                <div className="feature1">
+                    <div className="img">
+                        <img draggable={false} src="https://media.giphy.com/media/hnj3fj9zQAVms8zMNg/giphy.gif?cid=ecf05e47y9ttagk16ql9c34wx2ua0035qerwzbkwrmwlv9ma&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
+                    </div>
+                    <div className="heading">
+                        <h3>Analyse Performance</h3>
+                    </div>
+                    <div>
+                        <span></span>
+                    </div>
+                    <div>
+                        <p>Our Application is faster than others</p>
+                    </div>
+                </div>
             </div>
             <div className="feature-section">
                 <div className="heading">
