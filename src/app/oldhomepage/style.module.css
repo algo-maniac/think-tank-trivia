@@ -1,0 +1,879 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cutive&family=Kanit:wght@300;400&family=Poppins:wght@400;600&family=Roboto+Slab&family=Ubuntu:wght@400;500&display=swap');
+
+.header {
+    display: grid;
+    grid-template-columns: 0.5fr 1.8fr 0.6fr 0.2fr;
+    width: 100%;
+    position: relative;
+    margin-left: 0px;
+    height: 84px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: #fff;
+    /* overflow: hidden; */
+}
+.iconGrid{
+    border: 2px solid black;
+    height: 45%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 11px;
+}
+.iconGrid svg{
+    font-size: 1.35rem;
+    margin: auto;
+}
+.iconGrid{
+    border-color: rgb(198, 195, 195);
+}
+.iconGrid:hover{
+    border-color: black;
+    cursor: pointer;
+}
+.outer {
+    position: sticky;
+    z-index: 1;
+    top: 1px;
+}
+
+.header .logo {
+    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.logo {
+    /* border: 1px solid blue; */
+    width: 14rem;
+}
+
+.company {
+    /* border: 1px solid rgb(62, 20, 213); */
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+}
+
+.company h3 {
+    /* border: 1px solid gray; */
+    width: 100%;
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 1rem;
+
+    /* background: -webkit-radial-gradient(#03eb31, #9a4902); */
+    background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.company img {
+    width: 30%;
+    border-radius: 100%;
+    /* border: 1px solid blanchedalmond; */
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    /* margin-left: 10px; */
+    /* border: 1px solid red; */
+}
+
+.company_name {
+    color: black;
+    font-weight: bolder;
+    /* float: left; */
+    border: 1px solid violet;
+}
+
+.links div {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    justify-content: space-around;
+    margin: 13px;
+    font-size: 1.4rem;
+    /* text-align: center; */
+    /* border: 1px solid red; */
+    margin-top: -0.2rem;
+}
+
+.form_api {
+    margin-right: auto;
+    color: #052744;
+    font-weight: 900;
+
+}
+
+.form_api .linkTitle{
+    cursor: no-drop;
+}
+
+.form_portal {
+    text-align: center;
+    font-weight: 600;
+}
+
+.links a:link {
+    text-decoration: none;
+    font-weight: 400;
+    color: rgb(7, 6, 6);
+    font-size: 1.15rem;
+}
+
+.links a {
+    color: rgb(124, 50, 173);
+    cursor: pointer;
+}
+
+.links a:hover {
+    color: rgb(56, 8, 88);
+}
+
+.header .loginBtn {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 19px;
+    justify-content: space-around;
+}
+
+.header .loginBtn button {
+    width: 45%;
+    margin: auto;
+}
+
+.button9 {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s, box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-9:disabled {
+    cursor: default;
+}
+
+.button9:hover {
+    background-color: #2037bf;
+}
+
+.button-9:focus {
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    width: 86%;
+    margin: auto;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.content .slogan {
+    margin-left: 50px;
+    margin-top: 30px;
+    font-size: 2.76rem;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.content .slogan span {
+    color: rgb(70, 70, 191);
+}
+
+.content .slogan h1 {
+    margin: 10px;
+    font-weight: bold;
+    font-size: 3.5rem;
+
+    background: linear-gradient(90deg, rgb(10, 218, 245), rgb(202, 147, 234), rgb(13, 109, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.content .sloganImage {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.black {
+    color: black;
+}
+
+.content .slogan .websiteDesc {
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 1.48rem;
+    margin: 0px;
+    color: gray;
+}
+
+.websiteDesc p {
+    margin-top: 10px;
+    margin: 10px;
+    line-height: 29px;
+}
+
+.button68 {
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #27ae60;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.button68:hover {
+    background-color: #1e8449;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+}
+
+.button68:hover {
+    box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+.slogan .btn {
+    margin: 10px;
+    margin-top: 30px;
+}
+
+.websiteDesc .btn button {
+    margin: 10px;
+}
+.btn:hover{
+   cursor: pointer;
+}
+.pageDown {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.working {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    flex-wrap: wrap;
+
+}
+
+.working .workingHeader {
+    text-align: center;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: underline;
+}
+
+.workingHeader {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.working .createForm {
+    width: 65%;
+    /* border: 1px solid black; */
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.working .createForm .descIcon {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 1.4rem;
+    color: blue;
+}
+
+.working .createForm .descImg {
+    width: 150%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.working .createForm .descContent {
+    font-size: 1.2rem;
+    margin: 10px;
+}
+
+.working .createForm .descContent h2 {
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+}
+
+.brown {
+    color: rgba(221, 39, 39, 0.49);
+}
+
+.green {
+    color: #1e8449;
+}
+
+.apiHeading {
+    font-size: 2.7rem;
+}
+
+.newFeature {
+    width: 75%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    margin-bottom: 20px;
+    margin-top: 70px;
+    justify-content: space-around;
+}
+
+.featureTitle {
+    background-color: rgb(251, 214, 49);
+    color: rgb(237, 235, 235);
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.featureHeading {
+    font-size: 2.9rem;
+}
+
+.newFeature .featureImg {
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
+.newFeature .featureImg .lightMode .img {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.newFeature .featureImg .icon {
+    font-size: 1.7rem;
+    margin-bottom: 30px;
+}
+
+.newFeature .featureImg .img {
+    margin: auto;
+}
+
+.websiteApi {
+    width: 70%;
+    /* border: 1px solid black; */
+    margin: auto;
+    text-align: center;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    margin-top: 60px;
+    background-color: rgb(255, 248, 248);
+}
+
+.websiteApi .apiContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.websiteApi .apiContent .apiImg {
+    width: 30%;
+    margin-top: 1.8rem;
+}
+
+.websiteApi .apiContent .apiHeader {
+    font-size: 3rem;
+    margin-top: 1.8rem;
+}
+
+.footer {
+    height: 450px;
+    border: 1px solid black;
+    width: 100%;
+    background-color: #052744;
+}
+
+.connectInvite {
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    width: 44%;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+    color: whitesmoke;
+    justify-content: space-around;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.connectInvite div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.connectInvite .title {
+    width: 50%;
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.connectInvite .input {
+    width: 100%;
+}
+
+.connectInvite .btn {
+    width: 35%;
+}
+
+.connectInvite input {
+    height: 60%;
+    padding: 1rem;
+    color: #000;
+}
+
+.button60 {
+    align-items: center;
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: .375em;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #363636;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    height: 2.5em;
+    justify-content: center;
+    line-height: 1.5;
+    padding: calc(.5em - 1px) 1em;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.button60:active {
+    border-color: #4a4a4a;
+    outline: 0;
+}
+
+.button60:focus {
+    border-color: #485fc7;
+    outline: 0;
+}
+
+.button60:hover {
+    border-color: #b5b5b5;
+}
+
+.button60:focus:not(:active) {
+    box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+}
+
+.connectInvite button {
+    height: 60%;
+    font-size: 1.1rem;
+}
+
+.socialMedia {
+    width: 15%;
+    margin: auto;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 1.9rem;
+
+}
+
+.white {
+    color: white;
+}
+
+.socialMedia {
+    width: 25%;
+    color: rgb(216, 212, 212);
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    margin: auto;
+    height: 50%;
+    justify-content: space-between;
+}
+
+.footerLinks .headerlinks {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.general {
+    width: 45%;
+}
+
+.account {
+    width: 45%;
+}
+
+.footerLinks .title {
+    width: 40%;
+    display: flex;
+    font-size: 1.5rem;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    color: rgb(255, 192, 46);
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.copyright {
+    text-align: center;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    color: white;
+    justify-content: space-around;
+    background-color: #031b2f;
+}
+
+.headerlinks .general {
+    height: 80%;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.headerlinks .account {
+    height: 80%;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.headerlinks a {
+    color: rgb(165, 165, 165);
+}
+
+.headerlinks div {
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.headerlinks div a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Cutive', serif;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.86rem;
+}
+
+.footer_outer {
+
+}
+.general a:hover{
+    color: white;
+}
+.account a:hover{
+    color: white;
+}
+.general h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.title h1 {
+    font-weight: bold;
+    font-size: 2.9rem;
+    background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.footer .title span{
+    background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.socialMedia:hover{
+    color: gray;
+}
+.account h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.user_image img {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user_image {
+    border: 2px solid red;
+}
+
+/* .user_image{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border : 1px solid green;
+    align-items: center;
+    width: 50%;
+    cursor: pointer;
+}
+.user_tags{
+    border : 1px solid red;
+    position: absolute;
+    transform: translateY(80%);
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.user_image:hover .user_tags{
+    visibility: visible;
+    opacity: 1;
+} 
+
+.user_tags li{
+    text-align: center;
+    border: 1px solid blue;
+    background-color: #828f9b;
+} */
+
+/* ........................... */
+
+.user_profile {
+    /* border:1px solid red; */
+
+}
+
+.account h2 {
+    background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.general h2 {
+    background: linear-gradient(90deg, gold, orange, rgb(250, 58, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user_profile img {
+    border-radius: 100%;
+    cursor: pointer;
+    margin-top: 0.9rem;
+}
+
+.user_profile li {
+    cursor: pointer;
+}
+
+.user_profile {
+    position: relative;
+}
+
+.drop_down {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(70, 70, 191);
+    position: absolute;
+    /* left: 50%; */
+    /* transform: translateX(50%); */
+    transform: translateY(7%);
+    width: 12.4rem;
+    align-items: center;
+    border-radius: 5%;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+
+.user_profile li:hover>.drop_down {
+    visibility: visible;
+    opacity: 1;
+}
+
+.drop_down li {
+    padding: 0.5rem;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.user_profile_header {
+    display: flex;
+    justify-content: start;
+}
+
+.user_profile_header h3 {
+    margin-top: 1.8rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, rgb(10, 218, 245), rgb(202, 147, 234), rgb(13, 109, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.drop_down li:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.drop_down button {
+    width: 100%;
+}
+.working h2{
+    text-decoration: none;
+    background: linear-gradient(90deg, rgb(10, 218, 245), rgb(144, 67, 189), rgb(13, 109, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.contributors{
+    text-align: center;
+}
+.contributors h2{
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, rgb(100, 245, 10), rgb(202, 147, 234), rgb(13, 226, 84));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.profiles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.profile{
+    margin: 3px;
+}
+.profile img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.profile h3{
+    font-size: 0.7rem;
+    color: rgb(165, 165, 165);
+}
+.profile:hover{
+    font-size: 1.4rem;
+}
+.profiles{
+    width: 24%;
+    margin: auto;
+}

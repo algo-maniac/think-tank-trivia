@@ -1,174 +1,77 @@
 "use client";
-import style from "./style.module.css";
-import dark from "./dark.module.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faCircleStop } from "@fortawesome/free-solid-svg-icons";
-import Typewriter from 'typewriter-effect';
-import Link from "next/link";
-import ChatIcon from "@/components/ChatIcon";
-import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import "./test.css"
+import { FiArrowUpRight } from "react-icons/fi";
+import form1 from "/public/form.png"
+import { useContext } from "react";
 import UserContext from "@/context/userContext/userContext";
-import { FaLightbulb } from "react-icons/fa";
-import Modal from "@/components/Modal";
-import { toast } from 'react-toastify';
-import './global.css'
-import { FaSmile } from "react-icons/fa";
-export default function App() {
-  const [mode,setMode]=useState(true)
-  const router = useRouter();
-  const [github,setGithub]=useState(false);
-  const [contributors,setContributors]=useState([]);
-  useEffect(()=>{
-    const fetchContributors=()=>{
-      fetch('https://api.github.com/repositories/699492494/contributors',{
-        method:'GET',
-      }).then((data)=>{
-        return data.json();
-      }).then((data)=>{
-        setContributors(data);
-        if(data.length==4){
-          setGithub(true);
-        }
-      })
-    }
-    fetchContributors();
-  },[])
-  useEffect(()=>{
-    const modes=()=>{
-      const g=localStorage.getItem('website_mode');
-      if(g===null){
-        setMode(true);
-        localStorage.setItem('website_mode',true);
-      }
-      else{
-        let f=true;
-        if(g==='false'){
-          f=false;
-        }
-        else{
-          f=true
-        }
-        setMode(f)
-      }
-    }
-    modes()
-  },[])
-  // const { data, status } = useSession();
+import { useRouter } from "next/navigation";
+import Typewriter from 'typewriter-effect';
+import { signOut } from "next-auth/react";
+
+const Test = () => {
+
   const { auth_session: data, auth_status: status } = useContext(UserContext);
   const { user } = useContext(UserContext);
-  // console.log(user)
-  const modeHandler=()=>{
-      if(mode===true){
-        setMode(false);
-        localStorage.setItem('website_mode',false);
-      }      
-      else{
-        setMode(true);
-        localStorage.setItem('website_mode',true);
-      }
-  }
-  const middlewire = () => {
-    if (status == "unauthenticated") {
-      return router.push("/login")
-    } else {
-      return router.push("/dashboard")
-    }
-  }
-
-  const [email, setEmail] = useState("");
-  // console.log(email);
-
-  const sendEmail = async()=>{
-    
-    const res = await fetch("/api/mail", {
-      method: "POST",
-      header: {
-          "Content-Type": "applications/json"
-      },
-      body: JSON.stringify({
-        email
-      })
-    })
-
-    setEmail("");
-    toast.success("... email is successfully sent ...", {
-      position: "top-center"
-  })
-  }
-  return (
-    <>
-      {/* <Modal val={{type:"error",msg:"Error"}}></Modal> */}
-      {/* <Modal val={{type:"success",msg:"Form data fetched successfully"}}></Modal> */}
-
-      <div className={style.outer}>
-        <div className={`${mode?style.header:dark.header}`}>
-          <div className={`${mode?style.logo:dark.logo}`}>
-            <div className={`${mode?style.company:dark.company}`}>
-              <img src="favicon.png"></img>
-              <h3>Think-Fast-Trivia</h3>
-            </div>
+  const router = useRouter();
+  return <>
+    {/* Hero section */}
+    <div className="main-outer">
+      <div className="header">
+        <div className="header-text">
+          <div className="icon">
+            <img width={'42px'} height={'60px'} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGee6LwUzPPRnGFpp4Cy7tJb9CgXatDebXYg&usqp=CAU"></img>
           </div>
-          <div className={`${mode?style.links:dark.links}`}>
-            {/* <div className={style.company_name}>
-                Think-Fast-Trivia
-            </div> */}
-            <div className={`${mode?style.form_portal:dark.form_portal}`}>
-              <a onClick={middlewire} className={`${mode?style.linkTitle:dark.linkTitle}`}>
-                Form-Portal
-              </a>
-            </div>
-            <div className={`${mode?style.form_api:dark.form_api}`}>
-              <a href="/api" className={`${mode?style.linkTitle:dark.linkTitle}`}>
-                API
-              </a>
-            </div>
+          <div className="text">
+            <h5>Think-Fast-Trivia</h5>
           </div>
-          
-          {
-            status == "authenticated" ?
-              <>
-                {/* <div className={style.user_image}>
-                    <img src={data.user.image} alt={data.user.name} height={50} width={50} />
-                    <ul className={style.user_tags}>
-                      <li>view profile</li>
-                      <li>logout</li>
-                    </ul>
-                  </div> */}
-                <ul className={`${mode?style.user_profile:dark.user_profile}`}>
-                  <li>
-                    <div className={`${mode?style.user_profile_header:dark.user_profile_header}`}>
-                      <img src={data.user.image} alt={data.user.name} height={50} width={50} />
-                      <h3>{user.name}</h3>
-                    </div>
-                    <ul className={`${mode?style.drop_down:dark.drop_down}`}>
-                      <li> <Link href={"/analytics"} onClick={middlewire}> view profile </Link> </li>
-                      <li><button onClick={() => { signOut() }}>Logout</button></li>
-                    </ul>
-                  </li>
-                </ul>
-              </>
-              :
-              <div className={`${mode?style.loginBtn:dark.loginBtn}`}>
-                <Link href={"/login"}>
-                  <button className={`${mode?style.button9:dark.button9}`}>Login</button>
-                </Link>
-              </div>
-          }
-          <div className={`${mode?style.iconGrid:dark.iconGrid}`} onClick={modeHandler}>
-            <FaLightbulb className={`${mode?style.bulb:dark.bulb}`}></FaLightbulb>
+        </div>
+        <div className="header-button">
+          <div className="link">
+            <span onClick={() => {
+              if (status == "unauthenticated") {
+                router.push('/login')
+              } else {
+                router.push('/dashboard')
+              }
+            }}>Form-Portal</span>
+          </div>
+          <div className="link">
+            <span onClick={() => {
+              if (status == "unauthenticated") {
+                router.push('/login')
+              } else {
+                router.push('/analytics')
+              }
+            }}>Analytics</span>
+          </div>
+          <div className="login-btn">
+
+            {
+              status == "unauthenticated" ?
+                <button className="button-26" onClick={() => {
+                  router.push('/login');
+                }}>Login</button> :
+                <div className="user">
+                  <img className="userImage" src={data.user.image} alt="dp" />
+                  <div className="drop_down" onClick={()=>{
+                    signOut();
+                  }}>
+                    logout
+                  </div>
+                </div>
+            }
+
+
           </div>
         </div>
       </div>
-      <div className={`${mode?style.contentOuter:dark.contentOuter}`}>
-      <div className={`${mode?style.content:dark.content}`}>
-        <div className={`${mode?style.slogan:dark.slogan}`}>
-          <h1>
-            Show <span>Creativity.</span>
-          </h1>
-          <h1>
-            {/* <span>Build</span> Community. */}
+      <div className="hero-section">
+        <img draggable={false} src="https://media.giphy.com/media/l4XfgLyXAnyzCh7vfY/giphy.gif"></img>
+      </div>
+      <div className="content">
+        <div className="heading">
+          {/* <h3>Show <span>Creativity</span></h3> */}
+          <h1 className="typewriter">
             <Typewriter
               options={{
                 strings: ['Build Community', 'Spread Community', 'Grow Community'],
@@ -177,242 +80,221 @@ export default function App() {
               }}
             />
           </h1>
-          <div className={`${mode?style.websiteDesc:dark.websiteDesc}`}>
-            <p>
-              Create custom forms and interactive quizzes effortlessly. Engage
-              your audience and gather insights with ease on ThinkTankTrivia
-            </p>
-          </div>
-          {
-            status == "unauthenticated" ?
-              <>
-                <div className={`${mode?style.btn:dark.btn}`}>
-                  <Link href={"/login"}><button className={`${mode?style.button68:dark.button68}`}>Get Started</button></Link>
-                </div>
-              </>
-              :
-              <div className={`${mode?style.btn:dark.btn}`}>
-                <Link href={"/dashboard"}><button className={`${mode?style.button68:dark.button68}`}>Get Started</button></Link>
+          <p>Streamline Your Data Flow, Empower Engagement Today, Effortless Forms,<br></br> Limitless Possibilities - Unleash Your Voice!</p>
+        </div>
+        <div className="btns">
+          <button className="button-40">
+            <div className="start-btn">
+              <div className="text">
+                <span class="text">Get Started</span>
               </div>
+              <div className="icon">
+                <FiArrowUpRight />
+              </div>
+            </div>
+          </button>
+        </div>
+        {/* <img src="https://media.giphy.com/media/3oKIPtjElfqwMOTbH2/giphy.gif"></img> */}
+      </div>
+      <div className="feature-box">
+        <div className="feature1">
+          <div className="img">
+            <img draggable={false} src="https://media.giphy.com/media/l4KhQo2MESJkc6QbS/giphy.gif?cid=790b76117okumfeujocsgo4rqe2rzwjsdxrd7yb3wfyxuaqi&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
+          </div>
+          <div className="heading">
+            <h3>Fast & Flexible</h3>
+          </div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <p>Our Application is faster than others</p>
+          </div>
+        </div>
+        <div className="feature1">
+          <div className="img">
+            <img draggable={false} src="https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif?cid=790b7611m24ldx0xkeguhnpp28unmuh35eau7wkazivct2et&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
+          </div>
+          <div className="heading">
+            <h3>Gather Information</h3>
+          </div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <p>Our Application is faster than others</p>
+          </div>
+        </div>
+        <div className="feature1">
+          <div className="img">
+            <img draggable={false} src="https://media.giphy.com/media/hnj3fj9zQAVms8zMNg/giphy.gif?cid=ecf05e47y9ttagk16ql9c34wx2ua0035qerwzbkwrmwlv9ma&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
+          </div>
+          <div className="heading">
+            <h3>Analyse Performance</h3>
+          </div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <p>Our Application is faster than others</p>
+          </div>
+        </div>
+      </div>
+      <div className="feature-section">
+        <div className="heading">
+          <span>OUR FEATURE</span>
+        </div>
+        <div className="timeline-container">
+          <div className="content-section">
+            <div className="box">
+              <div className="left-side" data-aos="fade-right">
+                <div className="serial">
+                  <span>1</span>
+                </div>
+                <div className="header1">
+                  <h4>Create Your Form</h4>
+                </div>
+                <div className="text-content">
+                  <p>Welcome to the creative hub of Think Fast Trivia! With our "Create Your Form" feature, the power to craft engaging quizzes and forms is now at your fingertips. Unleash your creativity, challenge your friends, and spark exciting conversations with personalized quizzes tailored to your interests.</p>
+                </div>
+              </div>
+              <div className="right-side" data-aos="fade-left">
+                <img src="form.png"></img>
+              </div>
+            </div>
+          </div>
+          <div className="line">
+            <svg className="h-3rem h-sm-5rem h-lg-7rem" viewBox="0 0 444 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M442.989 1C443.49 18.4197 426.571 53.2592 354.892 53.2591C265.293 53.2591 126.139 53.2591 80.0875 53.2591C34.0366 53.2591 7.00663 85.784 0.999979 111" stroke="currentColor" stroke-dasharray="7 7"></path>
+            </svg>
+          </div>
+          <div className="content-section">
+            <div className="box box1">
+              <div className="right-side" data-aos="fade-right">
+                <img src="form.png"></img>
+              </div>
+              <div className="left-side" data-aos="fade-left">
+                <div className="serial">
+                  <span>2</span>
+                </div>
+                <div className="header1">
+                  <h4>Fill Your Form</h4>
+                </div>
+                <div className="text-content">
+                  <p>Ready for a brain-teasing adventure? Dive into the diverse world of trivia crafted by the Think Fast Trivia community with our "Fill Your Form" feature. Whether you're a seasoned trivia enthusiast or a casual player, this is your chance to explore a multitude of quizzes and forms created by users just like you.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="line">
+            <svg className="h-3rem h-sm-5rem h-lg-7rem" viewBox="0 0 444 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.01068 1C0.510125 18.7364 17.4289 54.2093 89.1082 54.2093C178.707 54.2093 317.861 54.2093 363.912 54.2093C409.963 54.2093 436.993 87.3256 443 113" stroke="currentColor" stroke-dasharray="7 7"></path>
+            </svg>
+          </div>
+          <div className="content-section">
+            <div className="box">
+              <div className="left-side" data-aos="fade-right">
+                <div className="serial">
+                  <span>3</span>
+                </div>
+                <div className="header1">
+                  <h4>Analyze Your Performance</h4>
+                </div>
+                <div className="text-content">
+                  <p>Elevate your trivia game to new heights with the "Analyze Your Performance" feature on Think Fast Trivia. Dive into detailed insights and statistics that go beyond the thrill of answering questions. Understand your strengths, pinpoint areas for improvement, and track your progress as you embark on your trivia journey.</p>
+                </div>
+              </div>
+              <div className="right-side" data-aos="fade-left">
+                <img src="form3.png"></img>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="our-team">
+        <div className="heading">
+          <span>OUR TEAM</span>
+        </div>
+        <div className="members">
+          <div className="member">
+            <div className="left">
+              <img draggable={true} src="protyay.png"></img>
+            </div>
+            <div className="right">
+              <div className="heading-text">
+                <h3>Protyay Ray</h3>
+              </div>
+              <div className="role">
+                <span>Frontend & Backend</span>
+              </div>
+              <div className="desc">
+                <p>
 
-          }
-        </div>
-        <div className={`${mode?style.sloganImage:dark.sloganImage}`}>
-          <img src="74pZ.gif"></img>
-        </div>
-      </div >
-      <div className={`${mode?style.working:dark.working}`}>
-        <div className={`${mode?style.workingHeader:dark.workingHeader}`}>
-          <h2>How it works</h2>
-        </div>
-        <div className={`${mode?style.createForm:dark.createForm}`}>
-          <div className={`${mode?style.descIcon:dark.descIcon}`}></div>
-          <div className={`${mode?style.descImg:dark.descImg}`}>
-            <img src="Create-a-Form.png" height="100%" width="90%"></img>
-          </div>
-          <div className={`${mode?style.descContent:dark.descContent}`}>
-            <div>
-              <h2>Create Your Form</h2>
-              <p>
-              Welcome to the creative hub of Think Fast Trivia! With our "Create Your Form" feature, the power to craft engaging quizzes and forms is now at your fingertips. Unleash your creativity, challenge your friends, and spark exciting conversations with personalized quizzes tailored to your interests.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className={`${mode?style.createForm:dark.createForm}`}>
-          <div className={`${mode?style.descIcon:dark.descIcon}`}></div>
-          <div className={`${mode?style.descImg:dark.descImg}`}>
-            <img
-              src="istockphoto-500641404-612x612.jpg"
-              height="80%"
-              width="90%"
-            ></img>
-          </div>
-          <div className={`${mode?style.descContent:dark.descContent}`}>
-            <div>
-              <h2>Fill Your Form</h2>
-              <p>
-              Ready for a brain-teasing adventure? Dive into the diverse world of trivia crafted by the Think Fast Trivia community with our "Fill Your Form" feature. Whether you're a seasoned trivia enthusiast or a casual player, this is your chance to explore a multitude of quizzes and forms created by users just like you.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className={`${mode?style.createForm:dark.createForm}`}>
-          <div className={`${mode?style.descIcon:dark.descIcon}`}></div>
-          <div className={`${mode?style.descImg:dark.descImg}`}>
-            <img src="download.jpeg" height="90%" width="90%"></img>
-          </div>
-          <div className={`${mode?style.descContent:dark.descContent}`}>
-            <div>
-              <h2>Analyse Your Performance</h2>
-              <p>
-              Elevate your trivia game to new heights with the "Analyze Your Performance" feature on Think Fast Trivia. Dive into detailed insights and statistics that go beyond the thrill of answering questions. Understand your strengths, pinpoint areas for improvement, and track your progress as you embark on your trivia journey.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${mode?style.newFeature:dark.newFeature}`}>
-        <div className={`${mode?style.featureTitle:dark.featureTitle}`}>
-          <h2 className={`${mode?style.featureHeading:dark.featureHeading}`}>
-            Tryout our<br></br>{" "}
-            <span className={`${mode?style.black:dark.black}`}>new templates</span>
-          </h2>
-        </div>
-        <div className={`${mode?style.featureImg:dark.featureImg}`}>
-          <div className={`${mode?style.lightMode:dark.lightMode}`}>
-            <div className={`${mode?style.icon:dark.icon}`}></div>
-            <div className={`${mode?style.img:dark.img}`}>
-              <img
-                src="07100e0e7d47b0eb58f7cef3d5e19224.png"
-                height="100%"
-                width="100%"
-              ></img>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br></br>
-      <div className={`${mode?style.websiteApi:dark.websiteApi}`}>
-        <h1 className={`${mode?style.apiHeading:dark.apiHeading}`}>
-          Want<span className={`${mode?style.green:dark.green}`}> another feature?</span>
-        </h1>
-        <div className={`${mode?style.apiContent:dark.apiContent}`}>
-          <div className={`${mode?style.apiHeading:dark.apiHeading}`}>
-            <h1>
-              Intoducing our<br></br>{" "}
-              <span className={`${mode?style.brown:dark.brown}`}>new Feature</span>
-            </h1>
-            <button className={`${mode?style.button68:dark.button68}`}>Get API</button>
-          </div>
-          <div className={`${mode?style.apiImg:dark.apiImg}`}>
-            <img src="Icons_API.png" height="100%" width="100%"></img>
-          </div>
-        </div>
-      </div>
-      <br></br>
-      <br></br>
-      <section className={`${mode?style.contributors:dark.contributors}`}>
-          <h2>Contributors</h2>
-          <div className={style.profiles}>
-            {github && 
-              contributors.map(function (data) {
-                return <div className={style.profile} key={data.id}>
-                        <a href={data.html_url}>
-                        <img src={data.avatar_url}></img>
-                        <h3>{data.login}</h3>
-                        </a>
-                      </div>
-              })
-            }
-            {
-              !github && <h1>Loading...</h1>
-            }
-          </div>
-      </section>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      </div>
-      <div className={`${mode?style.footer_outer:dark.footer_outer}`}>
-        <footer className={`${mode?style.footer:dark.footer}`}>
-          <div className={`${mode?style.connectInvite:dark.connectInvite}`}>
-            <div className={`${mode?style.title:dark.title}`}>
-              <span>Invite your friend</span>
-            </div>
-            <div className={`${mode?style.input:dark.input}`}>
-              <input
-                name="email"
-                placeholder="Enter the Email"
-                type="email"
-                onChange={(e)=>{
-                  setEmail(e.target.value);
-                }}
-                value={email}
-              ></input>
-            </div>
-            <div className={`${mode?style.btn:dark.btn}`} onClick={sendEmail}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="green"
-                height="2em"
-                viewBox="0 0 448 512"
-              >
-                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-              </svg>
-              {/* <button className={style.mail} type="submit">send</button> */}
-            </div>
-          </div>
-          <hr></hr>
-          <div className={`${mode?style.socialMedia:dark.socialMedia}`}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="white"
-              height="1em"
-              viewBox="0 0 448 512"
-            >
-              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="white"
-              height="1em"
-              viewBox="0 0 512 512"
-            >
-              <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="white"
-              height="1em"
-              viewBox="0 0 512 512"
-            >
-              <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="white"
-              height="1em"
-              viewBox="0 0 496 512"
-            >
-              <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-            </svg>
-          </div>
-          <hr></hr>
-          <div className={`${mode?style.footerLinks:dark.footerLinks}`}>
-            <div className={`${mode?style.headerlinks:dark.headerlinks}`}>
-              <div className={`${mode?style.general:dark.general}`}>
-                <h2>General</h2>
-                <div>
-                  <a href="">About</a>
-                  <br></br>
-                  <a href="">Term and Condiiton</a>
-                  <br></br>
-                  <a href="">Privacy</a>
-                </div>
+                  A foundational member created the Login/Signup page, managed the database, and integrated APIs for streamlined user interaction. </p>
               </div>
-              <div className={`${mode?style.account:dark.account}`}>
-                <h2>Account</h2>
-                <div>
-                  <a href="">Login</a>
-                  <br></br>
-                  <a href="">Signup</a>
-                  <br></br>
-                  <a href="">API Request</a>
-                </div>
+              <div className="social">
+                <a href="https://github.com/Protyay140">
+                  <span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQDxMSEA8OEQ4QEBEVEhYQDQ8VFRcQGBMWFxYTFRYYHSggGhsmGxcVITEhJSorLjAuGB8zODMtNygtMCsBCgoKDQ0NDw0NFSsZFRkrKysrKzcrLS0rKysrLS0rKysrLSsrLSsrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEBAAMBAQEBAAAAAAAAAAAAAQYHCAUEAwL/xABBEAACAQMBBQQHBAYKAwAAAAAAAQIDBBEFBgcSITETQVFhCBQiQnGBkSMyobEVUmJywdEzNUNEc3SisrPCJZLD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwDVAIDTKggAoIAKCACggAoIAKCACggAoIAKCACggAoIAKCACggAoIAICACggAoIAKCACggAoIf1Si5vEIynLwhGUn9EBAezZ7JajWSdLT7yUX0fY8K/1YPUp7sdYl0sGv3rm2X/AHFViQMvnuv1hdbHP7t1bP8A7Hm3WxepUk3PTrtJdWqakvrFvIo8IH9V6cqbxUhOm/CpTlB/6kj+AiggAoIAKCACghQAIAKCAACACggAoIAKCH16Tpla7rRo21KVWtPpGPcv1pPuXmB8jZlOymwN9qOJUqXZ27/taycYteMF1l8ehtTYXdHQteGtf8NzdLDUP7CnLyT++14y+SNnRiksJJJdEkSrGtdn9zdlRSdzKd1U5PEnww8furr8zPdO0a3t0o0LejSS6cFOK/E+4EUAAAAAfLe6dRrxca1GlUi1hqcIvl4czB9f3RafcJujGVrUfPNJ+zn918jYQA5o2r3Z39jmah6zbr36Kbkl+1Dr9DClLPNc0dmGA7cbrrXUOKrRxa3rX34L2JtdFVh0f7yw+nXoWpHOQPS2i2fudPrdjdUuCfuyTzCa8YS7/wAzzCooIAKCACggApAQACACggAoIfXpGm1buvTt6EeKtVliK7l4yfgkuYH17M7P19RuY29tHMnznJp8NOHfOb/Jd50vsZshb6XQVOjHiqS51askuOcvFvuXgibEbJ0dLtVSppOrLDrVGvanUxzb8vBGRGWgEbS6tL4hPPQCgAAAAAAAAAAA2SMk+jT+DA8vaTZ631ChKhc01OD+6/ehLulB9zRzTtvshX0q47OrmdGbfY1UuU4+D8JrvXzR1WeXtJoNG/tp29xBShNcn3xl3Ti+5oDkYHrbVbPVtOup29bm486c8cp02+U1/HzPINIoIAiggAoIAICFCgIUA2b/ANyWx3qtv67Xhi6uo/ZqSWadtnkvJywpPywu41Tu12a/SWo06Ulm3pfaV+XJwT5Qf7z/AATOpYxSSSWElhfAmmKACK1F6QGtTp0ra3pznB1JynNwm4vhisJZXPqzU+k7W39rLNC8rrnnhnNzi35qX8zNPSBk/wBJUU2+FWzx4Z4uZrAqN0bKb6+ap6jS4U+XbUU2vjKHX6G3tP1GjcUo1qFWnVoyWVOEk44+Jx0fpC6qRg4RqVI03LicY1JKLl4uKeMiDrHUdrbC3Tda9toY6/bRbTzjpHLPJnvP0lf3+k/3VN/wOX0l4FyIV09HehpL/v1NfGM/5Ho2G22nV89lf2ssdc1VH/dg5QyRpPqkIV2X6zDg4+OHZpZcuOPDw+PF0wau2v3zUKDlSsIes1VlOo8qkn5PrL5Gio3M1CUFUqKnPHFFVJcLS6Jxzhn5CFZHre3Oo3jfa3dSMH7lF9nHGfLn+Jlm4zXakdSnRqVak43FF4VSpOXtweeWW8cmawMu3Tya1q1x1zP6cPMDqIAEVhO9bY9alZOVOK9dtlKdB8sy75UW/CSX1wzmd5XJppp4aaw011TXczs45x307Mep3/b044t7xufJLEa/vr5/e+OfEuI18AQooIAKAAICACgh/VOm5yjCP3pyjFfGTSX5gdBbh9D7HT5XEl9pdTysr+zjyibNPg0GwVta0aMVhUqUI480ln8T7zKgB8+o3kKFGpWqNKnShKUm/BLIGmvSJt48VpUU4dp9pFx95x68XwzyNOHrbV6/U1G8qXNRv23inFvlCkvuxXh4s8gqKCAooIAKCACggApn25C2hPWIynOMZU6M5QTeHKT5YXjhGAH7WV3UoVYVqUuGtSkpQl4SX8CDssHhbE7Qx1GxpXMeUpxxUX6tRcpL6nukUMM3taF65pdVJfa0V2sPHMebX0MzP4rU1OLi+kk0/g1gDjFMp9+0Ng7a8uKDWOxr1IrL93OY/g0eeVFBAUUEAEABAPc2HtFW1SypyWYyuqeV5J8X8DwzMN0FPi12z8u3f0oTA6iABFDXG/fVHR0rs4tp3VaFJ4ePYSc5/JqOPmbHNP8ApGSfq9kvd7ern49ny/NgaNABUAAAAAAAAAAAAAG5fR21V8d3aOSxiFeEc8+vBUa8v6P6+Zu0539H7+t6n+Qrf81A6IIoAAOY98toqWt3GFhVIUaj/elDDf4GEmyvSBp41ak/1rGH4VaiNalQAAAAAQEAFMy3Ozxrtp5q4X1oTMMMh3d3PZaxYzbwlcxTflJOLX4gdZgAihqj0iKLdhbTSbULtJ4T5KVKay/DmkvmbXMT3paO7zSLmnFN1IwVSGMZc6bU0ufjjAHLAInkFRQQAUEAFBABQQAUEAG1vR4s+K/ua2XilaqGO77Son/8jfxqz0ftHdKwq3EopSuq3svHN0oLhjnyzxNfE2mRQAAc8+kHPOrUV4WMP+aozWRne+65VTW6uHns6NCHw9ltr6tmBlRQQAUEAEAAA/W1r9nUhUXWnUhP/wBZKX8D8iAdm6ZdqtQp1YtONSnCSa6c0mfSa+3I636zpcKcm3UtZOm84zw9Y9O7BsEihJRTTTWU1h/AoA5a3obKS02/mlF+q3EpVKLxyWXmUPin+Bh515tZs1Q1K1lb3EeT5wnH70J904v+Hec3bZ7v7zTJvjpyrW3u1qUW1j9tLnF/gBigImCooAAAAAAQCnqbM6FU1C7p21FPiqP2mvcpr7038j9dmdlbvUaiha0ZSjn2qkk1TivFy/kdIbv9hqOk0OGOKl1US7aq44cn+rHwgu5AZBpGnwtbenQpJKnShGEUvBI+wAihJSSTb5JLL+BTGN5Gtqy0y4q5xNwcIYazxy5LGQOaNr9Q9Z1G6rcsVLibWHywnwr8EeQT49e/4lKgAAAAAgIAKCADPdzW0vqWpRhUli3u8U5ZfJVPcl18eXzR00cUZOnN0W2K1KxUKks3lqowrJ4zKPuVUvBpc/NMivq3l6RqFzbRemXM6VenJtwjNQ7SOPu8T6PwzyNNaFvN1PTq7p3UqleMJuNWlcLFSLWE0n1T8unM6WNW77NiI3Vu723gvW7eOanCudWguqeOso9z8OXhgM92Z2goahbQuLeWYS6p/ejPvhJdzR6dSCkmpJOL6prKOXt1u2z0q6+04pWdxwqsk37L7qsV4rv8vgdOWN5Tr041KM41KU0nGUWmmgMP1/dXpt23LsOxqvPtUJcHN97S5MwfU9xGMyoaglBJt9vRT+eYtY+hu8wHfXrkrTSpxhLhqXMlSXPD4X97HyA5u1C3VKtUpxqRqxpzcVOCajLHes9x+B/KKVFC83hZWXjOF447yADbeg7lHc06db9JUZUKkVJOhRbbi13SbwvoZzoW53TbZqVSNS5mu+tLl1z9xcjwPR41uU6Ne0m21QcalPPdCfVfVPkbiIr8bW1hSioUoQhBdFCKS/A/YAAAABz/AL/Npu2uoWVOWadt7VXD5Os1yj8lz+aNt7wNqoaXYzryw60vYoQysyrNcvkur8kco3NxOrOVSpJzqVJOU5Pq5N5bYH8AgKiggAoIAICACggAp7OyG0dXTbyFzRbfDyqRzynSb9qL/h5nigDsfZ3XKN/bQuLefFTqLPnGXfGS7mj0KkFJNNZTTTXkzlTd7txW0mvlZna1Gu2pZ/1x8JfmdO6FrVC9oRr21SNSlNdU+affGS7mRXMO8jZaem39SDi1b1ZSnQl3ODeXFeafcefs9tZe6fytLmdODeXB4lDPjws6r1/Qbe/oujdUY1ab6ZXOL/Wi+qZq7VNxFJyzbXlSEefs1IqXwWQMMrb49VlHhVShF/rRo8/xZiOt7QXV7LiuripWaeUpP2YvGPZj0RtCO4ar330Mf4Ri28fd8tHp0ZesOtKtOUX7CiklHPIDBQQFRQQAbV9HmT/SNddzt1n5SZ0Ic8+j1/WVb/Lf9joYigAAHz6he07elOrWnGFKnFylKTwkkL+9p0KcqtacadKCzKUnhJHN29HeJPU6nY0HKFhTlyXR1Wvfl5eCA8veNtjPVrx1Paja0sxt4Puj3zf7T/kYoQFRQQAUEAFBABAAFAAAAAA9/Y/a+60ut2ltP2JNdpSlngmvNdz80eAAOqth94lnqkVGEuxukvao1WlL4wfvx8180jMDianUcZKUZSjKLTi4tpqS6NNc0zaGx++e6tkqd7H1qiuSnyVVLz7pfny7yDok0z6R/wDQ2f8Aiz/2MzvZ7eJp16l2dzCE37lV8Ek/Dmaw9IDaG3uHbUKFWNWpSlOdRwaajlOKTfiBp8AFAAAbW9Hdf+QuH3q3X+5nQhzRuP16jZ6lJXE404V6PDGcniKmnlJvuzz+hvXW9t7CzjxVrulnGVGMlKT8MJfAgyIx7a/bO00ulx3NVdo0+zpQw6s3+zHw83yNTbXb7qtRSp6dT7GLyu2qJOfxhHon8TUt7eVK9SVStUnUqzeZSnJuT+b/ACAyfbzb+51aeJ/ZWkZZp0Yvl5Sm/el+BiQBQAAAAAAAAAARAQEVQQAUEAFBABQQAX8wQAUEAFBABQ3835sgAoIAKCACggAoIAKCACggAgIAKCACggAoIAKCACggAoIAKCACggAoIAKCACggAoIAKCACghQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9k="></img></span>
+                </a>
+                <a>
+                  <span><img src="linkedin.png"></img></span>
+                </a>
               </div>
             </div>
-            <div className={`${mode?style.title:dark.title}`}>
-              <h1>ThinkFastTrivia</h1>
+          </div>
+          <div className="member">
+            <div className="left">
+              <img draggable={true} src="tuhin.png"></img>
+            </div>
+            <div className="right">
+              <div className="heading-text">
+                <h3>Tuhin Saha</h3>
+              </div>
+              <div className="role">
+                <span>Frontend Developer</span>
+              </div>
+              <div className="desc">
+                <p>
+                  Led website UI/UX development, contributed to ideation, and managed projects for the company's digital presence.</p>
+              </div>
+              <div className="social">
+                <a href="https://github.com/Tsaha11">
+                  <span><img src="data:image/jpeg;base64,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"></img></span>
+                </a>
+                <a>
+                  <span><img src="linkedin.png"></img></span>
+                </a>
+              </div>
             </div>
           </div>
-          <div className={`${mode?style.copyright:dark.copyright}`}>
-            <p>Copyright reserved by ThinkFastTrivia</p>
+          <div className="member">
+            <div className="left">
+              <img draggable={true} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJz9D6IuHUkf9nQtjipdq8BBIO9CCfLWQvIw&usqp=CAU"></img>
+            </div>
+            <div className="right">
+              <div className="heading-text">
+                <h3>Tonmoy Biswas</h3>
+              </div>
+              <div className="role">
+                <span>Backend Developer</span>
+              </div>
+              <div className="desc">
+                <p>
+                  Integrated numerous APIs into the backend and oversaw MongoDB database management for efficient system functionality.</p>
+              </div>
+              <div className="social">
+                <a href="https://github.com/tonmoy1912">
+                  <span><img src="data:image/jpeg;base64,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"></img></span>
+                </a>
+                <a>
+                  <span><img src="linkedin.png"></img></span>
+                </a>
+              </div>
+            </div>
           </div>
-        </footer>
+        </div>
       </div>
-      <ChatIcon />
-    </>
-  );
+    </div>
+  </>
 }
+export default Test;

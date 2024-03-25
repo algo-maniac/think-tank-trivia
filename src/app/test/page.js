@@ -1,6 +1,8 @@
+"use client"
 import "./test.css"
 import { FiArrowUpRight } from "react-icons/fi";
 import form1 from "/public/form.png"
+import Dashboard from "../dashboard/page";
 const Test=()=>{
     return <>
         {/* Hero section */}
@@ -16,7 +18,7 @@ const Test=()=>{
                 </div>
                 <div className="header-button">
                     <div className="link">
-                        <span>Form-Portal</span>
+                        <span onClick={<Dashboard />}>Form-Portal</span>
                     </div>
                     <div className="link">
                         <span>API</span>
@@ -38,7 +40,7 @@ const Test=()=>{
                     <button className="button-40">
                         <div className="start-btn">
                             <div className="text">
-                                <span class="text">Get Started</span>
+                                <span className="text">Get Started</span>
                             </div>
                             <div className="icon">
                                 <FiArrowUpRight/>
