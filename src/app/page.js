@@ -2,25 +2,31 @@
 import "./test.css"
 import { FiArrowUpRight } from "react-icons/fi";
 import form1 from "/public/form.png"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "@/context/userContext/userContext";
 import { useRouter } from "next/navigation";
 import Typewriter from 'typewriter-effect';
 import { signOut } from "next-auth/react";
 import './global.css';
 import style from "./style.module.css"
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 const Test = () => {
 
   const { auth_session: data, auth_status: status } = useContext(UserContext);
   const { user } = useContext(UserContext);
   const router = useRouter();
+  useEffect(()=>{
+    Aos.init({duration:2000});
+  })
   return <>
     {/* Hero section */}
     <div className="main-outer">
       <div className="header">
         <div className="header-text">
           <div className="icon">
-            <img width={'42px'} height={'60px'} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGee6LwUzPPRnGFpp4Cy7tJb9CgXatDebXYg&usqp=CAU"></img>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGee6LwUzPPRnGFpp4Cy7tJb9CgXatDebXYg&usqp=CAU"></img>
           </div>
           <div className="text">
             <h5>Think-Fast-Trivia</h5>
@@ -81,9 +87,9 @@ const Test = () => {
               }}
             />
           </h1>
-          <p>Streamline Your Data Flow, Empower Engagement Today, Effortless Forms,<br></br> Limitless Possibilities - Unleash Your Voice!</p>
+          <p data-aos="fade-up">Streamline Your Data Flow, Empower Engagement Today, Effortless Forms,<br></br> Limitless Possibilities - Unleash Your Voice!</p>
         </div>
-        <div className="btns">
+        <div className="btns" data-aos="fade-up">
           <button className="button-40">
             <div className="start-btn">
               <div className="text">
@@ -98,7 +104,7 @@ const Test = () => {
         {/* <img src="https://media.giphy.com/media/3oKIPtjElfqwMOTbH2/giphy.gif"></img> */}
       </div>
       <div className="feature-box">
-        <div className="feature1">
+        <div className="feature1" data-aos="fade-right">
           <div className="img">
             <img draggable={false} src="https://media.giphy.com/media/l4KhQo2MESJkc6QbS/giphy.gif?cid=790b76117okumfeujocsgo4rqe2rzwjsdxrd7yb3wfyxuaqi&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
           </div>
@@ -112,7 +118,7 @@ const Test = () => {
             <p>Our Application is faster than others</p>
           </div>
         </div>
-        <div className="feature1">
+        <div className="feature1" data-aos="fade-up">
           <div className="img">
             <img draggable={false} src="https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif?cid=790b7611m24ldx0xkeguhnpp28unmuh35eau7wkazivct2et&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
           </div>
@@ -126,7 +132,7 @@ const Test = () => {
             <p>Our Application is faster than others</p>
           </div>
         </div>
-        <div className="feature1">
+        <div className="feature1" data-aos="fade-left">
           <div className="img">
             <img draggable={false} src="https://media.giphy.com/media/hnj3fj9zQAVms8zMNg/giphy.gif?cid=ecf05e47y9ttagk16ql9c34wx2ua0035qerwzbkwrmwlv9ma&ep=v1_gifs_search&rid=giphy.gif&ct=g"></img>
           </div>
@@ -142,7 +148,7 @@ const Test = () => {
         </div>
       </div>
       <div className="feature-section">
-        <div className="heading">
+        <div className="heading" data-aos="fade-up">
           <span>OUR FEATURE</span>
         </div>
         <div className="timeline-container">
@@ -172,7 +178,7 @@ const Test = () => {
           <div className="content-section">
             <div className="box box1">
               <div className="right-side" data-aos="fade-right">
-                <img src="form.png"></img>
+                <img src="feature2.png"></img>
               </div>
               <div className="left-side" data-aos="fade-left">
                 <div className="serial">
@@ -206,18 +212,18 @@ const Test = () => {
                 </div>
               </div>
               <div className="right-side" data-aos="fade-left">
-                <img src="form3.png"></img>
+                <img src="feature3.png"></img>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="our-team">
-        <div className="heading">
+        <div className="heading" data-aos="fade-up">
           <span>OUR TEAM</span>
         </div>
         <div className="members">
-          <div className="member">
+          <div className="member" data-aos="fade-right">
             <div className="left">
               <img draggable={true} src="protyay.png"></img>
             </div>
@@ -243,7 +249,7 @@ const Test = () => {
               </div>
             </div>
           </div>
-          <div className="member">
+          <div className="member" data-aos="fade-up">
             <div className="left">
               <img draggable={true} src="tuhin.png"></img>
             </div>
@@ -268,7 +274,7 @@ const Test = () => {
               </div>
             </div>
           </div>
-          <div className="member">
+          <div className="member" data-aos="fade-left">
             <div className="left">
               <img draggable={true} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJz9D6IuHUkf9nQtjipdq8BBIO9CCfLWQvIw&usqp=CAU"></img>
             </div>
@@ -295,6 +301,16 @@ const Test = () => {
           </div>
         </div>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
       <footer className={style.footer}>
         <div className={style.connectInvite}>
             <div className={style.title}><span>Invite your friend</span></div>
