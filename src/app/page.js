@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import Typewriter from 'typewriter-effect';
 import { signOut } from "next-auth/react";
 import './global.css';
+import style from "./style.module.css"
 const Test = () => {
 
   const { auth_session: data, auth_status: status } = useContext(UserContext);
@@ -294,6 +295,50 @@ const Test = () => {
           </div>
         </div>
       </div>
+      <footer className={style.footer}>
+        <div className={style.connectInvite}>
+            <div className={style.title}><span>Invite your friend</span></div>
+            <div className={style.input}>
+                <input name="connect" placeholder="Enter the Email" type="text"></input>
+            </div>
+            <div className="btn">
+                <button class={style.button60}>Invite</button>
+            </div>
+        </div>
+        <hr></hr>
+        <div className={style.socialMedia}>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-square-twitter"></i>
+            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div className={style.footerLinks}>
+            <div className={style.headerlinks}>
+                <div className={style.general}>
+                    <h2>General</h2>
+                    <div>
+                        <a href="">About</a><br></br>
+                        <a href="">Term and Condiiton</a><br></br>
+                        <a href="">Privacy</a>
+                    </div>
+                </div>
+                <div className={style.account}>
+                    <h2>Account</h2>
+                    <div>
+                        <a href="">Login</a><br></br>
+                        <a href="">Signup</a><br></br>
+                        <a href="">API Request</a>
+                    </div>
+                </div>
+            </div>
+            <div className={style.title}>
+                <h1>ThinkTankTrivia</h1>
+            </div>
+        </div>
+        <div className={style.copyright}>
+            <p>Copyright reserved by ThinkTankTrivia</p>
+        </div>
+    </footer>
     </div>
   </>
 }
