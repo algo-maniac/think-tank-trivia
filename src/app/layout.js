@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 import Users from "@/models/user/userSchema";
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-// import './globals.css';
+import './global.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -37,7 +37,7 @@ export default async function RootLayout({ children }) {
       <SessionProvider session={session}>
         <UserState user={user}>
         <ToastContainer />
-          <body className={inter.className}>{children}</body>
+          <body className={`${inter.className} layoutcss`}>{children}</body>
         </UserState>
       </SessionProvider>
     </html>

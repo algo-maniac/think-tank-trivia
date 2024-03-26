@@ -520,7 +520,7 @@
 }
 
 .typewriter{
-  font-size: xx-large;
+  font-size: 4rem;
 }
 
 
@@ -546,5 +546,5 @@
 }
 
 .drop_down:hover{
-  background-color: #3b0b51;
+  background-color: #1f052b;
 }

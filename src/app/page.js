@@ -7,7 +7,7 @@ import UserContext from "@/context/userContext/userContext";
 import { useRouter } from "next/navigation";
 import Typewriter from 'typewriter-effect';
 import { signOut } from "next-auth/react";
-
+import './global.css';
 const Test = () => {
 
   const { auth_session: data, auth_status: status } = useContext(UserContext);
