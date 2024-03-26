@@ -17,6 +17,7 @@
     "@material-ui/icons": "^4.11.3",
     "@mui/material": "^5.14.12",
     "ai": "^2.2.14",
+    "aos": "^2.3.4",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.0",
     "chartjs-adapter-date-fns": "^3.0.0",
