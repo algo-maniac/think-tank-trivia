@@ -2,7 +2,7 @@
 import "./test.css"
 import { FiArrowUpRight } from "react-icons/fi";
 import form1 from "/public/form.png"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/userContext/userContext";
 import { useRouter } from "next/navigation";
 import Typewriter from 'typewriter-effect';
@@ -11,15 +11,41 @@ import './global.css';
 import style from "./style.module.css"
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { toast } from 'react-toastify';
 
 const Test = () => {
 
   const { auth_session: data, auth_status: status } = useContext(UserContext);
   const { user } = useContext(UserContext);
   const router = useRouter();
-  useEffect(()=>{
-    Aos.init({duration:2000});
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
   })
+
+  const [email, setEmail] = useState("");
+
+  const sendEmail = async () => {
+    try {
+      await fetch("/api/mail", {
+        method: "POST",
+        header: {
+          "Content-Type": "applications/json"
+        },
+        body: JSON.stringify({
+          email
+        })
+      })
+
+      setEmail("");
+      toast.success("... email is successfully sent ...", {
+        position: "top-center"
+      })
+    } catch (e) {
+      console.log("error in sending mail : ", e);
+    }
+
+  }
+
   return <>
     {/* Hero section */}
     <div className="main-outer">
@@ -60,7 +86,7 @@ const Test = () => {
                 }}>Login</button> :
                 <div className="user">
                   <img className="userImage" src={data.user.image} alt="dp" />
-                  <div className="drop_down" onClick={()=>{
+                  <div className="drop_down" onClick={() => {
                     signOut();
                   }}>
                     logout
@@ -276,7 +302,8 @@ const Test = () => {
           </div>
           <div className="member" data-aos="fade-left">
             <div className="left">
-              <img draggable={true} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJz9D6IuHUkf9nQtjipdq8BBIO9CCfLWQvIw&usqp=CAU"></img>
+              {/* <img draggable={true} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJz9D6IuHUkf9nQtjipdq8BBIO9CCfLWQvIw&usqp=CAU"></img> */}
+              <img draggable={true} src="tonmoy.png"></img>
             </div>
             <div className="right">
               <div className="heading-text">
@@ -313,48 +340,53 @@ const Test = () => {
 
       <footer className={style.footer}>
         <div className={style.connectInvite}>
-            <div className={style.title}><span>Invite your friend</span></div>
-            <div className={style.input}>
-                <input name="connect" placeholder="Enter the Email" type="text"></input>
-            </div>
-            <div className="btn">
-                <button class={style.button60}>Invite</button>
-            </div>
+          <div className={style.title}><span>Invite your friend</span></div>
+          <div className={style.input}>
+            <input name="connect" placeholder="Enter the Email" type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div className="btn">
+            <button class={style.button60} onClick={sendEmail}>Invite</button>
+          </div>
         </div>
         <hr></hr>
         <div className={style.socialMedia}>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-square-twitter"></i>
-            <i class="fa-brands fa-google"></i>
-            <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-square-twitter"></i>
+          <i class="fa-brands fa-google"></i>
+          <i class="fa-brands fa-instagram"></i>
         </div>
         <div className={style.footerLinks}>
-            <div className={style.headerlinks}>
-                <div className={style.general}>
-                    <h2>General</h2>
-                    <div>
-                        <a href="">About</a><br></br>
-                        <a href="">Term and Condiiton</a><br></br>
-                        <a href="">Privacy</a>
-                    </div>
-                </div>
-                <div className={style.account}>
-                    <h2>Account</h2>
-                    <div>
-                        <a href="">Login</a><br></br>
-                        <a href="">Signup</a><br></br>
-                        <a href="">API Request</a>
-                    </div>
-                </div>
+          <div className={style.headerlinks}>
+            <div className={style.general}>
+              <h2>General</h2>
+              <div>
+                <a href="">About</a><br></br>
+                <a href="">Term and Condiiton</a><br></br>
+                <a href="">Privacy</a>
+              </div>
             </div>
-            <div className={style.title}>
-                <h1>ThinkTankTrivia</h1>
+            <div className={style.account}>
+              <h2>Account</h2>
+              <div>
+                <a href="">Login</a><br></br>
+                <a href="">Signup</a><br></br>
+                <a href="">API Request</a>
+              </div>
             </div>
+          </div>
+          <div className={style.title}>
+            <h1>ThinkTankTrivia</h1>
+          </div>
         </div>
         <div className={style.copyright}>
-            <p>Copyright reserved by ThinkTankTrivia</p>
+          <p>Copyright reserved by ThinkTankTrivia</p>
         </div>
-    </footer>
+      </footer>
     </div>
   </>
 }

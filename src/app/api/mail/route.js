@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-export async function POST(req, res) {
+export async function POST(req) {
     const payload = await req.json();
-    console.log(payload.email);
+    // console.log(payload.email);
     const email = payload.email;
 
 
@@ -37,8 +37,8 @@ export async function POST(req, res) {
             });
         });
 
-        res.status(200).json({ message: "Email sent" });
+        return NextResponse.json({ ok: true, message: "send mail successfull" },{status:200});
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        return NextResponse.json({ ok: false, message: "send mail failure" },{status:500});
     }
 }
