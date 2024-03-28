@@ -19,7 +19,7 @@ const Test = () => {
   const { user } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 2600, once:true });
   })
 
   const [email, setEmail] = useState("");
